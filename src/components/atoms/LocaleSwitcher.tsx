@@ -1,25 +1,20 @@
 "use client";
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
 
 export const LocaleSwitcher = () => {
-  const router = useRouter();
   const currentLocale = useLocale();
   const pathname = usePathname();
 
   const [isHover, setIsHover] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isPending, startTransition] = useTransition();
 
   const locales = routing.locales.filter((locale) => locale !== currentLocale);
 
   const handleLocaleChange = (locale: string) => {
-    startTransition(() => {
-      router.replace({ pathname }, { locale });
-    });
+    window.location.assign(`/${locale}${pathname === "/" ? "" : pathname}`);
   };
 
   const handleHoverOpen = () => {
@@ -34,13 +29,15 @@ export const LocaleSwitcher = () => {
     <div
       onMouseEnter={handleHoverOpen}
       onMouseLeave={handleHoverClose}
+      className="text-right relative flex-[0 0 auto]"
     >
-      <span >{currentLocale}</span>
+      <span className="uppercase cursor-default font-medium">{currentLocale}</span>
       {isHover && (
-        <ul >
+        <ul className="uppercase absolute top-[100%] right-0 bg-transparent">
           {locales.map((locale, index) => (
             <li
               key={index}
+              className="cursor-pointer opacity-[0.7] hover:opacity-1 font-medium"
               onClick={() => handleLocaleChange(locale)}
             >
               {locale}
