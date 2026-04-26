@@ -5,7 +5,9 @@
   --foreground: #171717;
 }
 
-.dark {
+[data-theme='dark'] {
+  --background: black;
+  --foreground: white;
 }
 
 body {
