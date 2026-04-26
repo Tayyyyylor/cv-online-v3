@@ -33,11 +33,11 @@ export const LocaleSwitcher = () => {
     >
       <span className="uppercase cursor-default font-medium">{currentLocale}</span>
       {isHover && (
-        <ul className="uppercase absolute top-[100%] right-0 bg-transparent">
+        <ul className="uppercase absolute top-[100%] right-[0] bg-transparent">
           {locales.map((locale, index) => (
             <li
               key={index}
-              className="cursor-pointer opacity-[0.7] hover:opacity-1 font-medium"
+              className="cursor-pointer opacity-[0.7] hover:opacity-[1] font-medium"
               onClick={() => handleLocaleChange(locale)}
             >
               {locale}

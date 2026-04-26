@@ -1,5 +1,7 @@
 {
-    "Test": {
-        "hello": "Hello"
+   "Navbar": {
+        "skills": "Skills",
+        "projects": "Projects",
+        "contact": "Contact"
     }
 }
