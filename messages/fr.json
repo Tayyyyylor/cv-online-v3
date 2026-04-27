@@ -3,5 +3,15 @@
         "skills": "Compétences",
         "projects": "Projets",
         "contact": "Contact"
+    },
+    "Hero": {
+        "job": "Développeur full stack - Paris",
+        "activity1": "Code",
+        "activity2": "pensées",
+        "activity3": "bricolage",
+        "activity4": "philo",
+        "activity5": "littérature",
+        "desc": "Développeur full stack avec un faible pour le front, la philo et les Raspberry Pi."
+
     }
 }

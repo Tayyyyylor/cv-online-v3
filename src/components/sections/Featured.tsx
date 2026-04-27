@@ -1,19 +1,89 @@
-import React from 'react'
+import { SiBetterauth, SiBun, SiCloudflare, SiDocker, SiExpo, SiNestjs, SiPostgresql, SiPrisma, SiReact, SiTurborepo } from '@icons-pack/react-simple-icons'
+import Image from 'next/image'
+
 
 export default function Featured() {
+
+    const stackData = [
+        {
+            logo: <SiExpo />
+        },
+        {
+            logo: <SiReact className='text-[#61DAFB]'/>
+        },
+        {
+            logo: <SiNestjs className='text-[#E0234E]'/>
+        },
+        {
+            logo: <SiPostgresql className='text-[#4169E1]'/>,
+        },
+        {
+            logo: <SiDocker className='text-[#2496ED]'/>
+        },
+        {
+            logo: <SiTurborepo className='text-[#FF1E56]'/>
+        },
+        {
+            logo: <SiCloudflare className='text-[#F38020]'/>
+        },
+        {
+            logo: <SiBun />
+        },
+        {
+            logo: <SiPrisma className='text-[#E0234E]'/>
+        },
+        {
+            logo: <SiBetterauth className='text-[#E0234E]'/>
+        },
+    ]
+
+    const buttonsData = [
+        {
+            logo: "",
+            url: "",
+            name: "App Store"
+        },
+        {
+            logo: "",
+            url: "",
+            name: "Play Store"
+        },
+        {
+            logo: "",
+            url: "",
+            name: "Mon profil My shelf"
+        }
+    ]
   return (
-    <article>
-        <h2>Projets phares - Application mobile</h2>
-        <section>
-            <p>image mockup iphone</p>
-            <div>
-                <p>Myshelf</p>
+    <article className='w-[100%] p-3'>
+        <h2 className='font-mono uppercase text-(--color-important) text-center mb-10 text-[16px] lg:text-[22px]'>Projets phares - Application mobile</h2>
+        <section className='flex flex-col items-center lg:flex-row gap-6'>
+            <Image src="/toto.png" width={300} height={300} alt='' className='flex-1' loading="eager"/>
+            <div className='flex flex-col gap-3 flex-1'>
+                <h3 className='font-serif text-[20px]'>My Shelf</h3>
                 <p>Une bibliothèque virtuelle pour suivre, organiser et partager ses lectures.</p>
-                <p>Stack en badges</p>
-                <p>cta app store, google play store et mon profil my shelf</p>
+                <div className='flex gap-3 flex-wrap'>
+                {stackData.map((stack, index) => (
+                    <div key={index} className='border-2 border-(--color-important) p-3 rounded-lg bg-(--background-card) text-wrap'>
+                        {stack.logo}
+                    </div>
+                ))}
+                </div>
+                <div className='flex flex-col gap-2'>
+                    {buttonsData.map((button, index) => (
+                        <a key={index} href="" className='border p-2'>
+                        <button>
+                            {button.name}
+                        </button>
+                        </a>
+                    ))
+
+                    }
+                </div>
             </div>
         </section>
         <section>
+            <p>--------------------------------</p>
             <p>en ce ,moment je lis </p>
             <p>couverture + titre du livre + auteur via API myshelf</p>
         </section>

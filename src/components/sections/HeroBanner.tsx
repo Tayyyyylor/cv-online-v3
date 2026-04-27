@@ -1,17 +1,23 @@
+import { useTranslations } from "next-intl";
 import Socials from "../molecules/Socials";
+import Image from "next/image";
 
 export default function HeroBanner() {
+  const t = useTranslations("Hero")
   return (
-    <article className="flex items-center justify-start h-[100vh]">
-      <section className="pl-4 flex flex-col gap-8">
-        <h4 className="text-(--color-important) uppercase font-mono text-[12px]"> --- Développeur full stack · Paris ou Currently building things</h4>
+    <article className="flex flex-col items-center justify-start h-[100vh] mt-30 lg:flex-row lg:mt-0">
+      <section className="pl-4 flex flex-col gap-8 flex-1">
+        <h4 className="text-(--color-important) uppercase font-mono text-[12px]"> --- {t("job")}</h4>
         <div className="flex flex-col gap-4">
-          <p className="font-serif text-[70px] leading-none">Code,</p>
-          <p className="text-(--color-important) font-serif text-[70px] italic leading-none">pensée,</p>
-          <p className="font-serif text-[70px] italic leading-none">bricolage.</p>
+          <p className="font-serif text-[70px] leading-none">{t("activity1")},</p>
+          <p className="text-(--color-important) font-serif text-[70px] italic leading-none">{t("activity2")},</p>
+          <p className="font-serif text-[70px] italic leading-none">{t("activity3")}.</p>
         </div>
-<p>Développeur full stack avec un faible pour le front, la philo et les Raspberry Pi.</p>
+<p>{t("desc")}</p>
 <Socials />
+      </section>
+      <section className="flex items-center justify-center flex-1">
+             <Image src="/toto.png" width={300} height={300} alt='' loading="eager"/>
       </section>
     </article>
   )

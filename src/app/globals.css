@@ -10,9 +10,12 @@
 
   --color-important: #C8956D;
 
+
 --font-sans: var(--font-inter);   
 --font-serif: var(--font-fraunces); 
---font-mono: var(--font-geist);   
+--font-mono: var(--font-geist); 
+
+
 
 }
 
@@ -20,11 +23,15 @@
 [data-theme='light'] {
   --background: #ffffff;
   --foreground: #171717;
+  --background-card: oklch(98.7% 0.022 95.277);
+  --foreground-card: #171717;
 }
 
 [data-theme='dark'] {
   --background: #000000;
   --foreground: #ffffff;
+  --background-card: oklch(20.8% 0.042 265.755);
+  --foreground-card: #ffffff;
 }
 
 body {
