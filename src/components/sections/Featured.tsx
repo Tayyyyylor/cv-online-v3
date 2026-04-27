@@ -1,4 +1,4 @@
-import { SiBetterauth, SiBun, SiCloudflare, SiDocker, SiExpo, SiNestjs, SiPostgresql, SiPrisma, SiReact, SiTurborepo } from '@icons-pack/react-simple-icons'
+import { SiAppstore, SiBetterauth, SiBun, SiCloudflare, SiDocker, SiExpo, SiGoogleplay, SiNestjs, SiPostgresql, SiPrisma, SiReact, SiTurborepo } from '@icons-pack/react-simple-icons'
 import Image from 'next/image'
 
 
@@ -9,42 +9,42 @@ export default function Featured() {
             logo: <SiExpo />
         },
         {
-            logo: <SiReact className='text-[#61DAFB]'/>
+            logo: <SiReact />
         },
         {
-            logo: <SiNestjs className='text-[#E0234E]'/>
+            logo: <SiNestjs />
         },
         {
-            logo: <SiPostgresql className='text-[#4169E1]'/>,
+            logo: <SiPostgresql/>,
         },
         {
-            logo: <SiDocker className='text-[#2496ED]'/>
+            logo: <SiDocker />
         },
         {
-            logo: <SiTurborepo className='text-[#FF1E56]'/>
+            logo: <SiTurborepo />
         },
         {
-            logo: <SiCloudflare className='text-[#F38020]'/>
+            logo: <SiCloudflare />
         },
         {
             logo: <SiBun />
         },
         {
-            logo: <SiPrisma className='text-[#E0234E]'/>
+            logo: <SiPrisma />
         },
         {
-            logo: <SiBetterauth className='text-[#E0234E]'/>
+            logo: <SiBetterauth />
         },
     ]
 
     const buttonsData = [
         {
-            logo: "",
+            logo: <SiAppstore />,
             url: "",
             name: "App Store"
         },
         {
-            logo: "",
+            logo: <SiGoogleplay />,
             url: "",
             name: "Play Store"
         },
@@ -64,16 +64,16 @@ export default function Featured() {
                 <p>Une bibliothèque virtuelle pour suivre, organiser et partager ses lectures.</p>
                 <div className='flex gap-3 flex-wrap'>
                 {stackData.map((stack, index) => (
-                    <div key={index} className='border-2 border-(--color-important) p-3 rounded-lg bg-(--background-card) text-wrap'>
+                    <div key={index} className='border-1 border-(--color-foreground)/5 hover:border-(--color-important)/80 p-3 rounded-lg bg-(--background-card) text-wrap'>
                         {stack.logo}
                     </div>
                 ))}
                 </div>
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-2 w-70'>
                     {buttonsData.map((button, index) => (
-                        <a key={index} href="" className='border p-2'>
-                        <button>
-                            {button.name}
+                        <a key={index} href="" className='border p-2 w-auto flex justify-center rounded-lg '>
+                        <button className='flex gap-2 items-center cursor-pointer'>
+                            {button.logo} {button.name}
                         </button>
                         </a>
                     ))

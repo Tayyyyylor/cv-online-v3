@@ -11,6 +11,8 @@ type Props = {
 };
 
 export function Providers({ children, messages, locale }: Props) {
+
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   return (
     <ThemeProvider
       attribute="data-theme"
@@ -18,7 +20,7 @@ export function Providers({ children, messages, locale }: Props) {
       enableSystem
       disableTransitionOnChange
     >
-      <NextIntlClientProvider messages={messages} locale={locale}>
+      <NextIntlClientProvider messages={messages} locale={locale} timeZone={timeZone}>
         {children}
       </NextIntlClientProvider>
     </ThemeProvider>
