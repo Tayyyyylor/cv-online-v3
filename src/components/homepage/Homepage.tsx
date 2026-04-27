@@ -1,7 +1,8 @@
 "use client";
 
-import HeroBanner from '../molecules/HeroBanner';
+import HeroBanner from '../sections/HeroBanner';
 import { Header } from '../sections/Header'
+import Featured from '../sections/Featured';
 
 export default function Homepage() {
   return (
@@ -9,6 +10,7 @@ export default function Homepage() {
   <Header />
   <main>
     <HeroBanner />
+    <Featured />
   </main>
   </>
   )

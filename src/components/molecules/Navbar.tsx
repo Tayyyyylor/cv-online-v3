@@ -27,7 +27,7 @@ export const Navbar = () => {
     return (
       <nav className="flex items-center gap-8">
         {dataNav.map((item) => (
-          <Link key={item.href} href={item.href} className="nav-gradient-link">
+          <Link key={item.href} href={item.href} className="hover:text-(--color-important) uppercase">
             {item.label}
           </Link>
         ))}
