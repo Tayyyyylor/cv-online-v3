@@ -1,20 +1,17 @@
-'use client'
-
 import Image from 'next/image'
+import { Link } from '@/i18n/navigation'
 import type { Project } from '../sections/projects/projects.data'
 
 type ProjectCardProps = {
   project: Project
-  onOpen?: (project: Project) => void
 }
 
-export default function ProjectCard({ project, onOpen }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <button
-      type="button"
-      onClick={() => onOpen?.(project)}
-      className="group relative flex aspect-square w-full flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-(--background-card) text-left origin-bottom transition-transform transition-shadow duration-500 ease-out hover:rotate-[3deg] hover:border-important/60 hover:shadow-[6px_10px_20px_-14px_var(--color-important)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-important/60 focus-visible:ring-offset-2 focus-visible:ring-offset-(--background) cursor-pointer will-change-transform"
+    <Link
+      href={`/projects/${project.id}`}
       aria-label={`Ouvrir ${project.name}`}
+      className="group relative flex aspect-square w-full flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-(--background-card) text-left origin-bottom transition-transform transition-shadow duration-500 ease-out hover:rotate-[3deg] hover:border-important/60 hover:shadow-[6px_10px_20px_-14px_var(--color-important)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-important/60 focus-visible:ring-offset-2 focus-visible:ring-offset-(--background) cursor-pointer will-change-transform"
     >
       <div className="relative h-1/2 w-full overflow-hidden bg-gradient-to-br from-important/10 via-foreground/5 to-transparent">
         {project.image ? (
@@ -53,6 +50,6 @@ export default function ProjectCard({ project, onOpen }: ProjectCardProps) {
           ))}
         </div>
       </div>
-    </button>
+    </Link>
   )
 }

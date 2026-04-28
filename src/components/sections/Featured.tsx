@@ -10,38 +10,57 @@ export default function Featured() {
 
     const frontStackData = [
         {
-            logo: <SiExpo />
+            icon: <SiExpo />,
+            name: "Expo"
         },
          {
-            logo: <SiReact />
+            icon: <SiReact />,
+            name: "React Native"
+
         },
     ]
     const backStackData = [
         {
-            logo: <SiNestjs />
+            icon: <SiNestjs />,
+            name: "Nestjs"
+
         },
         {
-            logo: <SiPostgresql/>,
+            icon: <SiPostgresql/>,
+            name: "PostgreSQL"
+
         },
          {
-            logo: <SiPrisma />
+            icon: <SiPrisma />,
+            name: "Prisma"
+
         },
         {
-            logo: <SiBetterauth />
+            icon: <SiBetterauth />,
+            name: "Better-Auth"
+
         },
     ]
      const infraStackData = [
         {
-            logo: <SiDocker />
+            icon: <SiDocker />,
+            name: "Docker"
+
         },
         {
-            logo: <SiTurborepo />
+            icon: <SiTurborepo />,
+            name: "Turborepo"
+
         },
         {
-            logo: <SiCloudflare />
+            icon: <SiCloudflare />,
+            name: "Cloudflare"
+
         },
         {
-            logo: <SiBun />
+            icon: <SiBun />,
+            name: "Bun"
+
         },
     ]
 
@@ -76,7 +95,7 @@ export default function Featured() {
                         <h4 className='font-mono uppercase'>Front</h4>
                         <div className='flex gap-3'>
                         {frontStackData.map((front, index) => (
-                            <Badge key={index} logo={front.logo}/>
+                            <Badge key={index} logo={front}/>
                         ))}
                         </div>
                     </div>
@@ -85,7 +104,7 @@ export default function Featured() {
                         <div className='flex gap-3'>
 
                         {backStackData.map((back, index) => (
-                            <Badge key={index} logo={back.logo}/>
+                            <Badge key={index} logo={back}/>
                         ))}
                         </div>
                     </div>
@@ -94,7 +113,7 @@ export default function Featured() {
                         <div className='flex gap-3'>
 
                         {infraStackData.map((infra, index) => (
-                            <Badge key={index} logo={infra.logo}/>
+                            <Badge key={index} logo={infra}/>
                         ))}
                         </div>
                     </div>

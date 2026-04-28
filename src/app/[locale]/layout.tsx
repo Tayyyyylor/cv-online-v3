@@ -8,6 +8,7 @@ import "../globals.css"
 
 type Props = {
   children: React.ReactNode;
+  modal: React.ReactNode;
   params: Promise<{ locale: string }>;
 };
 
@@ -29,7 +30,7 @@ const geist = Geist_Mono({
 
 
 
-export default async function LocaleLayout({ children, params }: Props) {
+export default async function LocaleLayout({ children, modal, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -43,6 +44,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body>
         <Providers messages={messages} locale={locale}>
           {children}
+          {modal}
         </Providers>
       </body>
     </html>

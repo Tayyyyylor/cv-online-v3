@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import Title from '../../atoms/Title'
 import Chip from '../../atoms/Chip'
 import ProjectCard from '../../molecules/ProjectCard'
-import { projectFilters, projects, type Project, type ProjectCategory } from './projects.data'
+import { projectFilters, projects, type ProjectCategory } from './projects.data'
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>('all')
@@ -14,13 +14,8 @@ export default function Projects() {
     return projects.filter((p) => p.categories.includes(activeFilter))
   }, [activeFilter])
 
-  const handleOpen = (project: Project) => {
-    // TODO: ouvrir le modal du projet
-    console.log('open', project.id)
-  }
-
   return (
-    <article className="w-full p-3 mt-20">
+    <article id="projects" className="w-full p-3 mt-20">
       <Title title="Projets" />
 
       <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -35,9 +30,9 @@ export default function Projects() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:p-10">
         {filtered.map((project) => (
-          <ProjectCard key={project.id} project={project} onOpen={handleOpen} />
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
 
