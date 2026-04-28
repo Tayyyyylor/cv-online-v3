@@ -2,6 +2,7 @@ import { SiAppstore, SiBetterauth, SiBun, SiCloudflare, SiDocker, SiExpo, SiGoog
 import Image from 'next/image'
 import Title from '../atoms/Title'
 import Badge from '../atoms/Badge'
+import Button from '../atoms/Button'
 
 
 export default function Featured() {
@@ -58,18 +59,14 @@ export default function Featured() {
         }
     ]
   return (
-    <article className='w-[100%] p-3'>
+    <article className='w-[100%] p-3 mt-50 lg:mt-5'>
         <Title title='Projet phare - Application mobile'/>
         <section className='flex flex-col items-center lg:flex-row gap-6'>
             <Image src="/toto.png" width={300} height={300} alt='' className='flex-1' loading="eager"/>
             <div className='flex flex-col gap-3 flex-1'>
-                <div className='flex items-center justify-between'>
+                <div className='flex items-center justify-between gap-3 flex-wrap'>
                 <h3 className='font-serif text-[22px]'>My Shelf</h3>
-               <a href="" className='border p-2 w-auto flex justify-center rounded-lg items-center'>
-                        <button className='cursor-pointer'>
-                         Voir mon profil
-                        </button>
-                        </a>
+                <Button href="#" variant="primary">Voir mon profil</Button>
                 </div>
                 <p>Une bibliothèque virtuelle pour suivre, organiser et partager ses lectures.</p>
                 <div>
@@ -103,16 +100,13 @@ export default function Featured() {
                     </div>
 
                 </div>
-                <div className='flex gap-2 size-fit w-[100%] justify-center'>
+                <div className='flex flex-wrap gap-3 w-full justify-center'>
                     {buttonsData.map((button, index) => (
-                        <a key={index} href="" className='border p-2 w-auto flex justify-center rounded-lg items-center'>
-                        <button className='flex gap-2 items-center cursor-pointer'>
-                            {button.logo} {button.name}
-                        </button>
-                        </a>
-                    ))
-
-                    }
+                        <Button key={index} href={button.url || '#'} variant="outline">
+                            <span className='text-lg transition-transform duration-300 group-hover:scale-110'>{button.logo}</span>
+                            {button.name}
+                        </Button>
+                    ))}
                 </div>
             </div>
         </section>

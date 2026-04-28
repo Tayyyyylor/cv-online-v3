@@ -3,7 +3,7 @@
 import HeroBanner from '../sections/HeroBanner';
 import { Header } from '../sections/Header'
 import Featured from '../sections/Featured';
-import Projects from '../sections/Projects';
+import Projects from '../sections/projects/Projects';
 
 export default function Homepage() {
   return (
