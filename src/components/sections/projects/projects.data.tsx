@@ -31,7 +31,7 @@ export type Project = {
   logo: ReactNode
   image?: string
   mockups?: string[]
-  stack: ReactNode[]
+  stack: ProjectStackItem[]
   detailedStack: ProjectStackItem[]
   categories: Exclude<ProjectCategory, 'all'>[]
   year: string
@@ -60,10 +60,10 @@ export const projects: Project[] = [
     image: '/toto.png',
     mockups: ['/toto.png', '/toto.png'],
     stack: [
-      <SiReact key="r" />,
-      <SiNestjs key="n" />,
-      <SiPrisma key="p" />,
-      <SiPostgresql key="pg" />,
+      { name: 'React', icon: <SiReact /> },
+      { name: 'NestJS', icon: <SiNestjs /> },
+      { name: 'Prisma', icon: <SiPrisma /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql /> },
     ],
     detailedStack: [
       { name: 'React', icon: <SiReact /> },
@@ -95,7 +95,9 @@ export const projects: Project[] = [
     logo: <Sparkles />,
     image: '/toto.png',
     mockups: ['/toto.png'],
-    stack: [<SiNextdotjs key="n" />, <SiTypescript key="t" />, <SiTailwindcss key="tw" />],
+    stack: [ { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Tailwind CSS', icon: <SiTailwindcss /> },],
     detailedStack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
@@ -120,7 +122,9 @@ export const projects: Project[] = [
     ],
     logo: <Cpu />,
     image: '/toto.png',
-    stack: [<SiNestjs key="n" />, <SiPrisma key="p" />, <SiPostgresql key="pg" />],
+    stack: [{ name: 'NestJS', icon: <SiNestjs /> },
+      { name: 'Prisma', icon: <SiPrisma /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql /> },],
     detailedStack: [
       { name: 'NestJS', icon: <SiNestjs /> },
       { name: 'Prisma', icon: <SiPrisma /> },
@@ -144,7 +148,9 @@ export const projects: Project[] = [
     ],
     logo: <Cpu />,
     image: '/toto.png',
-    stack: [<SiNestjs key="n" />, <SiPrisma key="p" />, <SiPostgresql key="pg" />],
+    stack: [{ name: 'NestJS', icon: <SiNestjs /> },
+      { name: 'Prisma', icon: <SiPrisma /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql /> },],
     detailedStack: [
       { name: 'NestJS', icon: <SiNestjs /> },
       { name: 'Prisma', icon: <SiPrisma /> },
@@ -168,7 +174,9 @@ export const projects: Project[] = [
     ],
     logo: <Cpu />,
     image: '/toto.png',
-    stack: [<SiNestjs key="n" />, <SiPrisma key="p" />, <SiPostgresql key="pg" />],
+    stack: [{ name: 'NestJS', icon: <SiNestjs /> },
+      { name: 'Prisma', icon: <SiPrisma /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql /> },],
     detailedStack: [
       { name: 'NestJS', icon: <SiNestjs /> },
       { name: 'Prisma', icon: <SiPrisma /> },
@@ -192,7 +200,9 @@ export const projects: Project[] = [
     ],
     logo: <Cpu />,
     image: '/toto.png',
-    stack: [<SiNestjs key="n" />, <SiPrisma key="p" />, <SiPostgresql key="pg" />],
+    stack: [  { name: 'NestJS', icon: <SiNestjs /> },
+      { name: 'Prisma', icon: <SiPrisma /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql /> },],
     detailedStack: [
       { name: 'NestJS', icon: <SiNestjs /> },
       { name: 'Prisma', icon: <SiPrisma /> },

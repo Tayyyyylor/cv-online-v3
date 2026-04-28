@@ -93,7 +93,7 @@ export default function Featured() {
 
                     <div className='flex flex-col gap-3 mb-10'>
                         <h4 className='font-mono uppercase'>Front</h4>
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 flex-wrap'>
                         {frontStackData.map((front, index) => (
                             <Badge key={index} logo={front}/>
                         ))}
@@ -101,7 +101,7 @@ export default function Featured() {
                     </div>
                     <div className='flex flex-col gap-3 mb-10'>
                         <h4 className='font-mono uppercase'>Back</h4>
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 flex-wrap'>
 
                         {backStackData.map((back, index) => (
                             <Badge key={index} logo={back}/>
@@ -110,7 +110,7 @@ export default function Featured() {
                     </div>
                     <div className='flex flex-col gap-3 mb-10'>
                         <h4 className='font-mono uppercase'>Infra</h4>
-                        <div className='flex gap-3'>
+                        <div className='flex gap-3 flex-wrap'>
 
                         {infraStackData.map((infra, index) => (
                             <Badge key={index} logo={infra}/>

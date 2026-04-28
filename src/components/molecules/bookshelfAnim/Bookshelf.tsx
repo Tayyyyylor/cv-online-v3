@@ -15,7 +15,7 @@ export function Bookshelf() {
           }}
         />
 
-        <div className="flex items-end justify-center gap-[3px] h-[420px] px-4">
+        <div className="flex items-end justify-center gap-[3px] h-[375px] px-4 lg:h-[420px]">
           {books.map((book, i) => (
             <Book key={book.id} book={book} index={i} />
           ))}
