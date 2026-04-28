@@ -5,6 +5,7 @@ import { Header } from '../sections/Header'
 import Featured from '../sections/Featured';
 import Projects from '../sections/projects/Projects';
 import About from '../sections/about/About';
+import Contact from '../sections/contact/Contact';
 
 export default function Homepage() {
   return (
@@ -15,6 +16,7 @@ export default function Homepage() {
     <Featured />
     <Projects />
     <About />
+    <Contact />
   </main>
   </>
   )
