@@ -8,6 +8,7 @@ import useMobile from "@/hooks/useMobile";
 import { LocaleSwitcher } from "../atoms/LocaleSwitcher";
 import { ThemeToggle } from "../atoms/ThemeToggle";
 import { BurgerLine } from "../atoms/BurgerLine";
+import { motion } from 'framer-motion'
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +29,9 @@ export const Navbar = () => {
     return (
       <nav className="flex items-center gap-8">
         {dataNav.map((item) => (
-          <Link key={item.href} href={item.href} className="hover:text-(--color-important) uppercase">
+          <motion.a key={item.href} href={item.href} whileHover={{scale: 1.1 }} className="hover:text-(--color-important) uppercase">
             {item.label}
-          </Link>
+          </motion.a>
         ))}
         <LocaleSwitcher />
         <ThemeToggle />

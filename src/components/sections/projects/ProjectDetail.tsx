@@ -26,9 +26,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
     <article className="flex flex-col gap-8">
       <header className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-foreground/10 bg-(--background-card) text-important [&>svg]:h-5 [&>svg]:w-5">
-            {project.logo}
-          </span>
+          <Image src={project.logo} alt='logo' width={100} height={100} />
           <div className="flex flex-col">
             <h1 className="font-serif text-3xl leading-tight">{name}</h1>
             <p className="font-mono text-xs text-foreground/60">
@@ -115,7 +113,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
           {project.links.map((link) => {
             const Icon = linkIcon[link.kind]
             return (
-               <Button key={link.href} href={link.href} variant="primary">
+               <Button key={link.href} href={link.href} variant="primary" target='_blank'>
                                          <Icon className="h-4 w-4" />
                 {t(`${project.id}.links.${link.kind}`)}
                                       </Button>

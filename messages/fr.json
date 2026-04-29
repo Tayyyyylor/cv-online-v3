@@ -16,9 +16,12 @@
     },
      "Featured": {
         "title": "Produit phare",
-        "descTitle": "blabla blvablab lablabla",
+        "descTitle": "Allier <important>dev</important> et <important>littérature</important>",
         "ctaShowProfile": "Voir mon profil",
-        "desc": "Une bibliothèque virtuelle pour suivre, organiser et partager ses lectures.",
+        "paragraph1": "J'ai élaboré une application mobile de suivi et notation de lectures. Chaque utilisateur peut rechercher ou scanner un livre, le noter, y laisser un commentaire, gérer le statut de lecture et pleins d'autres fonctionnalités !",
+        "paragraph2": "La particularité de cette app est que votre page de profil vous reflète votre caractère de lecture. Vous pouvez créer différentes étagères, y ajouter autant d'ouvrages que vous voulez et ajouter une description.",
+        "paragraph3": "Vous pouvez agencer les étagères comme vous le souhaitez sur votre profil qui affiche aussi votre objectif de lecture et la lecture en cours. Toutes les informations qui permettront à vos amis de connaitre votre mood lecture du moment !",
+        "paragraph4": "",
         "titleStack": "Stack technique"
     },
     "Projects": {
@@ -31,91 +34,80 @@
             "fun": "For fun"
         },
         "items": {
-            "myshelf": {
-                "name": "My Shelf",
-                "description": "Bibliothèque virtuelle pour suivre et partager ses lectures.",
+            "dependant-tv": {
+                "name": "Dependant.tv",
+                "description": "Site vitrine pour la boite de production dependant",
                 "longDescription": [
-                    "My Shelf est une application qui permet de cataloguer ses lectures, suivre sa progression et partager des recommandations avec ses amis.",
-                    "L'idée est partie d'un constat simple : Goodreads est lent, daté, et les alternatives n'ont pas de social bien intégré. J'ai construit une expérience plus fluide, centrée sur la découverte par cercles d'amis."
+                    "Site vitrine réalisé pour un client dans le secteur de l'audiovisuel.",
+                    "Focus sur la mise en avant du contenu produits, type vidéos et photos. Optimisation des requêtes, SEO et gestion vidéos.",
+                    "Utilisation de Strapi couplé à un VPS pour la gestion du changement de contenu de manière simple par le client."
                 ],
-                "role": "Développeur fullstack",
+                "role": "Développeur",
                 "highlights": [
-                    "Recherche par ISBN avec autocomplétion",
-                    "Feed social filtrable par cercle d'amis",
-                    "Synchronisation hors-ligne via Service Worker"
-                ],
-                "links": {
-                    "repo": "Voir le repo",
-                    "website": "Site web"
-                }
-            },
-            "placeholder-web": {
-                "name": "Projet Web",
-                "description": "Description courte du projet, à remplacer plus tard.",
-                "longDescription": [
-                    "Site vitrine réalisé pour un client dans le secteur de l'architecture.",
-                    "Focus sur les performances, le SEO et une animation soignée pour mettre en avant le portfolio."
-                ],
-                "role": "Développeur frontend",
-                "highlights": [
-                    "Score Lighthouse 100 sur les 4 axes",
-                    "CMS headless intégré pour autonomie du client"
+                    "Dashboard admin",
+                    "Bucket S3"
                 ],
                 "links": {
                     "website": "Site web"
                 }
             },
-            "placeholder-backend": {
-                "name": "API interne",
-                "description": "Service backend, à remplacer plus tard.",
+            "ali-bensaali-production": {
+                "name": "Ali Bensaali Production",
+                "description": "Site vitrine pour Ali Bensaali, un vidéaste freelance",
                 "longDescription": [
-                    "API interne pour la gestion des stocks d'une PME.",
-                    "Architecture modulaire NestJS, base PostgreSQL avec migrations versionnées et tests d'intégration."
+                    "Site vitrine pour un réalisateur freelance",
+                    "Un besoin de mettre en avant rapidement et de manière optimisée son travail."
                 ],
-                "role": "Développeur backend",
+                "role": "Développeur",
                 "highlights": [
-                    "Couverture de tests > 85 %",
-                    "Pipeline CI/CD avec déploiement automatisé"
-                ]
+                    "Dashboard admin"
+                ],
+                "links": {
+                    "website": "Site web"
+                }
             },
-            "placeholder-backefnd": {
-                "name": "API interne",
-                "description": "Service backend, à remplacer plus tard.",
+            "labcom-optimaa": {
+                "name": "Labcom Optimaa",
+                "description": "Site pour scientifique du CNRS",
                 "longDescription": [
-                    "API interne pour la gestion des stocks d'une PME.",
-                    "Architecture modulaire NestJS, base PostgreSQL avec migrations versionnées et tests d'intégration."
+                    "Un site de suivi et de présentation d'un projet scientifique",
+                    "Un besoin de mise à jour quotidien du contenu donc implémentation d'un dashboard admin via Strapi"
                 ],
-                "role": "Développeur backend",
+                "role": "Développeur",
                 "highlights": [
-                    "Couverture de tests > 85 %",
+                    "Dashboard admin",
                     "Pipeline CI/CD avec déploiement automatisé"
-                ]
+                ],
+                "links": {
+                    "website": "Site web"
+                }
             },
-            "placeholder-bacgkend": {
-                "name": "API interne",
-                "description": "Service backend, à remplacer plus tard.",
+            "cocoa-bio": {
+                "name": "Cocoa bio",
+                "description": "Site pour scientifique du CNRS",
                 "longDescription": [
-                    "API interne pour la gestion des stocks d'une PME.",
-                    "Architecture modulaire NestJS, base PostgreSQL avec migrations versionnées et tests d'intégration."
+                    "Un site de suivi et de présentation d'un projet scientifique"
                 ],
-                "role": "Développeur backend",
+                "role": "Développeur",
                 "highlights": [
-                    "Couverture de tests > 85 %",
-                    "Pipeline CI/CD avec déploiement automatisé"
-                ]
+                    "Bon SEO"
+                ],
+                "links": {
+                    "website": "Site web"
+                }
             },
-            "placeholder-bacerkend": {
-                "name": "API interne",
-                "description": "Service backend, à remplacer plus tard.",
+            "interlude-decors": {
+                "name": "Interlude Decors",
+                "description": "Site vitrine pour Agathe Roger, créatrice de décors, maquettes et modélisations 3D",
                 "longDescription": [
-                    "API interne pour la gestion des stocks d'une PME.",
-                    "Architecture modulaire NestJS, base PostgreSQL avec migrations versionnées et tests d'intégration."
-                ],
-                "role": "Développeur backend",
+                    "Un besoin de mettre en avant son travail et les différents domaines"                ],
+                "role": "Développeur",
                 "highlights": [
-                    "Couverture de tests > 85 %",
-                    "Pipeline CI/CD avec déploiement automatisé"
-                ]
+                    "Dashboard admin"
+                ],
+                "links": {
+                    "website": "Site web"
+                }
             }
         }
     },

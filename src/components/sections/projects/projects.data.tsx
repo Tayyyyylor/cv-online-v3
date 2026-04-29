@@ -1,13 +1,14 @@
 import {
   SiNextdotjs,
-  SiNestjs,
-  SiPostgresql,
-  SiPrisma,
-  SiReact,
-  SiTailwindcss,
   SiTypescript,
+  SiStrapi,
+  SiContentful,
+  SiSass,
+  SiCloudinary,
+  SiOvh,
+  SiNginx,
+  SiDocker,
 } from '@icons-pack/react-simple-icons'
-import { BookOpen, Cpu, Sparkles } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { ReactNode } from 'react'
 
@@ -27,7 +28,7 @@ export type ProjectStackItem = {
 
 export type Project = {
   id: string
-  logo: ReactNode
+  logo: string
   image?: string
   mockups?: string[]
   stack: ProjectStackItem[]
@@ -48,116 +49,109 @@ export function useProjectFilters(): { id: ProjectCategory; label: string }[] {
 }
 
 export const projects: Project[] = [
+  
   {
-    id: 'myshelf',
-    logo: <BookOpen />,
+    id: 'dependant-tv',
+    logo: "/logoDpdBlack.png",
     image: '/toto.png',
-    mockups: ['/toto.png', '/toto.png'],
-    stack: [
-      { name: 'React', icon: <SiReact /> },
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
-    ],
-    detailedStack: [
-      { name: 'React', icon: <SiReact /> },
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
-    ],
-    categories: ['perso', 'clients'],
-    year: '2025',
-    links: [
-      { kind: 'repo', href: 'https://github.com/example/myshelf' },
-      { kind: 'website', href: 'https://myshelf.example.com' },
-    ],
-  },
-  {
-    id: 'placeholder-web',
-    logo: <Sparkles />,
-    image: '/toto.png',
-    mockups: ['/toto.png'],
     stack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
-      { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+      { name: 'Sass', icon: <SiSass /> },
+      { name: 'Strapi', icon: <SiStrapi /> },
     ],
     detailedStack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
-      { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+      { name: 'Sass', icon: <SiSass /> },
+      { name: 'Strapi', icon: <SiStrapi /> },
+      { name: 'Nginx', icon: <SiNginx /> },
+      { name: 'Docker', icon: <SiDocker /> },
+
+    ],
+    categories: ['clients'],
+    year: '2023',
+    links: [{ kind: 'website', href: 'https://www.dependant.tv' }],
+  },
+  {
+    id: 'ali-bensaali-production',
+    logo: "/ALIBENIRIS.png",
+    image: '/toto.png',
+    stack: [
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'Contentful', icon: <SiContentful /> },
+    ],
+    detailedStack: [
+    { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
+      { name: 'Contentful', icon: <SiContentful /> },
+      {name: 'Cloudinary', icon: <SiCloudinary />}
+    ],
+    categories: ['clients'],
+    year: '2024',
+      links: [{ kind: 'website', href: 'https://alibensaali.com/' }],
+  },
+  {
+    id: 'labcom-optimaa',
+    logo: "/logobleu_optimaa.png",
+    image: '/toto.png',
+    stack: [
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Strapi', icon: <SiStrapi /> },
+      { name: 'Ovh', icon: <SiOvh /> }
+      
+    ],
+    detailedStack: [
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
+      { name: 'Strapi', icon: <SiStrapi /> },
+      { name: 'Ovh', icon: <SiOvh /> },
+      { name: 'Nginx', icon: <SiNginx /> },
     ],
     categories: ['clients'],
     year: '2025',
-    links: [{ kind: 'website', href: 'https://example.com' }],
+    links: [{ kind: 'website', href: 'https://www.labcom-optimaa.com' }],
   },
   {
-    id: 'placeholder-backend',
-    logo: <Cpu />,
+    id: 'cocoa-bio',
+    logo: "/logo_cocoa_black.png",
     image: '/toto.png',
     stack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
     ],
     detailedStack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+     { name: 'Next.js', icon: <SiNextdotjs /> },
+     { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
     ],
     categories: ['clients'],
-    year: '2024',
+    year: '2025',
+    links: [{ kind: 'website', href: 'https://www.cocoa-bio.fr' }],
   },
   {
-    id: 'placeholder-backefnd',
-    logo: <Cpu />,
+    id: 'interlude-decors',
+    logo: "/logoagathe.png",
     image: '/toto.png',
     stack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+     { name: 'Next.js', icon: <SiNextdotjs /> },
+     { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
+       { name: 'Contentful', icon: <SiContentful /> },
     ],
     detailedStack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+{ name: 'Next.js', icon: <SiNextdotjs /> },
+{ name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
+  { name: 'Contentful', icon: <SiContentful /> },
     ],
     categories: ['clients'],
-    year: '2024',
-  },
-  {
-    id: 'placeholder-bacgkend',
-    logo: <Cpu />,
-    image: '/toto.png',
-    stack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
-    ],
-    detailedStack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
-    ],
-    categories: ['clients'],
-    year: '2024',
-  },
-  {
-    id: 'placeholder-bacerkend',
-    logo: <Cpu />,
-    image: '/toto.png',
-    stack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
-    ],
-    detailedStack: [
-      { name: 'NestJS', icon: <SiNestjs /> },
-      { name: 'Prisma', icon: <SiPrisma /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
-    ],
-    categories: ['clients'],
-    year: '2024',
+    year: '2025',
+    links: [{ kind: 'website', href: 'https://www.agatheroger.com' }],
   },
 ]
 

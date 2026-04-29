@@ -16,9 +16,12 @@
     },
     "Featured": {
         "title": "Featured",
-        "descTitle": "",
+        "descTitle": "Combining <important>development</important> and <important>literature</important>",
         "ctaShowProfile": "Show my profile",
-        "desc": "A virtual library to track, organize, and share your reading.",
+         "paragraph1": "I've developed a mobile app for tracking and rating readings. Each user can search for or scan a book, rate it, leave a comment, manage their reading status, and much more !",
+        "paragraph2": "The unique feature of this app is that your profile page reflects your reading habits. You can create different bookshelves, add as many books as you want, and add a description.",
+        "paragraph3": "You can arrange the bookshelves however you like on your profile, which also displays your reading goal and what you're currently reading. All the information you need to let your friends know your current reading mood !",
+        "paragraph4": "",
         "titleStack": "Technical stack"
     },
     "Projects": {
@@ -31,91 +34,80 @@
             "fun": "For fun"
         },
         "items": {
-            "myshelf": {
-                "name": "My Shelf",
-                "description": "Virtual library to track and share your reading.",
+              "dependant-tv": {
+                "name": "Dependant.tv",
+                "description": "Showcase website for the dependant production company",
                 "longDescription": [
-                    "My Shelf is an app to catalog your reading, track progress, and share recommendations with friends.",
-                    "The idea started from a simple observation: Goodreads is slow, dated, and alternatives lack solid social integration. I built a smoother experience centered on discovery through friend circles."
+                    "Showcase website created for a client in the audiovisual sector.",
+                    "Focus on showcasing product content, such as videos and photos. Optimization of search queries, SEO, and video management.",
+                    "Using Strapi coupled with a VPS for easy content change management by the client."
                 ],
-                "role": "Fullstack developer",
+                "role": "Developer",
                 "highlights": [
-                    "ISBN search with autocomplete",
-                    "Social feed filterable by friend circle",
-                    "Offline sync via Service Worker"
-                ],
-                "links": {
-                    "repo": "View repo",
-                    "website": "Website"
-                }
-            },
-            "placeholder-web": {
-                "name": "Web Project",
-                "description": "Short project description, to be replaced later.",
-                "longDescription": [
-                    "Showcase site built for a client in the architecture sector.",
-                    "Focus on performance, SEO and refined animation to highlight the portfolio."
-                ],
-                "role": "Frontend developer",
-                "highlights": [
-                    "Lighthouse score of 100 across all 4 axes",
-                    "Integrated headless CMS for client autonomy"
+                    "Dashboard admin",
+                    "Bucket S3"
                 ],
                 "links": {
                     "website": "Website"
                 }
             },
-            "placeholder-backend": {
-                "name": "Internal API",
-                "description": "Backend service, to be replaced later.",
+            "ali-bensaali-production": {
+                "name": "Ali Bensaali Production",
+                "description": "Website showcase for Ali Bensaali, a freelance videographer",
                 "longDescription": [
-                    "Internal API for inventory management of an SME.",
-                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
+                    "Website showcase for a freelance videographer",
+                    "A need to showcase one's work quickly and in an optimized way."
                 ],
-                "role": "Backend developer",
+                "role": "Developer",
                 "highlights": [
-                    "Test coverage > 85%",
-                    "CI/CD pipeline with automated deployment"
-                ]
+                    "Dashboard admin"
+                ],
+                "links": {
+                    "website": "Website"
+                }
             },
-            "placeholder-backefnd": {
-                "name": "Internal API",
-                "description": "Backend service, to be replaced later.",
+            "labcom-optimaa": {
+                "name": "Labcom Optimaa",
+                "description": "Website for CNRS scientists",
                 "longDescription": [
-                    "Internal API for inventory management of an SME.",
-                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
+                    "A website for monitoring and presenting a scientific project",
+                    "A need for daily content updates, therefore implementation of an admin dashboard via Strapi"
                 ],
-                "role": "Backend developer",
+                "role": "Developer",
                 "highlights": [
-                    "Test coverage > 85%",
+                    "Dashboard admin",
                     "CI/CD pipeline with automated deployment"
-                ]
+                ],
+                "links": {
+                    "website": "Website"
+                }
             },
-            "placeholder-bacgkend": {
-                "name": "Internal API",
-                "description": "Backend service, to be replaced later.",
+            "cocoa-bio": {
+                "name": "Cocoa bio",
+                "description": "Website for CNRS scientists",
                 "longDescription": [
-                    "Internal API for inventory management of an SME.",
-                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
+                    "A website for monitoring and presenting a scientific project"
                 ],
-                "role": "Backend developer",
+                "role": "Developer",
                 "highlights": [
-                    "Test coverage > 85%",
-                    "CI/CD pipeline with automated deployment"
-                ]
+                    "Good SEO"
+                ],
+                "links": {
+                    "website": "Website"
+                }
             },
-            "placeholder-bacerkend": {
-                "name": "Internal API",
-                "description": "Backend service, to be replaced later.",
+            "interlude-decors": {
+                "name": "Interlude Decors",
+                "description": "Website showcasing Agathe Roger, creator of sets, models and 3D models",
                 "longDescription": [
-                    "Internal API for inventory management of an SME.",
-                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
-                ],
-                "role": "Backend developer",
+                    "A need to showcase his work and the different areas"                ],
+                "role": "Developer",
                 "highlights": [
-                    "Test coverage > 85%",
-                    "CI/CD pipeline with automated deployment"
-                ]
+                    "Dashboard admin"
+                ],
+                "links": {
+                    "website": "Website"
+                }
             }
         }
     },

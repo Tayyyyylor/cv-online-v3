@@ -1,5 +1,6 @@
 import { ArrowUpRight, Download } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import Socials from '../molecules/Socials'
 
 export type ContactLink = {
   label: string
@@ -24,7 +25,7 @@ export default function Contact() {
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bryan-houblon-172121211/' },
     { label: 'MyShelf', href: 'https://myshelf.example.com' },
   ]
-  
+
   return (
     <section id="contact" className="w-full px-3 py-24 lg:py-32">
       <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
@@ -37,7 +38,7 @@ export default function Contact() {
 
         <a
           href={`mailto:${email}`}
-          className="group relative mt-16 inline-block font-serif italic text-important text-3xl sm:text-5xl lg:text-6xl"
+          className="group relative mt-16 inline-block font-serif italic text-important text-3xl sm:text-5xl lg:text-6xl mb-10"
         >
           <span className="relative inline-block">
             {email}
@@ -48,21 +49,7 @@ export default function Contact() {
           </span>
         </a>
 
-        <ul className="mt-20 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {links.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 font-mono text-sm uppercase tracking-widest text-foreground/60 transition-colors hover:text-important"
-              >
-                {link.label}
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <Socials />
 
         <div aria-hidden className="my-16 h-px w-24 bg-foreground/15" />
 

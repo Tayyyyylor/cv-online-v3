@@ -77,20 +77,35 @@ import { useTranslations } from 'next-intl'
 export default function Featured() {
 
     const t = useTranslations("Featured")
+
+    const paragraphs = [
+        t('paragraph1'),
+        t('paragraph2'),
+        t('paragraph3'),
+        t('paragraph4')
+    ]
    
   return (
     <article className='w-[100%] mt-50 lg:mt-5' id='featured'>
-        <Title number="01" title={t('title')} desc={t('descTitle')}/>
+        <Title number="01" title={t('title')}  desc={t.rich('descTitle', {
+          important: (chunks) => <span className="text-important italic">{chunks}</span>,
+        })}/>
         <section className='flex flex-col items-center lg:flex-row gap-6'>
             <Image src="/toto.png" width={300} height={300} alt='' className='flex-1' loading="eager"/>
             <div className='flex flex-col gap-3 flex-1'>
-                <div className='flex items-center justify-between gap-3 flex-wrap'>
+                <div className='flex items-center justify-between gap-3 flex-wrap mb-5'>
                 <h3 className='font-serif text-[22px]'>My Shelf</h3>
                 <Button href="#" variant="primary">{t('ctaShowProfile')}</Button>
                 </div>
-                <p>{t('desc')}</p>
+                <div className="flex flex-col gap-5">
+                {paragraphs.map((p, i) => (
+              <p key={i} className="text-foreground/80 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
                 <div>
-                    <h3 className='font-serif text-[20px] mb-5 mt-5 text-center'>{t('titleStack')}</h3>
+                    <h3 className='font-serif text-[22px] mb-5 mt-5 text-center'>{t('titleStack')}</h3>
 
                     <div className='flex flex-col gap-3 mb-10'>
                         <h4 className='font-mono uppercase'>Front</h4>

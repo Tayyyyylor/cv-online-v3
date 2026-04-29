@@ -25,7 +25,7 @@ export default function About() {
 
 
   return (
-    <section id="about" className="w-full p-3">
+    <section id="about" className="w-full p-3 mt-20">
       <Title number="03" title="À propos" desc={t.rich('descTitle', {
           important: (chunks) => <span className="text-important italic">{chunks}</span>,
         })} />

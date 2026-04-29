@@ -13,15 +13,13 @@ export default async function ProjectPage({ params }: Props) {
   const { id } = await params
   const project = getProjectById(id)
   if (!project) notFound()
-
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-12 sm:py-16">
       <Link
         href="/#projects"
         className="inline-flex items-center gap-2 self-start text-sm text-foreground/70 transition-colors hover:text-important"
       >
-        <ArrowLeft className="h-4 w-4" />
-        Retour aux projets
+        <ArrowLeft className="h-10 w-10" />
       </Link>
       <ProjectDetail project={project} />
     </main>
