@@ -4,6 +4,7 @@ import Title from '../atoms/Title'
 import Badge from '../atoms/Badge'
 import Button from '../atoms/Button'
 import { useTranslations } from 'next-intl'
+import Reveal, { RevealItem, RevealStagger } from '../atoms/Reveal'
 
     const frontStackData = [
         {
@@ -89,60 +90,70 @@ export default function Featured() {
         t('paragraph3'),
         t('paragraph4')
     ]
-   
+
   return (
     <article className='w-[100%] mt-50 lg:mt-5' id='featured'>
-        <Title number="01" title={t('title')}  desc={t.rich('descTitle', {
-          important: (chunks) => <span className="text-important italic">{chunks}</span>,
-        })}/>
+        <Reveal>
+          <Title number="01" title={t('title')}  desc={t.rich('descTitle', {
+            important: (chunks) => <span className="text-important italic">{chunks}</span>,
+          })}/>
+        </Reveal>
         <section className='flex flex-col items-center lg:flex-row gap-6'>
-            <Image src="/toto.png" width={500} height={500} alt='' className='flex-1 ' loading="eager"/>
-            <div className='flex flex-col gap-3 flex-1 justify-between'>
-                <div className='flex items-center justify-between gap-3 flex-wrap mb-5'>
-                <h3 className='font-serif text-[22px]'>My Shelf</h3>
-                <Button href="#" variant="primary">{t('ctaShowProfile')}</Button>
-                </div>
+            <Reveal className='flex-1' x={-30} y={0} duration={0.9}>
+              <Image src="/toto.png" width={500} height={500} alt='' className='w-full' loading="eager"/>
+            </Reveal>
+            <RevealStagger className='flex flex-col gap-3 flex-1 justify-between' stagger={0.1}>
+                <RevealItem className='flex items-center justify-between gap-3 flex-wrap mb-5'>
+                  <h3 className='font-serif text-[22px]'>My Shelf</h3>
+                  <Button href="#" variant="primary">{t('ctaShowProfile')}</Button>
+                </RevealItem>
                 <div className="flex flex-col gap-5">
-                {paragraphs.map((p, i) => (
-              <p key={i} className="text-foreground/80 leading-relaxed">
-                {p}
-              </p>
-            ))}
-          </div>
-                <div>
+                  {paragraphs.map((p, i) => (
+                    <RevealItem as="p" key={i} className="text-foreground/80 leading-relaxed">
+                      {p}
+                    </RevealItem>
+                  ))}
+                </div>
+                <RevealItem>
                     <h3 className='font-serif text-[22px] mb-5 mt-5 text-center'>{t('titleStack')}</h3>
 
-                    <div className='flex flex-col gap-3 mb-10'>
-                        <h4 className='font-mono uppercase'>Front</h4>
+                    <RevealStagger className='flex flex-col gap-3 mb-10' stagger={0.05}>
+                        <RevealItem as="h4" className='font-mono uppercase'>Front</RevealItem>
                         <div className='flex gap-3 flex-wrap'>
                         {frontStackData.map((front, index) => (
-                            <Badge key={index} logo={front}/>
+                            <RevealItem key={index}>
+                              <Badge logo={front}/>
+                            </RevealItem>
                         ))}
                         </div>
-                    </div>
-                    <div className='flex flex-col gap-3 mb-10'>
-                        <h4 className='font-mono uppercase'>Back</h4>
+                    </RevealStagger>
+                    <RevealStagger className='flex flex-col gap-3 mb-10' stagger={0.05}>
+                        <RevealItem as="h4" className='font-mono uppercase'>Back</RevealItem>
                         <div className='flex gap-3 flex-wrap'>
 
                         {backStackData.map((back, index) => (
-                            <Badge key={index} logo={back}/>
+                            <RevealItem key={index}>
+                              <Badge logo={back}/>
+                            </RevealItem>
                         ))}
                         </div>
-                    </div>
-                    <div className='flex flex-col gap-3 mb-10'>
-                        <h4 className='font-mono uppercase'>Infra</h4>
+                    </RevealStagger>
+                    <RevealStagger className='flex flex-col gap-3 mb-10' stagger={0.05}>
+                        <RevealItem as="h4" className='font-mono uppercase'>Infra</RevealItem>
                         <div className='flex gap-3 flex-wrap'>
 
                         {infraStackData.map((infra, index) => (
-                            <Badge key={index} logo={infra}/>
+                            <RevealItem key={index}>
+                              <Badge logo={infra}/>
+                            </RevealItem>
                         ))}
                         </div>
-                    </div>
+                    </RevealStagger>
 
-                </div>
-                <div className='flex flex-wrap gap-3 w-full justify-center'>
+                </RevealItem>
+                <RevealItem className='flex flex-wrap gap-3 w-full justify-center'>
                     <Button href="/projects/my-shelf" variant='primary'>
-                En savoir plus
+                {t('ctaShowMore')}
                  </Button>
                  <div>
                     {buttonsData.map((button, index) => (
@@ -152,12 +163,12 @@ export default function Featured() {
                         </Button>
                     ))}
                     </div>
-                </div>
-            </div>
+                </RevealItem>
+            </RevealStagger>
         </section>
 
-        {/* AJOUTER SECTION AVEC MA LECTURE EN COURS ET PEUT ETRE MON NOMBRE DE LIVRES LUS ! 
-        
+        {/* AJOUTER SECTION AVEC MA LECTURE EN COURS ET PEUT ETRE MON NOMBRE DE LIVRES LUS !
+
         <section>
             <p>--------------------------------</p>
             <p>en ce ,moment je lis </p>

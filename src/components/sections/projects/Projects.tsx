@@ -6,6 +6,7 @@ import Title from '../../atoms/Title'
 import Chip from '../../atoms/Chip'
 import ProjectCard from '../../molecules/ProjectCard'
 import { projects, useProjectFilters, type ProjectCategory } from './projects.data'
+import Reveal, { RevealItem, RevealStagger } from '../../atoms/Reveal'
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>('all')
@@ -20,31 +21,42 @@ export default function Projects() {
 
   return (
     <article id="projects" className="w-full p-3 mt-20">
-      <Title
-        number="02"
-        title={t('title')}
-        desc={t.rich('descTitle', {
-          important: (chunks) => <span className="text-important italic">{chunks}</span>,
-        })}
-      />
+      <Reveal>
+        <Title
+          number="02"
+          title={t('title')}
+          desc={t.rich('descTitle', {
+            important: (chunks) => <span className="text-important italic">{chunks}</span>,
+          })}
+        />
+      </Reveal>
 
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
+      <RevealStagger className="flex flex-wrap justify-center gap-2 mb-10" stagger={0.05}>
         {projectFilters.map((filter) => (
-          <Chip
-            key={filter.id}
-            active={activeFilter === filter.id}
-            onClick={() => setActiveFilter(filter.id)}
-          >
-            {filter.label}
-          </Chip>
+          <RevealItem key={filter.id} y={10}>
+            <Chip
+              active={activeFilter === filter.id}
+              onClick={() => setActiveFilter(filter.id)}
+            >
+              {filter.label}
+            </Chip>
+          </RevealItem>
         ))}
-      </div>
+      </RevealStagger>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:p-10">
+      <RevealStagger
+        key={activeFilter}
+        className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:p-10"
+        stagger={0.08}
+        once={false}
+        immediate
+      >
         {filtered.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <RevealItem key={project.id}>
+            <ProjectCard project={project} />
+          </RevealItem>
         ))}
-      </div>
+      </RevealStagger>
 
       {filtered.length === 0 && (
         <p className="text-center text-foreground/50 mt-10 font-mono text-sm">
