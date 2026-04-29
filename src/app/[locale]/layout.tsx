@@ -1,4 +1,5 @@
 import { hasLocale } from 'next-intl';
+import { Analytics } from "@vercel/analytics/next"
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getMessages, setRequestLocale } from 'next-intl/server';
@@ -45,6 +46,7 @@ export default async function LocaleLayout({ children, modal, params }: Props) {
         <Providers messages={messages} locale={locale}>
           {children}
           {modal}
+          <Analytics/>
         </Providers>
       </body>
     </html>
