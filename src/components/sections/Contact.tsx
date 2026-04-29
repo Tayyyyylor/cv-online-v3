@@ -1,5 +1,5 @@
 import { ArrowUpRight, Download } from 'lucide-react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Socials from '../molecules/Socials'
 
 export type ContactLink = {
@@ -18,6 +18,7 @@ export type ContactData = {
 export default function Contact() {
 
   const t = useTranslations("Contact")
+   const currentLocale = useLocale();
   const email = "bryan.houblon@icloud.com"
 
   const links = [
@@ -54,7 +55,12 @@ export default function Contact() {
         <div aria-hidden className="my-16 h-px w-24 bg-foreground/15" />
 
         <a
-          href="/cv.pdf'"
+          href={
+              currentLocale === "fr"
+                ? "/French_CV_Bryan_HOUBLON.pdf"
+                : "/English_CV_Bryan_HOUBLON.pdf"
+            }
+            target="_blank"
           download
           className="group inline-flex items-center gap-3 rounded-lg border border-foreground/15 px-6 py-3 transition-colors hover:border-important hover:text-important"
         >

@@ -49,7 +49,29 @@ export function useProjectFilters(): { id: ProjectCategory; label: string }[] {
 }
 
 export const projects: Project[] = [
-  
+  {
+    id: 'my-shelf',
+    logo: "/logoDpdBlack.png",
+    image: '/toto.png',
+    stack: [
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
+      { name: 'Strapi', icon: <SiStrapi /> },
+    ],
+    detailedStack: [
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Sass', icon: <SiSass /> },
+      { name: 'Strapi', icon: <SiStrapi /> },
+      { name: 'Nginx', icon: <SiNginx /> },
+      { name: 'Docker', icon: <SiDocker /> },
+
+    ],
+    categories: ['perso'],
+    year: '2023',
+    links: [{ kind: 'website', href: 'https://www.dependant.tv' }],
+  },
   {
     id: 'dependant-tv',
     logo: "/logoDpdBlack.png",

@@ -34,6 +34,23 @@
             "fun": "For fun"
         },
         "items": {
+            "my-shelf": {
+                "name": "My shelf",
+                "description": "Site vitrine pour la boite de production dependant",
+                "longDescription": [
+                    "Site vitrine réalisé pour un client dans le secteur de l'audiovisuel.",
+                    "Focus sur la mise en avant du contenu produits, type vidéos et photos. Optimisation des requêtes, SEO et gestion vidéos.",
+                    "Utilisation de Strapi couplé à un VPS pour la gestion du changement de contenu de manière simple par le client."
+                ],
+                "role": "Développeur",
+                "highlights": [
+                    "Dashboard admin",
+                    "Bucket S3"
+                ],
+                "links": {
+                    "website": "Site web"
+                }
+            },
             "dependant-tv": {
                 "name": "Dependant.tv",
                 "description": "Site vitrine pour la boite de production dependant",

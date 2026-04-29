@@ -26,7 +26,7 @@ export default function AnimatedWord({
 
   return (
     <span
-      className={`relative inline-block overflow-hidden align-bottom leading-none ${className ?? ''}`}
+      className={`relative inline-block overflow-hidden align-bottom leading-[1.2] pb-[0.15em] ${className ?? ''}`}
     >
       <span aria-hidden className="invisible whitespace-pre">
         {words.reduce((a, b) => (a.length >= b.length ? a : b), '')}
@@ -36,8 +36,8 @@ export default function AnimatedWord({
           key={words[index]}
           initial={{ y: '100%', opacity: 0 }}
           animate={{ y: '0%', opacity: 1 }}
-          exit={{ y: '-100%', opacity: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ y: '100%', opacity: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0 whitespace-pre"
         >
           {words[index]}

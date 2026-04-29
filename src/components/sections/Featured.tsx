@@ -91,8 +91,8 @@ export default function Featured() {
           important: (chunks) => <span className="text-important italic">{chunks}</span>,
         })}/>
         <section className='flex flex-col items-center lg:flex-row gap-6'>
-            <Image src="/toto.png" width={300} height={300} alt='' className='flex-1' loading="eager"/>
-            <div className='flex flex-col gap-3 flex-1'>
+            <Image src="/toto.png" width={500} height={500} alt='' className='flex-1 ' loading="eager"/>
+            <div className='flex flex-col gap-3 flex-1 justify-between'>
                 <div className='flex items-center justify-between gap-3 flex-wrap mb-5'>
                 <h3 className='font-serif text-[22px]'>My Shelf</h3>
                 <Button href="#" variant="primary">{t('ctaShowProfile')}</Button>
@@ -136,12 +136,17 @@ export default function Featured() {
 
                 </div>
                 <div className='flex flex-wrap gap-3 w-full justify-center'>
+                    <Button href="/projects/my-shelf" variant='primary'>
+                En savoir plus
+                 </Button>
+                 <div>
                     {buttonsData.map((button, index) => (
                         <Button key={index} href={button.url || '#'} variant="outline">
                             <span className='text-lg transition-transform duration-300 group-hover:scale-110'>{button.logo}</span>
                             {button.name}
                         </Button>
                     ))}
+                    </div>
                 </div>
             </div>
         </section>

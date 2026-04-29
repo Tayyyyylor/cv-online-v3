@@ -1,4 +1,5 @@
 import type { ComponentProps, ReactNode } from 'react'
+import { Link } from '@/i18n/navigation'
 
 type Variant = 'primary' | 'outline'
 
@@ -30,8 +31,16 @@ export default function Button(props: AnchorProps | ButtonProps) {
   const inner = <span className="relative z-10 flex items-center gap-2">{children}</span>
 
   if ('href' in rest && rest.href !== undefined) {
+    const { href, ...anchorRest } = rest as ComponentProps<'a'> & { href: string }
+    if (href.startsWith('/')) {
+      return (
+        <Link href={href} className={classes} {...anchorRest}>
+          {inner}
+        </Link>
+      )
+    }
     return (
-      <a className={classes} {...(rest as ComponentProps<'a'>)}>
+      <a href={href} className={classes} {...anchorRest}>
         {inner}
       </a>
     )
