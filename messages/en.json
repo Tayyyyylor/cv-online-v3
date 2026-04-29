@@ -128,9 +128,18 @@
         "paragraph2": "Je suis surtout heureux quand un détail s'ajuste : un timing d'animation qui sonne juste, une typographie qui respire, une interaction qui se laisse oublier. Le front est mon terrain de jeu, mais je touche à toute la chaîne — back, data, infra légère.",
         "paragraph3": "En dehors de l'écran, je lis beaucoup. Philosophie, essais, fiction. C'est ce qui m'a poussé à faire MyShelf — un outil pour mes lectures, pas un réseau social.",
         "paragraph4": "Et quand j'ai besoin de toucher au concret, je sors mon Raspberry Pi et quelques composants. Tout ne se code pas — parfois il faut sentir un fer à souder.",
+        "titleNow": "Right now",
+         "workingOnLabel": "I'm working on",
+        "readingLabel": "I'm reading",
+        "buildingLabel": "I'm building",
         "workingOn": "The redesign of my portfolio.",
         "reading": "L'Éthique de Spinoza",
         "building": "An air quality sensor for my bedroom."
-        
+    },
+     "Contact": {
+        "line1": "Parlons-",
+        "line2": "nous.",
+        "desc": "Un projet en tête, une question, ou juste envie d'échanger sur un livre ? Écrivez-moi.",
+        "ctaDownload": "Télécharger mon CV"
     }
 }

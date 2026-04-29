@@ -1,18 +1,39 @@
 import { ArrowUpRight, Download } from 'lucide-react'
-import { contactData } from './contact.data'
+import { useTranslations } from 'next-intl'
+
+export type ContactLink = {
+  label: string
+  href: string
+}
+
+export type ContactData = {
+  headline: { line1: string; line2Italic: string }
+  description: string
+  email: string
+  links: ContactLink[]
+  cv: { href: string; label: string; meta: string }
+}
 
 export default function Contact() {
-  const { headline, description, email, links, cv } = contactData
 
+  const t = useTranslations("Contact")
+  const email = "bryan.houblon@icloud.com"
+
+  const links = [
+    { label: 'GitHub', href: 'https://github.com/tayyyyylor' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bryan-houblon-172121211/' },
+    { label: 'MyShelf', href: 'https://myshelf.example.com' },
+  ]
+  
   return (
     <section id="contact" className="w-full px-3 py-24 lg:py-32">
       <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
         <h2 className="font-serif text-5xl leading-tight sm:text-6xl lg:text-7xl">
-          {headline.line1}
-          <em className="font-serif italic text-important">{headline.line2Italic}</em>
+          {t('line1')}
+          <em className="font-serif italic text-important">{t('line2')}</em>
         </h2>
 
-        <p className="mt-8 max-w-xl text-foreground/70 leading-relaxed">{description}</p>
+        <p className="mt-8 max-w-xl text-foreground/70 leading-relaxed">{t('desc')}</p>
 
         <a
           href={`mailto:${email}`}
@@ -46,14 +67,14 @@ export default function Contact() {
         <div aria-hidden className="my-16 h-px w-24 bg-foreground/15" />
 
         <a
-          href={cv.href}
+          href="/cv.pdf'"
           download
           className="group inline-flex items-center gap-3 rounded-lg border border-foreground/15 px-6 py-3 transition-colors hover:border-important hover:text-important"
         >
           <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-          <span className="font-mono text-sm uppercase tracking-widest">{cv.label}</span>
+          <span className="font-mono text-sm uppercase tracking-widest">{t("ctaDownload")}</span>
           <span className="font-mono text-xs uppercase tracking-widest text-foreground/40">
-            {cv.meta}
+           PDF · 240 Ko
           </span>
         </a>
       </div>

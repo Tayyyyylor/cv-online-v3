@@ -1,10 +1,8 @@
-import { ArrowUpRight } from 'lucide-react'
-import Title from '../../atoms/Title'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl';
+import Title from '../atoms/Title';
 
 export type AboutData = {
   photo: string
-  headline: { line1: string; line2Italic: string }
   paragraphs: string[]
   now: {
     workingOn: string
@@ -16,24 +14,14 @@ export type AboutData = {
 export default function About() {
   const t = useTranslations("About")
 
-  const aboutData: AboutData = {
-  photo: '/toto.png',
-  headline: {
-    line1: t('line1'),
-    line2Italic: t('line2'),
-  },
-  paragraphs: [
+  
+  const paragraphs = [
     t('paragraph1'),
     t('paragraph2'),
     t('paragraph3'),
     t('paragraph4'),
-  ],
-  now: {
-    workingOn: t('workingOn'),
-    reading: t('reading'),
-    building: t('building')
-  },
-}
+  ]
+ 
 
 
   return (
@@ -51,13 +39,13 @@ export default function About() {
 
         <div className="flex flex-col gap-8">
           <h3 className="font-serif text-3xl leading-tight sm:text-4xl lg:text-5xl">
-            {aboutData.headline.line1}
+            {t('line1')}
             <br />
-            <em className="font-serif italic text-important">{aboutData.headline.line2Italic}</em>
+            <em className="font-serif italic text-important">{t('line2')}</em>
           </h3>
 
           <div className="flex flex-col gap-5">
-            {aboutData.paragraphs.map((p, i) => (
+            {paragraphs.map((p, i) => (
               <p key={i} className="text-foreground/80 leading-relaxed">
                 {p}
               </p>
@@ -74,20 +62,20 @@ export default function About() {
               <span className="relative inline-flex h-3 w-3 rounded-full border border-important bg-important/40" />
             </span>
             <h4 className="font-mono text-xs uppercase tracking-widest text-important">
-              En ce moment
+              {t('titleNow')}
             </h4>
           </div>
 
           <dl className="flex flex-col divide-y divide-foreground/10 border-y border-foreground/10">
-            <NowRow label="Je travaille sur" value={aboutData.now.workingOn} />
+            <NowRow label={t('workingOnLabel')} value={t('workingOn')} />
             <NowRow
-              label="Je lis"
+              label={t('readingLabel')}
               value={ (
-                  <em className="font-serif italic text-important">{aboutData.now.reading}</em>
+                  <em className="font-serif italic text-important">{t('reading')}</em>
                 )
               }
             />
-            <NowRow label="Je bricole" value={aboutData.now.building} />
+            <NowRow label={t('buildingLabel')} value={t('building')} />
           </dl>
 
         </div>

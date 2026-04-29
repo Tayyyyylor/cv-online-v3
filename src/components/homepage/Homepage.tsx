@@ -4,8 +4,8 @@ import HeroBanner from '../sections/HeroBanner';
 import { Header } from '../sections/Header'
 import Featured from '../sections/Featured';
 import Projects from '../sections/projects/Projects';
-import About from '../sections/about/About';
-import Contact from '../sections/contact/Contact';
+import Contact from '../sections/Contact';
+import About from '../sections/About';
 
 export default function Homepage() {
   return (
