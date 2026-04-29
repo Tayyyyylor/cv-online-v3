@@ -30,7 +30,12 @@ export default function ProjectDetail({ project }: { project: Project }) {
     <article className="flex flex-col gap-8">
       <header className="flex flex-col gap-4 mb-10">
         <div className="flex items-center gap-3 mb-10">
-          <Image src={project.logo} alt='logo' width={isMobile ? 50 : 100} height={isMobile ? 50 : 100} className='w-auto h-auto'/>
+          {project.logo && (
+
+            <Image src={project.logo} alt='logo' width={isMobile ? 50 : 100} height={isMobile ? 50 : 100} className='w-auto h-auto'/>
+          )
+
+          }
           <div className="flex flex-col">
             <h1 className="font-serif text-3xl leading-tight">{name}</h1>
             <p className="font-mono text-xs text-foreground/60">
