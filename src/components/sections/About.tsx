@@ -20,7 +20,6 @@ export default function About() {
     t('paragraph1'),
     t('paragraph2'),
     t('paragraph3'),
-    t('paragraph4'),
   ]
  
 
