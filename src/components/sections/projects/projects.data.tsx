@@ -38,7 +38,7 @@ export type ProjectStackItem = {
 
 export type Project = {
   id: string
-  logo: string
+  logo?: string
   image?: string
   mockups?: string[]
   stack: ProjectStackItem[]
@@ -116,7 +116,6 @@ export const projects: Project[] = [
   },
   {
     id: 'ali-bensaali-production',
-    logo: "/ALIBENIRIS.png",
     image: '/aliBensaaliMockup.png',
     stack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
