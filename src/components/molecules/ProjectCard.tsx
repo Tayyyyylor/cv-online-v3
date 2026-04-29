@@ -20,7 +20,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="group relative flex gap-6 aspect-[1.5] w-full flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-(--background-card) text-left origin-bottom transition-transform transition-shadow duration-500 ease-out hover:rotate-[3deg] hover:border-important/60 hover:shadow-[6px_10px_20px_-14px_var(--color-important)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-important/60 focus-visible:ring-offset-2 focus-visible:ring-offset-(--background) cursor-pointer will-change-transform"
     >
     <div className='flex items-center gap-3 p-3'>
-      <Image src={project.logo} alt='logo' width={50} height={50} className="h-auto w-auto object-contain"/>
+      {project.logo && (
+        <Image src={project.logo} alt='logo' width={50} height={50} className="h-auto w-auto object-contain"/>
+      )}
         <h3 className="font-serif text-lg leading-tight transition-colors duration-300 group-hover:text-important">
           {name}
         </h3>
