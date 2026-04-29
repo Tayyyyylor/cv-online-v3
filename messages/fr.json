@@ -166,5 +166,13 @@
         "line2": "nous.",
         "desc": "Un projet en tête, une question, ou juste envie d'échanger sur un livre ? Écrivez-moi.",
         "ctaDownload": "Télécharger mon CV"
+    },
+    "Links": {
+        "description": "Développeur full stack, lecteur et bricoleur. Retrouve-moi ici.",
+        "portfolio": "Portfolio",
+        "myshelf": "My Shelf",
+        "myshelfDesc": "J'ai créé une application de suivi de lecture ! Va jeter un oeil",
+        "collection": "Mon recueil de poèmes",
+        "collectionDesc": "J'ai publié mon recueil de poèmes"
     }
 }

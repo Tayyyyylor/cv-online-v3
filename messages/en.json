@@ -161,5 +161,13 @@
         "line2": "talk.",
         "desc": "Have a project in mind, a question, or just want to discuss a book ? Write to me.",
         "ctaDownload": "Download my CV"
+    },
+    "Links": {
+        "description": "Full stack developer, reader and tinkerer. Find me here.",
+        "portfolio": "Portfolio",
+        "myshelf": "My Shelf",
+        "myshelfDesc": "I built a reading tracker app ! Take a look!",
+        "collection": "My poetry collection",
+        "collectionDesc": "I published my poetry collection"
     }
 }
