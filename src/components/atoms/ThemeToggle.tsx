@@ -12,13 +12,15 @@ export function ThemeToggle() {
     () => true,
     () => false,
   );
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const isLight = mounted && resolvedTheme === "light";
 
   return (
     <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+    className="relative inline-flex items-center justify-center whitespace-nowrap h-[2.5rem] w-[2.5rem] rounded-[0.375rem] border-[1] cursor-pointer"
+      onClick={() => setTheme(isLight ? "dark" : "light")}
     >
-      {mounted && theme === "light" ? <Sun /> : <Moon />}
+      {isLight ? <Sun className="h-[1.2rem] w-[1.2rem] transition-all duration-2"/> : <Moon className="h-[1.2rem] w-[1.2rem] transition-all duration-2 text-white"/>}
     </button>
   );
 }

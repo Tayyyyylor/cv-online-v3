@@ -1,5 +1,154 @@
 {
-    "Test": {
-        "hello": "Hello"
+   "Navbar": {
+        "about": "About me",
+        "projects": "Projects",
+        "contact": "Contact",
+        "featured": "Featured"
+    },
+     "Hero": {
+        "job": "Full stack developer - Paris",
+        "activity1": "Code",
+        "and": "and",
+        "activity2": "thoughts,",
+        "activity3": "philosophy,",
+        "activity4": "literature,",
+        "desc": "Full stack developer with a soft spot for front-end, philosophy, and Raspberry Pi."
+    },
+    "Featured": {
+        "title": "Featured",
+        "descTitle": "Combining <important>development</important> and <important>literature</important>",
+        "ctaShowProfile": "Show my profile",
+         "paragraph1": "I've developed a mobile app for tracking and rating readings. Each user can search for or scan a book, rate it, leave a comment, manage their reading status, and much more !",
+        "paragraph2": "The unique feature of this app is that your profile page reflects your reading habits. You can create different bookshelves, add as many books as you want, and add a description.",
+        "paragraph3": "You can arrange the bookshelves however you like on your profile, which also displays your reading goal and what you're currently reading. All the information you need to let your friends know your current reading mood !",
+        "paragraph4": "",
+        "titleStack": "Technical stack"
+    },
+    "Projects": {
+        "title": "projects",
+        "descTitle": "A few <important>digital objects</important> crafted with care",
+        "filters": {
+            "all": "All",
+            "clients": "Clients",
+            "perso": "Personal",
+            "fun": "For fun"
+        },
+        "items": {
+            "my-shelf": {
+                "name": "My shelf",
+                "description": "Site vitrine pour la boite de production dependant",
+                "longDescription": [
+                    "Site vitrine réalisé pour un client dans le secteur de l'audiovisuel.",
+                    "Focus sur la mise en avant du contenu produits, type vidéos et photos. Optimisation des requêtes, SEO et gestion vidéos.",
+                    "Utilisation de Strapi couplé à un VPS pour la gestion du changement de contenu de manière simple par le client."
+                ],
+                "role": "Développeur",
+                "highlights": [
+                    "Dashboard admin",
+                    "Bucket S3"
+                ],
+                "links": {
+                    "website": "Site web"
+                }
+            },
+              "dependant-tv": {
+                "name": "Dependant.tv",
+                "description": "Showcase website for the dependant production company",
+                "longDescription": [
+                    "Showcase website created for a client in the audiovisual sector.",
+                    "Focus on showcasing product content, such as videos and photos. Optimization of search queries, SEO, and video management.",
+                    "Using Strapi coupled with a VPS for easy content change management by the client."
+                ],
+                "role": "Developer",
+                "highlights": [
+                    "Dashboard admin",
+                    "Bucket S3"
+                ],
+                "links": {
+                    "website": "Website"
+                }
+            },
+            "ali-bensaali-production": {
+                "name": "Ali Bensaali Production",
+                "description": "Website showcase for Ali Bensaali, a freelance videographer",
+                "longDescription": [
+                    "Website showcase for a freelance videographer",
+                    "A need to showcase one's work quickly and in an optimized way."
+                ],
+                "role": "Developer",
+                "highlights": [
+                    "Dashboard admin"
+                ],
+                "links": {
+                    "website": "Website"
+                }
+            },
+            "labcom-optimaa": {
+                "name": "Labcom Optimaa",
+                "description": "Website for CNRS scientists",
+                "longDescription": [
+                    "A website for monitoring and presenting a scientific project",
+                    "A need for daily content updates, therefore implementation of an admin dashboard via Strapi"
+                ],
+                "role": "Developer",
+                "highlights": [
+                    "Dashboard admin",
+                    "CI/CD pipeline with automated deployment"
+                ],
+                "links": {
+                    "website": "Website"
+                }
+            },
+            "cocoa-bio": {
+                "name": "Cocoa bio",
+                "description": "Website for CNRS scientists",
+                "longDescription": [
+                    "A website for monitoring and presenting a scientific project"
+                ],
+                "role": "Developer",
+                "highlights": [
+                    "Good SEO"
+                ],
+                "links": {
+                    "website": "Website"
+                }
+            },
+            "interlude-decors": {
+                "name": "Interlude Decors",
+                "description": "Website showcasing Agathe Roger, creator of sets, models and 3D models",
+                "longDescription": [
+                    "A need to showcase his work and the different areas"                ],
+                "role": "Developer",
+                "highlights": [
+                    "Dashboard admin"
+                ],
+                "links": {
+                    "website": "Website"
+                }
+            }
+        }
+    },
+    "About": {
+        "title": "About me",
+        "descTitle": "Behind <important>the screen</important>",
+        "line1": "Part developer, part philosopher,",
+        "line2": "full-time reader.",
+        "paragraph1": "J'ai commencé à coder par curiosité, pour comprendre comment les sites que je lisais étaient faits. Très vite, l'envie de construire a pris le pas sur celle de consommer — et elle ne m'a plus quitté depuis.",
+        "paragraph2": "Je suis surtout heureux quand un détail s'ajuste : un timing d'animation qui sonne juste, une typographie qui respire, une interaction qui se laisse oublier. Le front est mon terrain de jeu, mais je touche à toute la chaîne — back, data, infra légère.",
+        "paragraph3": "En dehors de l'écran, je lis beaucoup. Philosophie, essais, fiction. C'est ce qui m'a poussé à faire MyShelf — un outil pour mes lectures, pas un réseau social.",
+        "paragraph4": "Et quand j'ai besoin de toucher au concret, je sors mon Raspberry Pi et quelques composants. Tout ne se code pas — parfois il faut sentir un fer à souder.",
+        "titleNow": "Right now",
+         "workingOnLabel": "I'm working on",
+        "readingLabel": "I'm reading",
+        "buildingLabel": "I'm building",
+        "workingOn": "The redesign of my portfolio.",
+        "reading": "L'Éthique de Spinoza",
+        "building": "An air quality sensor for my bedroom."
+    },
+     "Contact": {
+        "line1": "Let's ",
+        "line2": "talk.",
+        "desc": "Have a project in mind, a question, or just want to discuss a book ? Write to me.",
+        "ctaDownload": "Download my CV"
     }
 }
