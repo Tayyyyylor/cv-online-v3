@@ -3,10 +3,7 @@ import Image from 'next/image'
 import Title from '../atoms/Title'
 import Badge from '../atoms/Badge'
 import Button from '../atoms/Button'
-
-
-export default function Featured() {
-
+import { useTranslations } from 'next-intl'
 
     const frontStackData = [
         {
@@ -64,8 +61,7 @@ export default function Featured() {
         },
     ]
 
-
-    const buttonsData = [
+     const buttonsData = [
         {
             logo: <SiAppstore />,
             url: "",
@@ -77,19 +73,24 @@ export default function Featured() {
             name: "Play Store"
         }
     ]
+
+export default function Featured() {
+
+    const t = useTranslations("Featured")
+   
   return (
-    <article className='w-[100%] p-3 mt-50 lg:mt-5'>
-        <Title title='Projet phare - Application mobile'/>
+    <article className='w-[100%] mt-50 lg:mt-5' id='featured'>
+        <Title number="01" title={t('title')} desc={t('descTitle')}/>
         <section className='flex flex-col items-center lg:flex-row gap-6'>
             <Image src="/toto.png" width={300} height={300} alt='' className='flex-1' loading="eager"/>
             <div className='flex flex-col gap-3 flex-1'>
                 <div className='flex items-center justify-between gap-3 flex-wrap'>
                 <h3 className='font-serif text-[22px]'>My Shelf</h3>
-                <Button href="#" variant="primary">Voir mon profil</Button>
+                <Button href="#" variant="primary">{t('ctaShowProfile')}</Button>
                 </div>
-                <p>Une bibliothèque virtuelle pour suivre, organiser et partager ses lectures.</p>
+                <p>{t('desc')}</p>
                 <div>
-                    <h3 className='font-serif text-[20px] mb-5 mt-5 text-center'>Stack technique</h3>
+                    <h3 className='font-serif text-[20px] mb-5 mt-5 text-center'>{t('titleStack')}</h3>
 
                     <div className='flex flex-col gap-3 mb-10'>
                         <h4 className='font-mono uppercase'>Front</h4>

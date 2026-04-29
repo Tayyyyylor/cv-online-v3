@@ -18,7 +18,8 @@ export const Navbar = () => {
   const closeMenu = () => setIsOpen(false);
 
   const dataNav = [
-    { label: t("skills"), href: "/#skills" },
+    { label: t("about"), href: "/#about" },
+    { label: t("featured"), href: "/#featured"},
     { label: t("projects"), href: "/#projects" },
     { label: t("contact"), href: "/#contact" },
   ];

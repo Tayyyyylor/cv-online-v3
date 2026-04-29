@@ -5,7 +5,7 @@ import { books } from './bookshelf.data'
 
 export function Bookshelf() {
   return (
-    <div className="relative w-full max-w-2xl mx-auto select-none">
+    <div className="relative w-[80%] md:w-full max-w-2xl mx-auto select-none">
       <div className="relative">
         <div
           className="absolute inset-0 -z-10 blur-3xl opacity-20"
@@ -15,7 +15,7 @@ export function Bookshelf() {
           }}
         />
 
-        <div className="flex items-end justify-center gap-[3px] h-[375px] px-4 lg:h-[420px]">
+        <div className="flex items-end justify-center gap-[3px] h-[310px] px-4 lg:h-[420px]">
           {books.map((book, i) => (
             <Book key={book.id} book={book} index={i} />
           ))}

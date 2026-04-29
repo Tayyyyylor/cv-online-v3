@@ -1,17 +1,136 @@
 {
    "Navbar": {
-        "skills": "Skills",
+        "about": "About me",
         "projects": "Projects",
-        "contact": "Contact"
+        "contact": "Contact",
+        "featured": "Featured"
     },
      "Hero": {
-        "job": "Développeur full stack - Paris",
+        "job": "Full stack developer - Paris",
         "activity1": "Code",
-        "activity2": "pensées,",
-        "activity3": "bricolage",
-        "activity4": "philo,",
-        "activity5": "littérature,",
-        "desc": "Développeur full stack avec un faible pour le front, la philo et les Raspberry Pi."
-
+        "and": "and",
+        "activity2": "thoughts,",
+        "activity3": "philosophy,",
+        "activity4": "literature,",
+        "desc": "Full stack developer with a soft spot for front-end, philosophy, and Raspberry Pi."
+    },
+    "Featured": {
+        "title": "Featured",
+        "descTitle": "",
+        "ctaShowProfile": "Show my profile",
+        "desc": "A virtual library to track, organize, and share your reading.",
+        "titleStack": "Technical stack"
+    },
+    "Projects": {
+        "title": "projects",
+        "descTitle": "A few <important>digital objects</important> crafted with care",
+        "filters": {
+            "all": "All",
+            "clients": "Clients",
+            "perso": "Personal",
+            "fun": "For fun"
+        },
+        "items": {
+            "myshelf": {
+                "name": "My Shelf",
+                "description": "Virtual library to track and share your reading.",
+                "longDescription": [
+                    "My Shelf is an app to catalog your reading, track progress, and share recommendations with friends.",
+                    "The idea started from a simple observation: Goodreads is slow, dated, and alternatives lack solid social integration. I built a smoother experience centered on discovery through friend circles."
+                ],
+                "role": "Fullstack developer",
+                "highlights": [
+                    "ISBN search with autocomplete",
+                    "Social feed filterable by friend circle",
+                    "Offline sync via Service Worker"
+                ],
+                "links": {
+                    "repo": "View repo",
+                    "website": "Website"
+                }
+            },
+            "placeholder-web": {
+                "name": "Web Project",
+                "description": "Short project description, to be replaced later.",
+                "longDescription": [
+                    "Showcase site built for a client in the architecture sector.",
+                    "Focus on performance, SEO and refined animation to highlight the portfolio."
+                ],
+                "role": "Frontend developer",
+                "highlights": [
+                    "Lighthouse score of 100 across all 4 axes",
+                    "Integrated headless CMS for client autonomy"
+                ],
+                "links": {
+                    "website": "Website"
+                }
+            },
+            "placeholder-backend": {
+                "name": "Internal API",
+                "description": "Backend service, to be replaced later.",
+                "longDescription": [
+                    "Internal API for inventory management of an SME.",
+                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
+                ],
+                "role": "Backend developer",
+                "highlights": [
+                    "Test coverage > 85%",
+                    "CI/CD pipeline with automated deployment"
+                ]
+            },
+            "placeholder-backefnd": {
+                "name": "Internal API",
+                "description": "Backend service, to be replaced later.",
+                "longDescription": [
+                    "Internal API for inventory management of an SME.",
+                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
+                ],
+                "role": "Backend developer",
+                "highlights": [
+                    "Test coverage > 85%",
+                    "CI/CD pipeline with automated deployment"
+                ]
+            },
+            "placeholder-bacgkend": {
+                "name": "Internal API",
+                "description": "Backend service, to be replaced later.",
+                "longDescription": [
+                    "Internal API for inventory management of an SME.",
+                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
+                ],
+                "role": "Backend developer",
+                "highlights": [
+                    "Test coverage > 85%",
+                    "CI/CD pipeline with automated deployment"
+                ]
+            },
+            "placeholder-bacerkend": {
+                "name": "Internal API",
+                "description": "Backend service, to be replaced later.",
+                "longDescription": [
+                    "Internal API for inventory management of an SME.",
+                    "Modular NestJS architecture, PostgreSQL database with versioned migrations and integration tests."
+                ],
+                "role": "Backend developer",
+                "highlights": [
+                    "Test coverage > 85%",
+                    "CI/CD pipeline with automated deployment"
+                ]
+            }
+        }
+    },
+    "About": {
+        "title": "About me",
+        "descTitle": "Behind <important>the screen</important>",
+        "line1": "Part developer, part philosopher,",
+        "line2": "full-time reader.",
+        "paragraph1": "J'ai commencé à coder par curiosité, pour comprendre comment les sites que je lisais étaient faits. Très vite, l'envie de construire a pris le pas sur celle de consommer — et elle ne m'a plus quitté depuis.",
+        "paragraph2": "Je suis surtout heureux quand un détail s'ajuste : un timing d'animation qui sonne juste, une typographie qui respire, une interaction qui se laisse oublier. Le front est mon terrain de jeu, mais je touche à toute la chaîne — back, data, infra légère.",
+        "paragraph3": "En dehors de l'écran, je lis beaucoup. Philosophie, essais, fiction. C'est ce qui m'a poussé à faire MyShelf — un outil pour mes lectures, pas un réseau social.",
+        "paragraph4": "Et quand j'ai besoin de toucher au concret, je sors mon Raspberry Pi et quelques composants. Tout ne se code pas — parfois il faut sentir un fer à souder.",
+        "workingOn": "The redesign of my portfolio.",
+        "reading": "L'Éthique de Spinoza",
+        "building": "An air quality sensor for my bedroom."
+        
     }
 }

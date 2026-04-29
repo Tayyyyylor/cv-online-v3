@@ -1,14 +1,46 @@
-import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import Title from '../../atoms/Title'
-import { aboutData } from './about.data'
+import { useTranslations } from 'next-intl'
+
+export type AboutData = {
+  photo: string
+  headline: { line1: string; line2Italic: string }
+  paragraphs: string[]
+  now: {
+    workingOn: string
+    reading: string 
+    building: string
+  }
+}
 
 export default function About() {
-  const { headline, paragraphs, now } = aboutData
+  const t = useTranslations("About")
+
+  const aboutData: AboutData = {
+  photo: '/toto.png',
+  headline: {
+    line1: t('line1'),
+    line2Italic: t('line2'),
+  },
+  paragraphs: [
+    t('paragraph1'),
+    t('paragraph2'),
+    t('paragraph3'),
+    t('paragraph4'),
+  ],
+  now: {
+    workingOn: t('workingOn'),
+    reading: t('reading'),
+    building: t('building')
+  },
+}
+
 
   return (
     <section id="about" className="w-full p-3">
-      <Title title="À propos" />
+      <Title number="03" title="À propos" desc={t.rich('descTitle', {
+          important: (chunks) => <span className="text-important italic">{chunks}</span>,
+        })} />
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <div className="lg:sticky lg:top-24 lg:self-start">
@@ -19,13 +51,13 @@ export default function About() {
 
         <div className="flex flex-col gap-8">
           <h3 className="font-serif text-3xl leading-tight sm:text-4xl lg:text-5xl">
-            {headline.line1}
+            {aboutData.headline.line1}
             <br />
-            <em className="font-serif italic text-important">{headline.line2Italic}</em>
+            <em className="font-serif italic text-important">{aboutData.headline.line2Italic}</em>
           </h3>
 
           <div className="flex flex-col gap-5">
-            {paragraphs.map((p, i) => (
+            {aboutData.paragraphs.map((p, i) => (
               <p key={i} className="text-foreground/80 leading-relaxed">
                 {p}
               </p>
@@ -47,31 +79,17 @@ export default function About() {
           </div>
 
           <dl className="flex flex-col divide-y divide-foreground/10 border-y border-foreground/10">
-            <NowRow label="Je travaille sur" value={now.workingOn} />
+            <NowRow label="Je travaille sur" value={aboutData.now.workingOn} />
             <NowRow
               label="Je lis"
-              value={
-                now.reading.href ? (
-                  <a
-                    href={now.reading.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-1.5 text-important transition-colors hover:text-important/80"
-                  >
-                    <em className="font-serif italic">{now.reading.title}</em>
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
-                ) : (
-                  <em className="font-serif italic text-important">{now.reading.title}</em>
+              value={ (
+                  <em className="font-serif italic text-important">{aboutData.now.reading}</em>
                 )
               }
             />
-            <NowRow label="Je bricole" value={now.building} />
+            <NowRow label="Je bricole" value={aboutData.now.building} />
           </dl>
 
-          <p className="pt-6 font-mono text-[11px] uppercase tracking-widest text-foreground/40">
-            Mis à jour le {now.updatedAt}
-          </p>
         </div>
       </div>
     </section>

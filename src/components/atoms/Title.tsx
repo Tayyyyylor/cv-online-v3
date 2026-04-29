@@ -1,9 +1,21 @@
+import type { ReactNode } from 'react'
 
 interface TitleProps {
-    title: string
+  number: string
+  title: string
+  desc: ReactNode
 }
-export default function Title({title}: TitleProps) {
+export default function Title({number, title, desc}: TitleProps) {
   return (
-            <h2 className='font-mono uppercase text-important text-center mb-10 text-[16px] lg:text-[22px]'>{title}</h2>
+    <div className="flex flex-col items-start text-[12px] gap-10 mb-15 lg:mb-30 lg:flex-row lg:gap-30 lg:items-end">
+      <div className="flex gap-2 items-center">
+      <p className="text-important font-mono">{number}</p>
+      <span aria-hidden className="h-px w-6 bg-grey-text" />
+      <p className="font-mono uppercase text-grey-text text-wrap">{title}</p>
+      </div>
+      <div>
+        <h3 className=" text-[35px] lg:text-[50px] font-serif leading-none">{desc}</h3>
+      </div>
+    </div>
   )
 }

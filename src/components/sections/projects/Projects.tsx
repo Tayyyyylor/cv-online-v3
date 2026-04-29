@@ -1,13 +1,16 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import Title from '../../atoms/Title'
 import Chip from '../../atoms/Chip'
 import ProjectCard from '../../molecules/ProjectCard'
-import { projectFilters, projects, type ProjectCategory } from './projects.data'
+import { projects, useProjectFilters, type ProjectCategory } from './projects.data'
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>('all')
+  const projectFilters = useProjectFilters()
+  const t = useTranslations('Projects')
 
   const filtered = useMemo(() => {
     if (activeFilter === 'all') return projects
@@ -16,7 +19,13 @@ export default function Projects() {
 
   return (
     <article id="projects" className="w-full p-3 mt-20">
-      <Title title="Projets" />
+      <Title
+        number="02"
+        title={t('title')}
+        desc={t.rich('descTitle', {
+          important: (chunks) => <span className="text-important italic">{chunks}</span>,
+        })}
+      />
 
       <div className="flex flex-wrap justify-center gap-2 mb-10">
         {projectFilters.map((filter) => (

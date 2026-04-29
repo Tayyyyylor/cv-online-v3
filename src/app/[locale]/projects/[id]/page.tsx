@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import ProjectDetail from '@/components/sections/projects/ProjectDetail'
 import { getProjectById, projects } from '@/components/sections/projects/projects.data'
@@ -35,8 +36,9 @@ export async function generateMetadata({ params }: Props) {
   const { id } = await params
   const project = getProjectById(id)
   if (!project) return {}
+  const t = await getTranslations('Projects.items')
   return {
-    title: project.name,
-    description: project.description,
+    title: t(`${project.id}.name`),
+    description: t(`${project.id}.description`),
   }
 }
