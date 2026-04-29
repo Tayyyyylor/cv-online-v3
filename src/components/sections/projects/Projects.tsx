@@ -13,8 +13,9 @@ export default function Projects() {
   const t = useTranslations('Projects')
 
   const filtered = useMemo(() => {
-    if (activeFilter === 'all') return projects
-    return projects.filter((p) => p.categories.includes(activeFilter))
+    const visible = projects.filter((p) => !p.featured)
+    if (activeFilter === 'all') return visible
+    return visible.filter((p) => p.categories.includes(activeFilter))
   }, [activeFilter])
 
   return (

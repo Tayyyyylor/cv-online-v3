@@ -36,6 +36,7 @@ export type Project = {
   categories: Exclude<ProjectCategory, 'all'>[]
   year: string
   links?: ProjectLink[]
+  featured?: boolean
 }
 
 export function useProjectFilters(): { id: ProjectCategory; label: string }[] {
@@ -71,6 +72,7 @@ export const projects: Project[] = [
     categories: ['perso'],
     year: '2023',
     links: [{ kind: 'website', href: 'https://www.dependant.tv' }],
+    featured: true,
   },
   {
     id: 'dependant-tv',
