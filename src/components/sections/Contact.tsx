@@ -1,4 +1,4 @@
-import { ArrowUpRight, Download } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import Socials from '../molecules/Socials'
 
@@ -20,12 +20,6 @@ export default function Contact() {
   const t = useTranslations("Contact")
    const currentLocale = useLocale();
   const email = "bryan.houblon@icloud.com"
-
-  const links = [
-    { label: 'GitHub', href: 'https://github.com/tayyyyylor' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bryan-houblon-172121211/' },
-    { label: 'MyShelf', href: 'https://myshelf.example.com' },
-  ]
 
   return (
     <section id="contact" className="w-full px-3 py-24 lg:py-32">
@@ -67,7 +61,7 @@ export default function Contact() {
           <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
           <span className="font-mono text-sm uppercase tracking-widest">{t("ctaDownload")}</span>
           <span className="font-mono text-xs uppercase tracking-widest text-foreground/40">
-           PDF · 240 Ko
+           PDF
           </span>
         </a>
       </div>

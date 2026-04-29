@@ -34,7 +34,7 @@ export default function About() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-foreground/10 bg-(--background-card)">
-           <Image src="/me.png" fill alt='me' />
+           <Image src="/me.png" fill sizes="(min-width: 1024px) 40vw, 100vw" alt='me' />
           </div>
         </div>
 

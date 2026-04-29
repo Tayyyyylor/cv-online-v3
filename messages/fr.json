@@ -38,14 +38,19 @@
                 "name": "My shelf",
                 "description": "Site vitrine pour la boite de production dependant",
                 "longDescription": [
-                    "Site vitrine réalisé pour un client dans le secteur de l'audiovisuel.",
-                    "Focus sur la mise en avant du contenu produits, type vidéos et photos. Optimisation des requêtes, SEO et gestion vidéos.",
-                    "Utilisation de Strapi couplé à un VPS pour la gestion du changement de contenu de manière simple par le client."
+                    "Avec ce projet, j'ai tenté d'allier mes deux passions, la lecture et le code. Aussi une problématique m'imcombait, la possibilité de suivre mes livres lus et tout ce qui concerne mon quotidien de lecteur.",
+                    "Je me suis d'abord tourner vers 'Goodreads', 'StoryGraph' ou encore 'Babelio' mais aucune ne me correspondait ou avait des fonctionnalités assez pertinentes pour mon besoin.",
+                    "J'ai donc décidé de créer ma propre app ! Un suivi de leture simple, un système de recherche efficace, des reviews et notations faciles, sert aussi d'index de lectures et surtout la personnalisation intense de mon profil que je peux partager à n'importe qui."
                 ],
-                "role": "Développeur",
+                "role": "Créateur",
                 "highlights": [
-                    "Dashboard admin",
-                    "Bucket S3"
+                    "Recherche de livres via scan",
+                    "Création d'étagères personnalisable",
+                    "Notation et review d'une oeuvre",
+                    "Personnalisation du profil",
+                    "Partage ultra-simple",
+                    "Suivi des lectures en cours",
+                    "Suivi de l'objectif de lecture"
                 ],
                 "links": {
                     "website": "Site web"

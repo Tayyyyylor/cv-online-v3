@@ -8,6 +8,16 @@ import {
   SiOvh,
   SiNginx,
   SiDocker,
+  SiReact,
+  SiNestjs,
+  SiPostgresql,
+  SiPrisma,
+  SiBetterauth,
+  SiTurborepo,
+  SiCloudflare,
+  SiBun,
+  SiTailwindcss,
+  SiExpo,
 } from '@icons-pack/react-simple-icons'
 import { useTranslations } from 'next-intl'
 import type { ReactNode } from 'react'
@@ -52,32 +62,39 @@ export function useProjectFilters(): { id: ProjectCategory; label: string }[] {
 export const projects: Project[] = [
   {
     id: 'my-shelf',
-    logo: "/logoDpdBlack.png",
+    logo: "/toto.png",
     image: '/toto.png',
     stack: [
-      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'Expo', icon: <SiNextdotjs /> },
+      { name: 'React Native', icon: <SiSass /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
-      { name: 'Sass', icon: <SiSass /> },
       { name: 'Strapi', icon: <SiStrapi /> },
     ],
     detailedStack: [
-      { name: 'Next.js', icon: <SiNextdotjs /> },
+       { name: 'Expo', icon: <SiExpo /> },
+      { name: 'React Native', icon: <SiReact /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
-      { name: 'Sass', icon: <SiSass /> },
-      { name: 'Strapi', icon: <SiStrapi /> },
+      { name: 'TailwindCSS', icon: <SiTailwindcss /> },
+      { name: 'NestJS', icon: <SiNestjs /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+      { name: 'Prisma', icon: <SiPrisma /> },
+      { name: 'Better auth', icon: <SiBetterauth /> },
+      { name: 'Turborepo', icon: <SiTurborepo /> },
+      { name: 'Cloudflare', icon: <SiCloudflare /> },
+      { name: 'Bun', icon: <SiBun /> },      
       { name: 'Nginx', icon: <SiNginx /> },
       { name: 'Docker', icon: <SiDocker /> },
 
     ],
     categories: ['perso'],
-    year: '2023',
+    year: '2026',
     links: [{ kind: 'website', href: 'https://www.dependant.tv' }],
     featured: true,
   },
   {
     id: 'dependant-tv',
     logo: "/logoDpdBlack.png",
-    image: '/toto.png',
+    image: '/dependantMockup.png',
     stack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
@@ -100,7 +117,7 @@ export const projects: Project[] = [
   {
     id: 'ali-bensaali-production',
     logo: "/ALIBENIRIS.png",
-    image: '/toto.png',
+    image: '/aliBensaaliMockup.png',
     stack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
       { name: 'Contentful', icon: <SiContentful /> },
@@ -119,7 +136,7 @@ export const projects: Project[] = [
   {
     id: 'labcom-optimaa',
     logo: "/logobleu_optimaa.png",
-    image: '/toto.png',
+    image: '/labcomMockup.png',
     stack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
@@ -142,7 +159,7 @@ export const projects: Project[] = [
   {
     id: 'cocoa-bio',
     logo: "/logo_cocoa_black.png",
-    image: '/toto.png',
+    image: '/cocoaMockup.png',
     stack: [
       { name: 'Next.js', icon: <SiNextdotjs /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
@@ -160,7 +177,7 @@ export const projects: Project[] = [
   {
     id: 'interlude-decors',
     logo: "/logoagathe.png",
-    image: '/toto.png',
+    image: '/interludeMockup.png',
     stack: [
      { name: 'Next.js', icon: <SiNextdotjs /> },
      { name: 'TypeScript', icon: <SiTypescript /> },

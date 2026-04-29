@@ -1,9 +1,12 @@
+'use client'
+
 import Image from 'next/image'
 import { ExternalLink, Globe } from 'lucide-react'
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { useTranslations } from 'next-intl'
 import type { Project, ProjectLinkKind } from './projects.data'
 import Button from '@/components/atoms/Button'
+import useMobile from '@/hooks/useMobile'
 
 const linkIcon: Record<ProjectLinkKind, React.ComponentType<{ className?: string }>> = {
   repo: SiGithub,
@@ -14,6 +17,7 @@ const linkIcon: Record<ProjectLinkKind, React.ComponentType<{ className?: string
 
 export default function ProjectDetail({ project }: { project: Project }) {
   const t = useTranslations('Projects.items')
+  const isMobile = useMobile()
   const name = t(`${project.id}.name`)
   const role = t(`${project.id}.role`)
   const longDescription = t.raw(`${project.id}.longDescription`) as string[]
@@ -24,9 +28,9 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
   return (
     <article className="flex flex-col gap-8">
-      <header className="flex flex-col gap-4">
-        <div className="flex items-center gap-3">
-          <Image src={project.logo} alt='logo' width={100} height={100} />
+      <header className="flex flex-col gap-4 mb-10">
+        <div className="flex items-center gap-3 mb-10">
+          <Image src={project.logo} alt='logo' width={isMobile ? 50 : 100} height={isMobile ? 50 : 100} className='w-auto h-auto'/>
           <div className="flex flex-col">
             <h1 className="font-serif text-3xl leading-tight">{name}</h1>
             <p className="font-mono text-xs text-foreground/60">
@@ -36,7 +40,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </div>
 
         {project.image && (
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-foreground/10 bg-gradient-to-br from-important/10 via-foreground/5 to-transparent">
+          <div className="relative aspect-[16/9] w-full overflow-hidden ">
             <Image
               src={project.image}
               alt={name}

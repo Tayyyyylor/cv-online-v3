@@ -16,10 +16,6 @@ export default function Socials() {
         label: "My shelf",
         url: "toto"
     },
-    {
-        label: "Reddit",
-        url: "titi"
-    },
      {
         label: "X",
         url: "https://x.com/_tayylor_g"

@@ -1,4 +1,4 @@
-import { SiAppstore, SiBetterauth, SiBun, SiCloudflare, SiDocker, SiExpo, SiGoogleplay, SiNestjs, SiPostgresql, SiPrisma, SiReact, SiTurborepo } from '@icons-pack/react-simple-icons'
+import { SiAppstore, SiBetterauth, SiBun, SiCloudflare, SiDocker, SiExpo, SiGoogleplay, SiNestjs, SiPostgresql, SiPrisma, SiReact, SiTailwindcss, SiTurborepo } from '@icons-pack/react-simple-icons'
 import Image from 'next/image'
 import Title from '../atoms/Title'
 import Badge from '../atoms/Badge'
@@ -13,6 +13,11 @@ import { useTranslations } from 'next-intl'
          {
             icon: <SiReact />,
             name: "React Native"
+
+        },
+         {
+            icon: <SiTailwindcss />,
+            name: "TailwindCSS"
 
         },
     ]
