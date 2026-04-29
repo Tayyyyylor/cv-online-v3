@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import type { Book as BookType } from '../../../../types/global'
+import { BookType } from '../../../../types/global'
 
 type BookProps = {
   book: BookType

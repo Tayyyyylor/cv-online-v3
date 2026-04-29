@@ -12,7 +12,18 @@
         "activity2": "thoughts,",
         "activity3": "philosophy,",
         "activity4": "literature,",
-        "desc": "Full stack developer with a soft spot for front-end, philosophy, and Raspberry Pi."
+        "desc": "Full stack developer with a soft spot for front-end, philosophy, and Raspberry Pi.",
+        "Books": {
+            "title1": "Ethices",
+            "title2": "The Outsider",
+            "title3": "The Suffering Of The World",
+            "title4": "The Idiot",
+            "title5": "The Picture of Dorian Gray",
+            "title6": "The Banquet of Plato",
+            "title7": "Laughter",
+            "title8": "The Trial",
+            "title9": "The Meditations of Marcus Aurelus"
+        }
     },
     "Featured": {
         "title": "Featured",
@@ -22,7 +33,8 @@
         "paragraph2": "The unique feature of this app is that your profile page reflects your reading habits. You can create different bookshelves, add as many books as you want, and add a description.",
         "paragraph3": "You can arrange the bookshelves however you like on your profile, which also displays your reading goal and what you're currently reading. All the information you need to let your friends know your current reading mood !",
         "paragraph4": "",
-        "titleStack": "Technical stack"
+        "titleStack": "Technical stack",
+        "ctaShowMore":"See more"
     },
     "Projects": {
         "title": "projects",
@@ -134,14 +146,14 @@
         "line1": "Part developer, part philosopher,",
         "line2": "full-time reader.",
         "paragraph1": "I started coding out of curiosity, to understand how the websites I visited were made. Very quickly, the desire to build took precedence over the desire to consume, and it has never left me since.",
-        "paragraph2": "The front end is my playground, but I'm involved in the entire chain — back end, data, infrastructure.",
-        "paragraph3": "Outside of the screen, I read a lot. Philosophy, essays, fiction. That's what motivated me to create MyShelf—a tool for my reading, not a social network.",
+        "paragraph2": "The front end is my playground, but I'm involved in the entire chain: back end, data, infrastructure.",
+        "paragraph3": "Outside of the screen, I read a lot. Philosophy, essays, fiction. That's what motivated me to create MyShelf, a tool for my reading, not a social network.",
         "titleNow": "Right now",
          "workingOnLabel": "I'm working on",
         "readingLabel": "I'm reading",
         "buildingLabel": "I'm building",
         "workingOn": "The redesign of my portfolio.",
-        "reading": "L'Éthique de Spinoza",
+        "reading": "Ethics - Spinoza",
         "building": "An air quality sensor for my bedroom."
     },
      "Contact": {
@@ -149,5 +161,13 @@
         "line2": "talk.",
         "desc": "Have a project in mind, a question, or just want to discuss a book ? Write to me.",
         "ctaDownload": "Download my CV"
+    },
+    "Links": {
+        "description": "Full stack developer, reader and tinkerer. Find me here.",
+        "portfolio": "Portfolio",
+        "myshelf": "My Shelf",
+        "myshelfDesc": "I built a reading tracker app ! Take a look!",
+        "collection": "My poetry collection",
+        "collectionDesc": "I published my poetry collection"
     }
 }

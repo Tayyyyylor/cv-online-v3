@@ -1,13 +1,14 @@
 import { useTranslations } from 'next-intl';
 import Title from '../atoms/Title';
 import Image from 'next/image';
+import Reveal, { RevealItem, RevealStagger } from '../atoms/Reveal';
 
 export type AboutData = {
   photo: string
   paragraphs: string[]
   now: {
     workingOn: string
-    reading: string 
+    reading: string
     building: string
   }
 }
@@ -15,46 +16,48 @@ export type AboutData = {
 export default function About() {
   const t = useTranslations("About")
 
-  
+
   const paragraphs = [
     t('paragraph1'),
     t('paragraph2'),
     t('paragraph3'),
   ]
- 
+
 
 
   return (
     <section id="about" className="w-full p-3 mt-20">
-      <Title number="03" title="À propos" desc={t.rich('descTitle', {
-          important: (chunks) => <span className="text-important italic">{chunks}</span>,
-        })} />
+      <Reveal>
+        <Title number="03" title="À propos" desc={t.rich('descTitle', {
+            important: (chunks) => <span className="text-important italic">{chunks}</span>,
+          })} />
+      </Reveal>
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        <div className="lg:sticky lg:top-24 lg:self-start">
+        <Reveal className="lg:sticky lg:top-24 lg:self-start" x={-30} y={0} duration={0.9}>
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-foreground/10 bg-(--background-card)">
            <Image src="/me.png" fill sizes="(min-width: 1024px) 40vw, 100vw" alt='me' />
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col gap-8">
-          <h3 className="font-serif text-3xl leading-tight sm:text-4xl lg:text-5xl">
+        <RevealStagger className="flex flex-col gap-8" stagger={0.1}>
+          <RevealItem as="h3" className="font-serif text-3xl leading-tight sm:text-4xl lg:text-5xl">
             {t('line1')}
             <br />
             <em className="font-serif italic text-important">{t('line2')}</em>
-          </h3>
+          </RevealItem>
 
           <div className="flex flex-col gap-5">
             {paragraphs.map((p, i) => (
-              <p key={i} className="text-foreground/80 leading-relaxed">
+              <RevealItem as="p" key={i} className="text-foreground/80 leading-relaxed">
                 {p}
-              </p>
+              </RevealItem>
             ))}
           </div>
-        </div>
+        </RevealStagger>
       </div>
 
-      <div className="mx-auto mt-16 max-w-6xl">
+      <Reveal className="mx-auto mt-16 max-w-6xl" delay={0.1}>
         <div className="rounded-2xl border border-foreground/10 bg-(--background-card) p-6 sm:p-10">
           <div className="flex items-center gap-3 pb-6">
             <span aria-hidden className="relative flex h-3 w-3">
@@ -66,20 +69,26 @@ export default function About() {
             </h4>
           </div>
 
-          <dl className="flex flex-col divide-y divide-foreground/10 border-y border-foreground/10">
-            <NowRow label={t('workingOnLabel')} value={t('workingOn')} />
-            <NowRow
-              label={t('readingLabel')}
-              value={ (
-                  <em className="font-serif italic text-important">{t('reading')}</em>
-                )
-              }
-            />
-            <NowRow label={t('buildingLabel')} value={t('building')} />
-          </dl>
+          <RevealStagger as="dl" className="flex flex-col divide-y divide-foreground/10 border-y border-foreground/10" stagger={0.08}>
+            <RevealItem>
+              <NowRow label={t('workingOnLabel')} value={t('workingOn')} />
+            </RevealItem>
+            <RevealItem>
+              <NowRow
+                label={t('readingLabel')}
+                value={ (
+                    <em className="font-serif italic text-important">{t('reading')}</em>
+                  )
+                }
+              />
+            </RevealItem>
+            <RevealItem>
+              <NowRow label={t('buildingLabel')} value={t('building')} />
+            </RevealItem>
+          </RevealStagger>
 
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }
