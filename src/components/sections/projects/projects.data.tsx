@@ -88,7 +88,6 @@ export const projects: Project[] = [
     ],
     categories: ['perso'],
     year: '2026',
-    links: [{ kind: 'website', href: 'https://www.dependant.tv' }],
     featured: true,
   },
   {
