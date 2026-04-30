@@ -105,7 +105,7 @@ export default function Featured() {
             <RevealStagger className='flex flex-col gap-3 flex-1 justify-between' stagger={0.1}>
                 <RevealItem className='flex items-center justify-between gap-3 flex-wrap mb-5'>
                   <h3 className='font-serif text-[22px]'>My Shelf</h3>
-                  <Button href="#" variant="primary">{t('ctaShowProfile')}</Button>
+                  {/* <Button href="#" variant="primary">{t('ctaShowProfile')}</Button> */}
                 </RevealItem>
                 <div className="flex flex-col gap-5">
                   {paragraphs.map((p, i) => (
@@ -155,9 +155,9 @@ export default function Featured() {
                     <Button href="/projects/my-shelf" variant='primary'>
                 {t('ctaShowMore')}
                  </Button>
-                 <div>
+                 <div className=''>
                     {buttonsData.map((button, index) => (
-                        <Button key={index} href={button.url || '#'} variant="outline">
+                        <Button key={index} href={button.url || '#'} variant="outline" aria-disabled={!button.url} className='aria-disabled:opacity-50 aria-disabled:pointer-events-none'>
                             <span className='text-lg transition-transform duration-300 group-hover:scale-110'>{button.logo}</span>
                             {button.name}
                         </Button>
