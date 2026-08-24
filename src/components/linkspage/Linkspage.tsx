@@ -45,7 +45,6 @@ export default function Linkspage() {
       desc: t("myshelfDesc"),
       stores: { apple: "", google: "" },
     },
-    { title: t("collection"), desc: t('collectionDesc'), url: "https://www.amazon.fr/Relations-textuelles-Bryan-Taylor-Houblon/dp/B0GYQJYBBL/ref=sr_1_1?crid=281GUCD8313DO&dib=eyJ2IjoiMSJ9.st7xVaMmLOH4JiFZTeQKYjZv5disiC7T_g_hzgap5Gj4Z70lDkB45P2TddOEtmgr0Fb1r9XM6rAGs-GPJICNQK_NTlRTM8w5wWGQ5qtz46DW7cQYdGGn6MnIdsdq7JHRan7DTCuL2e6gVo0FEHeU9km2WCFeod-OU0itxQv97T_UkXtS48rqc2H2qREK6_Ry.xLKhkX2wALQ2ZJx3qDRwB09qnG3StEoyOfhRZnXx3qY&dib_tag=se&keywords=relations+textuelles&qid=1777493730&sprefix=%2Caps%2C523&sr=8-1" },
   ];
 
   return (
@@ -76,7 +75,6 @@ export default function Linkspage() {
             .filter((s) => s.url)
             .map(({ Icon, label, url }) => (
               <RevealItem as="li" key={label}>
-               <h4></h4>
                 <a
                   href={url}
                   target="_blank"
