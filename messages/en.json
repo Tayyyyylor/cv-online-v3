@@ -60,7 +60,9 @@
                     "Bucket S3"
                 ],
                 "links": {
-                    "website": "Site web"
+                    "website": "Site web",
+                    "appStore": "App Store",
+                    "googlePlay": "Google Play Store"
                 }
             },
               "dependant-tv": {

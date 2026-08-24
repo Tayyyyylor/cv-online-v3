@@ -1,10 +1,10 @@
 import { SiAppstore, SiBetterauth, SiBun, SiCloudflare, SiDocker, SiExpo, SiGoogleplay, SiNestjs, SiPostgresql, SiPrisma, SiReact, SiTailwindcss, SiTurborepo } from '@icons-pack/react-simple-icons'
-import Image from 'next/image'
 import Title from '../atoms/Title'
 import Badge from '../atoms/Badge'
 import Button from '../atoms/Button'
 import { useTranslations } from 'next-intl'
 import Reveal, { RevealItem, RevealStagger } from '../atoms/Reveal'
+import PhoneMockup from '../atoms/PhoneMockup'
 
     const frontStackData = [
         {
@@ -70,12 +70,12 @@ import Reveal, { RevealItem, RevealStagger } from '../atoms/Reveal'
      const buttonsData = [
         {
             logo: <SiAppstore />,
-            url: "",
+            url: "https://apps.apple.com/us/app/myshelf/id6766835303",
             name: "App Store"
         },
         {
             logo: <SiGoogleplay />,
-            url: "",
+            url: "https://play.google.com/store/apps/details?id=app.myshelfapp",
             name: "Play Store"
         }
     ]
@@ -100,7 +100,11 @@ export default function Featured() {
         </Reveal>
         <section className='flex flex-col items-center lg:flex-row gap-6'>
             <Reveal className='flex-1' x={-30} y={0} duration={0.9}>
-              <Image src="/toto.png" width={500} height={500} alt='' className='w-full' loading="eager"/>
+               <PhoneMockup
+          videoSrc="/pres.mp4"
+          poster="/pres-poster.jpg"
+          priority
+        />
             </Reveal>
             <RevealStagger className='flex flex-col gap-3 flex-1 justify-between' stagger={0.1}>
                 <RevealItem className='flex items-center justify-between gap-3 flex-wrap mb-5'>

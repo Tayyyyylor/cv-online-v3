@@ -20,7 +20,7 @@ export default function Contact() {
 
   const t = useTranslations("Contact")
    const currentLocale = useLocale();
-  const email = "bryan.houblon@icloud.com"
+  const email = "devbryan@proton.me"
 
   return (
     <section id="contact" className="w-full px-3 py-24 lg:py-32">

@@ -24,7 +24,7 @@ import type { ReactNode } from 'react'
 
 export type ProjectCategory = 'all' | 'clients' | 'perso' | 'fun'
 
-export type ProjectLinkKind = 'repo' | 'website' | 'demo' | 'other'
+export type ProjectLinkKind = 'repo' | 'website' | 'demo' | 'other' | 'appStore' | 'googlePlay'
 
 export type ProjectLink = {
   href: string
@@ -36,10 +36,19 @@ export type ProjectStackItem = {
   icon: ReactNode
 }
 
+/** Aperçu affiché dans un mockup de téléphone (projets mobiles). */
+export type ProjectPhoneMedia = {
+  videoSrc?: string
+  imageSrc?: string
+  poster?: string
+}
+
 export type Project = {
   id: string
   logo?: string
   image?: string
+  /** Prend le pas sur `image` dans le détail : rendu dans un mockup iPhone. */
+  phone?: ProjectPhoneMedia
   mockups?: string[]
   stack: ProjectStackItem[]
   detailedStack: ProjectStackItem[]
@@ -62,8 +71,11 @@ export function useProjectFilters(): { id: ProjectCategory; label: string }[] {
 export const projects: Project[] = [
   {
     id: 'my-shelf',
-    logo: "/toto.png",
-    image: '/toto.png',
+    logo: "/myshelf-logo.png",
+    phone: {
+      videoSrc: '/pres.mp4',
+      poster: '/pres-poster.jpg',
+    },
     stack: [
       { name: 'Expo', icon: <SiNextdotjs /> },
       { name: 'React Native', icon: <SiSass /> },
@@ -88,7 +100,7 @@ export const projects: Project[] = [
     ],
     categories: ['perso'],
     year: '2026',
-    featured: true,
+    links: [{ kind: 'appStore', href: 'https://apps.apple.com/us/app/myshelf/id6766835303'}, { kind: 'googlePlay', href: 'https://play.google.com/store/apps/details?id=app.myshelfapp'}],
   },
   {
     id: 'dependant-tv',
