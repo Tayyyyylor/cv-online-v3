@@ -43,7 +43,7 @@ export default function Linkspage() {
     {
       title: t("myshelf"),
       desc: t("myshelfDesc"),
-      stores: { apple: "", google: "" },
+      stores: { apple: "https://apps.apple.com/us/app/myshelf/id6766835303", google: "https://play.google.com/store/apps/details?id=app.myshelfapp" },
     },
   ];
 
