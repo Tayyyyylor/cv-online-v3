@@ -2,10 +2,11 @@
 
 import Image from 'next/image'
 import { ExternalLink, Globe } from 'lucide-react'
-import { SiGithub } from '@icons-pack/react-simple-icons'
+import { SiAppstore, SiGithub, SiGoogleplay } from '@icons-pack/react-simple-icons'
 import { useTranslations } from 'next-intl'
 import type { Project, ProjectLinkKind } from './projects.data'
 import Button from '@/components/atoms/Button'
+import PhoneMockup from '@/components/atoms/PhoneMockup'
 import useMobile from '@/hooks/useMobile'
 
 const linkIcon: Record<ProjectLinkKind, React.ComponentType<{ className?: string }>> = {
@@ -13,6 +14,8 @@ const linkIcon: Record<ProjectLinkKind, React.ComponentType<{ className?: string
   website: Globe,
   demo: ExternalLink,
   other: ExternalLink,
+  appStore: SiAppstore,
+  googlePlay: SiGoogleplay
 }
 
 export default function ProjectDetail({ project }: { project: Project }) {
@@ -44,17 +47,28 @@ export default function ProjectDetail({ project }: { project: Project }) {
           </div>
         </div>
 
-        {project.image && (
-          <div className="relative aspect-[16/9] w-full overflow-hidden ">
-            <Image
-              src={project.image}
-              alt={name}
-              fill
-              sizes="(min-width: 1024px) 720px, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
+        {project.phone ? (
+          <PhoneMockup
+            videoSrc={project.phone.videoSrc}
+            imageSrc={project.phone.imageSrc}
+            poster={project.phone.poster}
+            alt={name}
+            placeholderLabel={name}
+            priority
+          />
+        ) : (
+          project.image && (
+            <div className="relative aspect-[16/9] w-full overflow-hidden ">
+              <Image
+                src={project.image}
+                alt={name}
+                fill
+                sizes="(min-width: 1024px) 720px, 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          )
         )}
       </header>
 
