@@ -1,0 +1,415 @@
+@property --page-w {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+@property --page-h {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+@property --rim {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+/* La scène impose la taille du livre : la double page tient toujours dans l'écran. */
+.stage {
+  container-type: size;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.scene {
+  --tab-room: 44px;
+  --ratio-max: 1.4;
+  --closed-zoom: 1;
+  --rim: clamp(4px, 1.1cqmin, 9px);
+  --page-w: min(50cqw - var(--rim) - var(--tab-room), 660px, (100cqh - 2 * var(--rim)) / 1.35);
+  --page-h: clamp(var(--page-w) * 1.35, 100cqh - 2 * var(--rim), var(--page-w) * var(--ratio-max));
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: calc(var(--page-w) * 6);
+  perspective-origin: 50% 42%;
+}
+
+@container (max-aspect-ratio: 1 / 1) {
+  .scene {
+    --ratio-max: 1.7;
+  }
+}
+
+@container (max-width: 700px) {
+  .scene {
+    --tab-room: 0px;
+  }
+}
+
+@container (max-width: 700px) and (max-aspect-ratio: 1 / 1) {
+  .scene {
+    --ratio-max: 2.25;
+    --closed-zoom: 1.6;
+  }
+}
+
+.book {
+  --closed: 1;
+  --shift: -0.5;
+  --sheets-left: 0;
+  --sheets-right: 0;
+  --thick-left: 0;
+  --thick-right: 1;
+  --zoom: calc(1 + var(--closed) * (var(--closed-zoom) - 1));
+  --sheet-edge: calc(var(--rim) / 6.5);
+  position: relative;
+  width: calc(2 * (var(--page-w) + var(--rim)));
+  height: calc(var(--page-h) + 2 * var(--rim));
+  transform:
+    translateX(calc(var(--shift) * (var(--page-w) + var(--rim)) * var(--zoom)))
+    scale(var(--zoom))
+    rotateX(calc(var(--closed) * 5deg))
+    rotateY(calc(var(--shift) * 12deg))
+    rotateZ(calc(var(--shift) * 3deg));
+  touch-action: pinch-zoom;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  cursor: grab;
+}
+
+.book[data-turning] {
+  transform-style: preserve-3d;
+  cursor: grabbing;
+}
+
+.book :is(a, button, video) {
+  cursor: pointer;
+}
+
+.book img {
+  -webkit-user-drag: none;
+}
+
+.leaf {
+  position: absolute;
+  top: var(--rim);
+  left: 50%;
+  width: var(--page-w);
+  height: var(--page-h);
+  transform-origin: 0 50%;
+  visibility: hidden;
+}
+
+.leaf[data-shown='true'],
+.book[data-turning] .board {
+  visibility: visible;
+}
+
+.board {
+  top: 0;
+  width: calc(var(--page-w) + var(--rim));
+  height: calc(var(--page-h) + 2 * var(--rim));
+  border-radius: 1px 4px 4px 1px;
+  background: var(--color-wine);
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-paper);
+}
+
+.board > .front,
+.board > .back {
+  border-radius: inherit;
+  background: var(--color-wine);
+}
+
+/* Le papier de garde est collé à la planche : le bordeaux dépasse autour. */
+.board[data-board='front'] > .back {
+  padding: var(--rim) 0 var(--rim) var(--rim);
+  border-radius: 4px 1px 1px 4px;
+}
+
+.board[data-board='back'] > .front {
+  padding: var(--rim) var(--rim) var(--rim) 0;
+}
+
+.leaf[data-rest='right'] > .back,
+.leaf[data-rest='left'] > .front {
+  visibility: hidden;
+}
+
+.leaf[data-rest='left'] {
+  transform: translateX(-100%);
+}
+
+.leaf:not([data-rest]) {
+  transform-style: preserve-3d;
+}
+
+.leaf:not([data-rest]) > .front,
+.leaf:not([data-rest]) > .back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.leaf:not([data-rest]) > .front {
+  transform: translateZ(calc(var(--rim) / 2));
+}
+
+.leaf:not([data-rest]) > .back {
+  transform: rotateY(180deg) translateZ(calc(var(--rim) / 2));
+}
+
+/* Tranche de la planche, visible uniquement quand elle tourne. */
+.edge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  width: var(--rim);
+  height: 100%;
+  background: #4a222d;
+  transform: translateX(50%) rotateY(90deg);
+}
+
+.leaf:not([data-rest]) > .edge {
+  display: block;
+}
+
+.board[data-rest] {
+  box-shadow: 0 calc(var(--rim) * 2) calc(var(--rim) * 5) calc(var(--rim) * -1) #3c2a2070;
+}
+
+.front > section::after,
+.back > section::before {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+}
+
+/* Le papier plonge vers le dos du livre. */
+.leaf:not(.board) > .front > section::after,
+.board[data-board='back'] > .front > section::after {
+  background: linear-gradient(90deg, #5e4a2e45, #a48d6318 3.5%, #ffffff00 13%);
+}
+
+.leaf:not(.board) > .back > section::before,
+.board[data-board='front'] > .back > section::before {
+  background: linear-gradient(270deg, #5e4a2e55, #a48d6322 3%, #ffffff00 12%);
+}
+
+/* Tranche des feuilles posées sur chaque planche, visible dans le bord bordeaux. */
+.fanLeft,
+.fanRight {
+  position: absolute;
+  top: var(--rim);
+  z-index: 1;
+  width: var(--page-w);
+  height: var(--page-h);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.fanRight {
+  --stack: calc(var(--sheets-right) * var(--sheet-edge));
+  left: 50%;
+}
+
+.fanLeft {
+  --stack: calc(var(--sheets-left) * var(--sheet-edge));
+  right: 50%;
+}
+
+.fanLeft::before,
+.fanRight::before,
+.fanLeft::after,
+.fanRight::after {
+  position: absolute;
+  content: '';
+}
+
+.fanLeft::before,
+.fanRight::before {
+  top: 0;
+  bottom: calc(-1 * var(--stack));
+  width: var(--stack);
+  background: repeating-linear-gradient(90deg, var(--book-edge-dark) 0 .5px, var(--book-edge-light) .5px var(--sheet-edge));
+}
+
+.fanRight::before {
+  left: 100%;
+}
+
+.fanLeft::before {
+  right: 100%;
+}
+
+.fanLeft::after,
+.fanRight::after {
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: var(--stack);
+  background: repeating-linear-gradient(180deg, var(--book-edge-dark) 0 .5px, var(--book-edge-light) .5px var(--sheet-edge));
+}
+
+.book[data-left-board='true'] .fanLeft,
+.book[data-right-board='true'] .fanRight {
+  visibility: visible;
+}
+
+/* Épaisseur du livre fermé, vue depuis la caméra inclinée. */
+.thickLeft,
+.thickRight {
+  position: absolute;
+  top: calc(100% - 1px);
+  width: calc(var(--page-w) + var(--rim));
+  border-radius: 0 0 3px 3px;
+  background: repeating-linear-gradient(0deg, var(--book-edge-dark) 0 1px, var(--book-edge-light) 1px 2px);
+  box-shadow: inset 0 calc(var(--rim) * -.34) 0 #4a222d;
+  pointer-events: none;
+}
+
+.thickRight {
+  left: 50%;
+  height: calc(var(--thick-right) * var(--rim) * 1.5);
+}
+
+.thickLeft {
+  right: 50%;
+  height: calc(var(--thick-left) * var(--rim) * 1.5);
+}
+
+.castLeft,
+.castRight {
+  position: absolute;
+  top: var(--rim);
+  z-index: 40;
+  width: var(--page-w);
+  height: var(--page-h);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.castRight {
+  left: 50%;
+  background: linear-gradient(90deg, #2a1c10 0%, #2a1c1000 100%);
+  transform-origin: 0 50%;
+}
+
+.castLeft {
+  right: 50%;
+  background: linear-gradient(270deg, #2a1c10 0%, #2a1c1000 100%);
+  transform-origin: 100% 50%;
+}
+
+.sheets {
+  position: absolute;
+  top: var(--rim);
+  left: 50%;
+  z-index: 50;
+  width: var(--page-w);
+  height: var(--page-h);
+  pointer-events: none;
+  transform: translateZ(1px);
+  transform-style: preserve-3d;
+}
+
+.sheet {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform-origin: 0 50%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.stripFront,
+.stripBack {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-paper);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.stripBack {
+  transform: rotateY(180deg);
+}
+
+.stripShade {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  transform: translateZ(0);
+}
+
+/* Sans JavaScript, les pages s'affichent à plat, les unes à la suite des autres. */
+@media (scripting: none) {
+  .stage {
+    container-type: normal;
+    height: auto;
+  }
+
+  .scene {
+    position: static;
+    display: block;
+    perspective: none;
+  }
+
+  .book {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    justify-self: stretch;
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .leaf {
+    display: contents;
+    visibility: visible;
+  }
+
+  .front,
+  .back {
+    position: relative;
+    height: 660px;
+    padding: 0 !important;
+    transform: none !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+  }
+
+  .edge,
+  .thickLeft,
+  .thickRight,
+  .fanLeft,
+  .fanRight,
+  .castLeft,
+  .castRight,
+  .sheets {
+    display: none;
+  }
+}

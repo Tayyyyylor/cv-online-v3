@@ -27,8 +27,18 @@ export type ProjectCategory = 'all' | 'clients' | 'perso' | 'fun'
 export type ProjectLinkKind = 'repo' | 'website' | 'demo' | 'other' | 'appStore' | 'googlePlay'
 
 export type ProjectLink = {
-  href: string
   kind: ProjectLinkKind
+  /** Absent : le lien n'existe pas encore, le bouton affiche « Bientôt ». */
+  href?: string
+}
+
+/** Palette de la fiche : chaque projet a son propre univers, quel que soit le thème du site. */
+export type ProjectTheme = {
+  background: string
+  surface: string
+  foreground: string
+  muted: string
+  accent: string
 }
 
 export type ProjectStackItem = {
@@ -38,6 +48,7 @@ export type ProjectStackItem = {
 
 /** Aperçu affiché dans un mockup de téléphone (projets mobiles). */
 export type ProjectPhoneMedia = {
+  showNotch?: boolean
   videoSrc?: string
   imageSrc?: string
   poster?: string
@@ -50,12 +61,14 @@ export type Project = {
   /** Prend le pas sur `image` dans le détail : rendu dans un mockup iPhone. */
   phone?: ProjectPhoneMedia
   mockups?: string[]
+  previewUsesDemoData?: boolean
   stack: ProjectStackItem[]
   detailedStack: ProjectStackItem[]
   categories: Exclude<ProjectCategory, 'all'>[]
   year: string
   links?: ProjectLink[]
   featured?: boolean
+  theme: ProjectTheme
 }
 
 export function useProjectFilters(): { id: ProjectCategory; label: string }[] {
@@ -77,10 +90,10 @@ export const projects: Project[] = [
       poster: '/pres-poster.jpg',
     },
     stack: [
-      { name: 'Expo', icon: <SiNextdotjs /> },
-      { name: 'React Native', icon: <SiSass /> },
+      { name: 'Expo', icon: <SiExpo /> },
+      { name: 'React Native', icon: <SiReact /> },
       { name: 'TypeScript', icon: <SiTypescript /> },
-      { name: 'Strapi', icon: <SiStrapi /> },
+      { name: 'NestJS', icon: <SiNestjs /> },
     ],
     detailedStack: [
        { name: 'Expo', icon: <SiExpo /> },
@@ -99,8 +112,47 @@ export const projects: Project[] = [
 
     ],
     categories: ['perso'],
+    featured: true,
     year: '2026',
-    links: [{ kind: 'appStore', href: 'https://apps.apple.com/us/app/myshelf/id6766835303'}, { kind: 'googlePlay', href: 'https://play.google.com/store/apps/details?id=app.myshelfapp'}],
+    links: [
+      { kind: 'website', href: 'https://myshelfapp.app' },
+      { kind: 'appStore', href: 'https://apps.apple.com/us/app/myshelf/id6766835303' },
+      { kind: 'googlePlay', href: 'https://play.google.com/store/apps/details?id=app.myshelfapp' },
+    ],
+    theme: { background: '#121331', surface: '#1d1f4a', foreground: '#fdefd9', muted: '#bdb7cc', accent: '#f2b866' },
+  },
+  {
+    id: 'noomi',
+    logo: '/noomi-logo-dark.svg',
+    phone: { imageSrc: '/noomi-home.png', showNotch: false },
+    mockups: ['/noomi-question.png', '/noomi-mood.png'],
+    previewUsesDemoData: true,
+    stack: [
+      { name: 'Expo', icon: <SiExpo /> },
+      { name: 'React Native', icon: <SiReact /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'NestJS', icon: <SiNestjs /> },
+    ],
+    detailedStack: [
+      { name: 'Expo', icon: <SiExpo /> },
+      { name: 'React Native', icon: <SiReact /> },
+      { name: 'TypeScript', icon: <SiTypescript /> },
+      { name: 'Next.js', icon: <SiNextdotjs /> },
+      { name: 'NestJS', icon: <SiNestjs /> },
+      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+      { name: 'Prisma', icon: <SiPrisma /> },
+      { name: 'Better Auth', icon: <SiBetterauth /> },
+      { name: 'Turborepo', icon: <SiTurborepo /> },
+    ],
+    categories: ['perso'],
+    featured: true,
+    year: '2026',
+    links: [
+      { kind: 'website', href: 'https://noomiapp.com' },
+      { kind: 'appStore' },
+      { kind: 'googlePlay', href: 'https://play.google.com/store/apps/details?id=com.noomiapp.app' },
+    ],
+    theme: { background: '#17131f', surface: '#251d36', foreground: '#fff8f0', muted: '#bcb3cf', accent: '#a08bff' },
   },
   {
     id: 'dependant-tv',
@@ -124,6 +176,7 @@ export const projects: Project[] = [
     categories: ['clients'],
     year: '2023',
     links: [{ kind: 'website', href: 'https://www.dependant.tv' }],
+    theme: { background: '#100c0e', surface: '#1f171b', foreground: '#f6eef0', muted: '#b4a5aa', accent: '#f08fa8' },
   },
   {
     id: 'ali-bensaali-production',
@@ -142,6 +195,7 @@ export const projects: Project[] = [
     categories: ['clients'],
     year: '2024',
       links: [{ kind: 'website', href: 'https://alibensaali.com/' }],
+    theme: { background: '#0f1114', surface: '#1b1e24', foreground: '#f0f0ee', muted: '#a6aab0', accent: '#d9a45b' },
   },
   {
     id: 'labcom-optimaa',
@@ -165,6 +219,7 @@ export const projects: Project[] = [
     categories: ['clients'],
     year: '2025',
     links: [{ kind: 'website', href: 'https://www.labcom-optimaa.com' }],
+    theme: { background: '#0c1b2e', surface: '#152c48', foreground: '#eef5fb', muted: '#a2b8cb', accent: '#4fb3e8' },
   },
   {
     id: 'cocoa-bio',
@@ -183,6 +238,7 @@ export const projects: Project[] = [
     categories: ['clients'],
     year: '2025',
     links: [{ kind: 'website', href: 'https://www.cocoa-bio.fr' }],
+    theme: { background: '#0e1c1a', surface: '#182d2a', foreground: '#edf6f2', muted: '#a1bdb4', accent: '#6fd3b0' },
   },
   {
     id: 'interlude-decors',
@@ -203,9 +259,15 @@ export const projects: Project[] = [
     categories: ['clients'],
     year: '2025',
     links: [{ kind: 'website', href: 'https://www.agatheroger.com' }],
+    theme: { background: '#1a1411', surface: '#2b211b', foreground: '#f7efe6', muted: '#bfad9b', accent: '#e0a878' },
   },
 ]
 
 export function getProjectById(id: string): Project | undefined {
   return projects.find((p) => p.id === id)
+}
+
+export function getNextProject(id: string): Project {
+  const index = projects.findIndex((p) => p.id === id)
+  return projects[(index + 1) % projects.length]
 }

@@ -19,6 +19,8 @@ export function Providers({ children, messages, locale }: Props) {
       defaultTheme="dark"
       enableSystem
       disableTransitionOnChange
+      // Changer de langue remonte ce composant : côté client, le script ne doit plus s'exécuter.
+      scriptProps={typeof window === 'undefined' ? undefined : { type: 'application/json' }}
     >
       <NextIntlClientProvider messages={messages} locale={locale} timeZone={timeZone}>
         {children}

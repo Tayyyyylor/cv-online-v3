@@ -35,6 +35,7 @@ type Props = {
   /** À passer sur les mockups au-dessus de la ligne de flottaison (hero). */
   priority?: boolean;
   size?: keyof typeof SIZES;
+  showNotch?: boolean;
   className?: string;
 };
 
@@ -46,6 +47,7 @@ export default function PhoneMockup({
   placeholderLabel,
   priority = false,
   size = "md",
+  showNotch = true,
   className = "",
 }: Props) {
   return (
@@ -60,7 +62,7 @@ export default function PhoneMockup({
       {/* Écran */}
       <div className="relative h-full w-full overflow-hidden rounded-[2.15rem] bg-background">
         {/* Dynamic island */}
-        <div className="absolute left-1/2 top-2.5 z-20 h-[26px] w-[84px] -translate-x-1/2 rounded-full bg-black" />
+        {showNotch && <div aria-hidden="true" className="absolute left-1/2 top-2.5 z-20 h-[26px] w-[84px] -translate-x-1/2 rounded-full bg-black" />}
 
         {videoSrc ? (
           <LazyVideo
@@ -74,7 +76,7 @@ export default function PhoneMockup({
             src={imageSrc}
             alt={alt}
             fill
-            priority={priority}
+            preload={priority}
             className="object-cover"
             sizes={IMAGE_SIZES}
           />
@@ -130,7 +132,7 @@ function LazyVideo({
           src={poster}
           alt={alt}
           fill
-          priority={priority}
+          preload={priority}
           className="object-cover"
           sizes={IMAGE_SIZES}
         />

@@ -1,11 +1,11 @@
 {
-   "Navbar": {
+    "Navbar": {
         "about": "About me",
         "projects": "Projects",
         "contact": "Contact",
         "featured": "Featured"
     },
-     "Hero": {
+    "Hero": {
         "job": "Full stack developer - Paris",
         "activity1": "Code",
         "and": "and",
@@ -29,12 +29,12 @@
         "title": "Featured",
         "descTitle": "Combining <important>development</important> and <important>literature</important>",
         "ctaShowProfile": "Show my profile",
-         "paragraph1": "I've developed a mobile app for tracking and rating readings. Each user can search for or scan a book, rate it, leave a comment, manage their reading status, and much more !",
+        "paragraph1": "I've developed a mobile app for tracking and rating readings. Each user can search for or scan a book, rate it, leave a comment, manage their reading status, and much more !",
         "paragraph2": "The unique feature of this app is that your profile page reflects your reading habits. You can create different bookshelves, add as many books as you want, and add a description.",
         "paragraph3": "You can arrange the bookshelves however you like on your profile, which also displays your reading goal and what you're currently reading. All the information you need to let your friends know your current reading mood !",
         "paragraph4": "",
         "titleStack": "Technical stack",
-        "ctaShowMore":"See more"
+        "ctaShowMore": "See more"
     },
     "Projects": {
         "title": "projects",
@@ -45,100 +45,183 @@
             "perso": "Personal",
             "fun": "For fun"
         },
+        "detail": {
+            "story": "The story",
+            "highlights": "What it does",
+            "stack": "The stack",
+            "technical": "Under the hood",
+            "previews": "Inside the app",
+            "previewAlt": "{name}, preview {number}",
+            "demoCaption": "App preview · demonstration data",
+            "year": "Year",
+            "role": "Role",
+            "type": "Type",
+            "client": "Client website",
+            "personal": "Personal project",
+            "scroll": "Scroll",
+            "next": "Next project",
+            "links": {
+                "website": "Website",
+                "appStore": "App Store",
+                "googlePlay": "Google Play",
+                "soon": "Soon"
+            }
+        },
         "items": {
             "my-shelf": {
-                "name": "My shelf",
-                "description": "Site vitrine pour la boite de production dependant",
+                "name": "MyShelf",
+                "description": "A personal bookshelf to track and share your reading.",
                 "longDescription": [
-                    "Site vitrine réalisé pour un client dans le secteur de l'audiovisuel.",
-                    "Focus sur la mise en avant du contenu produits, type vidéos et photos. Optimisation des requêtes, SEO et gestion vidéos.",
-                    "Utilisation de Strapi couplé à un VPS pour la gestion du changement de contenu de manière simple par le client."
+                    "With this project, I tried to bring together my two passions: reading and code. I was missing a way to track the books I'd read and everything that goes with my everyday life as a reader.",
+                    "I first turned to Goodreads, StoryGraph and Babelio, but none of them suited me or had features that really matched what I needed.",
+                    "So I decided to build my own app! Simple reading tracking, an efficient search, easy reviews and ratings. It also works as an index of my reading and, above all, lets me customise my profile in depth and share it with anyone."
                 ],
-                "role": "Développeur",
+                "role": "Creator",
                 "highlights": [
-                    "Dashboard admin",
-                    "Bucket S3"
+                    "Book search by scanning",
+                    "Custom bookshelves",
+                    "Ratings and reviews",
+                    "Profile customisation",
+                    "Dead-simple sharing",
+                    "Current reads tracking",
+                    "Reading goal tracking"
                 ],
-                "links": {
-                    "website": "Site web",
-                    "appStore": "App Store",
-                    "googlePlay": "Google Play Store"
-                }
+                "tagline": "A reading tracker, made by a reader.",
+                "technical": [
+                    "Everything lives in a Turborepo monorepo run with Bun: the Expo mobile app, the Next.js website, an admin and the NestJS API. Shared packages hold the types, validation and API clients, so mobile and web speak the same language as the server.",
+                    "Book records combine ISBNdb, Open Library and the BnF to cover as many editions as possible. PostgreSQL, Prisma and Redis handle the data, Cloudflare R2 the images, and Sentry and Grafana tell me when something breaks."
+                ]
             },
-              "dependant-tv": {
-                "name": "Dependant.tv",
-                "description": "Showcase website for the dependant production company",
+            "noomi": {
+                "name": "Noomi",
+                "description": "A personality test that brings a little companion to life.",
                 "longDescription": [
-                    "Showcase website created for a client in the audiovisual sector.",
-                    "Focus on showcasing product content, such as videos and photos. Optimization of search queries, SEO, and video management.",
-                    "Using Strapi coupled with a VPS for easy content change management by the client."
+                    "Noomi is a playful self-discovery tool. It starts with a twenty-question quiz inspired by the Big Five, the most studied personality model. The answers sketch a portrait, and that portrait takes the shape of a unique creature: your Noomi.",
+                    "It then grows with you. One question a day refines the portrait, “My weather” keeps track of your mood, and each habit grows a plant in its garden. Nothing is lost on days when you do nothing: the idea is to move at your own pace, not to feel guilty.",
+                    "It isn't a diagnosis, and the app says so clearly. It's a light way to know yourself better, with a companion that makes you want to come back."
+                ],
+                "role": "Creator",
+                "highlights": [
+                    "20-question quiz inspired by the Big Five",
+                    "A unique creature generated from your portrait",
+                    "One question a day to refine that portrait",
+                    "“My weather”: the day as a timeline, the week as a forecast, the month as a calendar",
+                    "A garden that grows with your habits, with nothing lost on days off"
+                ],
+                "tagline": "A personality test that becomes a companion.",
+                "technical": [
+                    "The heart of the project is a framework-free TypeScript package: the quiz, the scoring and the creature generator are written as pure functions. Web, mobile and API import the same code, so they all produce the same Noomi.",
+                    "No creature is drawn by hand. Each personality trait sets an organ, and a seed makes the drawing unique and reproducible. Rendering is locked by tests on 624 reference SVGs, so an update never changes someone's Noomi.",
+                    "Around that: Expo and React Native for the app, Next.js for the website, NestJS with Better Auth, Prisma and PostgreSQL for the API, all in a Turborepo monorepo."
+                ]
+            },
+            "dependant-tv": {
+                "name": "Dependant.tv",
+                "description": "The website of the production company Dependant, built to put their films and photos front and centre.",
+                "longDescription": [
+                    "Dependant is a production company: commercials, music videos, photography. For them the website is a showreel, so the images had to come before everything else.",
+                    "Projects are sorted by type, with dedicated pages for directors and photographers. Films start quickly without weighing the pages down, and the site exists in French and English.",
+                    "The team is autonomous: they add a project, a director or a photographer and set the order of the lists from their CMS, without going through me."
                 ],
                 "role": "Developer",
                 "highlights": [
-                    "Dashboard admin",
-                    "Bucket S3"
+                    "Video streaming through Mux",
+                    "Strapi CMS with video upload from the admin",
+                    "Separate staging and production",
+                    "Bilingual French and English website",
+                    "Director and photographer pages"
                 ],
-                "links": {
-                    "website": "Website"
-                }
+                "field": "Film production",
+                "tagline": "A production company's website, where the films come first.",
+                "technical": [
+                    "Next.js with next-intl for the two languages, Mux to stream the videos and GSAP for the animations.",
+                    "The CMS is a Strapi hosted on a VPS: PostgreSQL for the content, S3 storage for the files and a Mux plugin to upload videos from the admin. Each environment has its own process, database and files, so everything can be checked before going live."
+                ]
             },
             "ali-bensaali-production": {
                 "name": "Ali Bensaali Production",
-                "description": "Website showcase for Ali Bensaali, a freelance videographer",
+                "description": "The portfolio of Ali Bensaali, an independent director and cinematographer, built around his two crafts.",
                 "longDescription": [
-                    "Website showcase for a freelance videographer",
-                    "A need to showcase one's work quickly and in an optimized way."
+                    "Ali Bensaali is an independent director and cinematographer. He needed a website that shows his work quickly and at full size, without needing me for every new film.",
+                    "The site is built around his two crafts, with one entry for directing and one for cinematography. Films start right away and pages stay light despite the amount of video."
                 ],
                 "role": "Developer",
                 "highlights": [
-                    "Dashboard admin"
+                    "Two entries: directing and cinematography",
+                    "Video streaming through Mux",
+                    "Images optimised by Cloudinary",
+                    "Content managed by Ali from Contentful"
                 ],
-                "links": {
-                    "website": "Website"
-                }
+                "field": "Freelance videographer",
+                "tagline": "A director's portfolio, all in images.",
+                "technical": [
+                    "Next.js for the website, GSAP for motion and Mux for the videos. Images go through Cloudinary, which serves the right format for each screen.",
+                    "Contentful acts as the back office: Ali adds his projects himself, without touching the code."
+                ]
             },
             "labcom-optimaa": {
                 "name": "Labcom Optimaa",
-                "description": "Website for CNRS scientists",
+                "description": "The website of LabCom OPTIMAA, a joint lab between Z3DLAB and the CNRS's LSPM on additive manufacturing.",
                 "longDescription": [
-                    "A website for monitoring and presenting a scientific project",
-                    "A need for daily content updates, therefore implementation of an admin dashboard via Strapi"
+                    "OPTIMAA is a joint laboratory between the company Z3DLAB and the LSPM, a CNRS lab. It works on metal alloys made through additive manufacturing.",
+                    "The website presents the project, the team and the news, and it moves at the pace of research: the researchers had to be able to publish by themselves, sometimes every day.",
+                    "So I set up an admin dashboard on Strapi for the news, and a bilingual website designed to stay readable on a very technical subject."
                 ],
                 "role": "Developer",
                 "highlights": [
-                    "Dashboard admin",
+                    "News published by the researchers",
+                    "Admin dashboard on Strapi",
+                    "Bilingual French and English website",
                     "CI/CD pipeline with automated deployment"
                 ],
-                "links": {
-                    "website": "Website"
-                }
+                "field": "Scientific research",
+                "tagline": "The showcase of a joint lab between industry and research.",
+                "technical": [
+                    "Next.js and next-intl for the website, Strapi with PostgreSQL for the content.",
+                    "A CI/CD pipeline deploys every update automatically, so the website stays current without any intervention."
+                ]
             },
             "cocoa-bio": {
                 "name": "Cocoa bio",
-                "description": "Website for CNRS scientists",
+                "description": "The website of the CoCoA-bio research project, on additive manufacturing of metal bio-implants.",
                 "longDescription": [
-                    "A website for monitoring and presenting a scientific project"
+                    "CoCoA-bio is a research project on additive manufacturing of metal bio-implants, run with Z3DLAB, LSPM, BIOCIS, ITODYS and URB2i.",
+                    "The website follows the project over time: summary, goals, results, publications, outlook and partners. The challenge was to make a very technical subject readable, with clear pages and just enough animation."
                 ],
                 "role": "Developer",
                 "highlights": [
-                    "Good SEO"
+                    "Complete presentation of a research project",
+                    "Publications and results",
+                    "Bilingual French and English website",
+                    "Strong organic search ranking"
                 ],
-                "links": {
-                    "website": "Website"
-                }
+                "field": "Scientific research",
+                "tagline": "A research project on metal bio-implants, presented online.",
+                "technical": [
+                    "Next.js and next-intl for the two languages, GSAP for scroll animations.",
+                    "The content rarely changes, so no CMS: fast, well-ranked pages."
+                ]
             },
             "interlude-decors": {
                 "name": "Interlude Decors",
-                "description": "Website showcasing Agathe Roger, creator of sets, models and 3D models",
+                "description": "The portfolio of Agathe Roger, who creates sets, models and 3D modelling.",
                 "longDescription": [
-                    "A need to showcase his work and the different areas"                ],
+                    "Agathe Roger creates sets, models and 3D modelling. Her work is very visual and spans several crafts, so the website had to show everything without getting lost.",
+                    "The site is organised by field: sets, models, stands and photography, with a downloadable résumé. Agathe adds her work herself from Contentful."
+                ],
                 "role": "Developer",
                 "highlights": [
-                    "Dashboard admin"
+                    "Four fields: sets, models, stands, photography",
+                    "Smooth image galleries",
+                    "Downloadable résumé",
+                    "Content managed by Agathe from Contentful"
                 ],
-                "links": {
-                    "website": "Website"
-                }
+                "field": "Sets & models",
+                "tagline": "The online portfolio of a set designer.",
+                "technical": [
+                    "Next.js and Tailwind for the website, GSAP and Swiper for the galleries.",
+                    "Contentful for the content and Cloudinary for the images, served at the right size for each screen."
+                ]
             }
         }
     },
@@ -151,14 +234,14 @@
         "paragraph2": "The front end is my playground, but I'm involved in the entire chain: back end, data, infrastructure.",
         "paragraph3": "Outside of the screen, I read a lot. Philosophy, essays, fiction. That's what motivated me to create MyShelf, a tool for my reading, not a social network.",
         "titleNow": "Right now",
-         "workingOnLabel": "I'm working on",
+        "workingOnLabel": "I'm working on",
         "readingLabel": "I'm reading",
         "buildingLabel": "I'm building",
         "workingOn": "The redesign of my portfolio.",
         "reading": "Ethics - Spinoza",
         "building": "An air quality sensor for my bedroom."
     },
-     "Contact": {
+    "Contact": {
         "line1": "Let's ",
         "line2": "talk.",
         "desc": "Have a project in mind, a question, or just want to discuss a book ? Write to me.",
@@ -171,5 +254,209 @@
         "myshelfDesc": "I built a reading tracker app ! Take a look!",
         "collection": "My poetry collection",
         "collectionDesc": "I published my poetry collection"
+    },
+    "Project": {
+        "backToBook": "Back to the book"
+    },
+    "Modal": {
+        "label": "Project page",
+        "close": "Back to the book"
+    },
+    "Book": {
+        "meta": {
+            "title": "Bryan Houblon - Full stack developer",
+            "description": "Portfolio of Bryan Houblon, a full stack developer in Paris: MyShelf, Noomi and websites built for clients."
+        },
+        "label": "Bryan Houblon’s notebook, interactive book",
+        "skip": "Skip to the book",
+        "resumeFile": "/English_CV_Bryan_HOUBLON.pdf",
+        "header": {
+            "identity": "Bryan Houblon, preface",
+            "job": "Full stack developer",
+            "links": "Useful links",
+            "otherLocale": "FR",
+            "switchLocale": "Lire en français",
+            "resume": "Résumé",
+            "contact": "Let’s talk",
+            "theme": "Change theme"
+        },
+        "nav": {
+            "chapters": "Book chapters",
+            "previous": "Previous page",
+            "next": "Turn the page",
+            "open": "Open the book",
+            "close": "Close the book",
+            "goToChapter": "Go to chapter {chapter}",
+            "cover": "The cover",
+            "backCover": "To be continued",
+            "status": "{place}, spread {page} of {total}",
+            "hint": "Swipe to turn the page"
+        },
+        "chapters": {
+            "preface": {
+                "label": "Preface"
+            },
+            "my-shelf": {
+                "label": "MyShelf",
+                "summary": "Track and share your reading."
+            },
+            "noomi": {
+                "label": "Noomi",
+                "summary": "A companion to go at your own pace."
+            },
+            "projects": {
+                "label": "Client projects",
+                "summary": "The websites I built for others.",
+                "short": "Clients"
+            },
+            "about": {
+                "label": "The author",
+                "summary": "A little about me.",
+                "short": "Author"
+            },
+            "contact": {
+                "label": "What’s next",
+                "short": "Next"
+            }
+        },
+        "cover": {
+            "kicker": "The notebook of",
+            "title": "Code,<br></br>books<br></br><em>& ideas.</em>",
+            "description": "The apps and websites I’ve built, to leaf through.",
+            "role": "Developer & reader",
+            "volume": "Vol. 01",
+            "ideas": "the ideas",
+            "code": "the code",
+            "curiosity": "the curiosity",
+            "caption": "a story in the making"
+        },
+        "welcome": {
+            "head": "A notebook of things built",
+            "note": "Welcome between the pages.",
+            "title": "Code, books<br></br><em>& ideas.</em>",
+            "intro": "This notebook brings together the apps I built for myself and the websites I made for others.",
+            "hint": "Leaf through it, or go straight to the contents and the tabs.",
+            "foot": "Full stack developer · Paris"
+        },
+        "preface": {
+            "head": "A few words before we begin",
+            "note": "Hi, I’m Bryan.",
+            "title": "I code,<br></br><em>I read.</em>",
+            "contents": "Between these pages",
+            "foot": "Preface"
+        },
+        "stories": {
+            "my-shelf": {
+                "head": "An idea turned into an app",
+                "tagline": "Reading tracker",
+                "title": "A bookshelf<br></br>that feels <em>like you.</em>",
+                "intro": "With this project, I tried to bring together my two passions: reading and code.",
+                "experience": "Scan a book, start a reading session, rate it, write a review and build your shelves on a profile you can share. Goodreads, StoryGraph and Babelio libraries import directly.",
+                "technical": "A Turborepo monorepo brings together the Expo app, the Next.js website, the admin and the NestJS API. Book records combine ISBNdb, Open Library and the BnF, PostgreSQL and Redis handle the data, and images go through Cloudflare R2.",
+                "foot": "MyShelf"
+            },
+            "noomi": {
+                "head": "An idea turned into an app",
+                "tagline": "Discover yourself, playfully",
+                "title": "Small steps<br></br>make <em>lovely stories.</em>",
+                "intro": "Noomi turns a personality test into a little companion: twenty questions inspired by the Big Five, and a unique creature is born from your answers.",
+                "experience": "Your Noomi grows when you answer the question of the day, log your mood or keep up your habits. Each habit grows a plant in its garden, with nothing lost on days off.",
+                "technical": "No creature is drawn by hand: a function generates each Noomi from the five personality scores. That code lives in a shared TypeScript package, so web, app and API produce exactly the same creature.",
+                "foot": "Noomi"
+            }
+        },
+        "story": {
+            "experience": "The experience",
+            "technical": "Under the cover",
+            "openProject": "Open the project page"
+        },
+        "visual": {
+            "personal": "Personal project",
+            "work": "Design & development",
+            "foot": "From idea to screen"
+        },
+        "myShelf": {
+            "note": "For the love of books.",
+            "sticker": "Made by<br></br>a reader.",
+            "alt": "MyShelf home screen with book search and reading progress",
+            "caption": "On iPhone, Android and the web."
+        },
+        "noomi": {
+            "note": "One small step at a time.",
+            "sticker": "A little<br></br>world.",
+            "alt": "Noomi home screen with its companion and daily ritual",
+            "caption": "App preview · demonstration data"
+        },
+        "clients": {
+            "head": "Building for others",
+            "title": "For <em>clients.</em>",
+            "intro": "Websites for a production company, a videographer, a set designer and CNRS scientists.",
+            "foot": "Client projects"
+        },
+        "clientPreview": {
+            "head": "A window into a project",
+            "label": "{name} project preview",
+            "alt": "Preview of the {name} website",
+            "link": "Explore the project"
+        },
+        "portrait": {
+            "head": "Behind the pages",
+            "label": "Portrait of Bryan Houblon",
+            "caption": "Bryan, between chapters.",
+            "foot": "The author"
+        },
+        "about": {
+            "head": "A little about me",
+            "foot": "Code & curiosity",
+            "skillsTitle": "My tools",
+            "skills": [
+                {
+                    "label": "Front end",
+                    "value": "Next.js, React, TypeScript, Tailwind"
+                },
+                {
+                    "label": "Mobile",
+                    "value": "React Native, Expo"
+                },
+                {
+                    "label": "Back end",
+                    "value": "NestJS, PostgreSQL, Prisma, Redis"
+                },
+                {
+                    "label": "Shipping",
+                    "value": "Docker, Nginx, VPS, Cloudflare"
+                }
+            ]
+        },
+        "contactCover": {
+            "head": "The next chapter",
+            "title": "What if we<br></br>wrote<br></br><em>what’s next?</em>",
+            "foot": "To be continued…"
+        },
+        "contact": {
+            "head": "The page is open",
+            "note": "I’d love to hear from you.",
+            "body": "The easiest way is an email.",
+            "copy": "Copy email address",
+            "copied": "Email copied",
+            "copiedStatus": "The email address has been copied.",
+            "copyFailed": "Select the email address above to copy it.",
+            "keep": "Something to take with you",
+            "resume": "My résumé",
+            "resumeMeta": "PDF · English",
+            "foot": "Bryan Houblon",
+            "elsewhere": "Or find me here",
+            "linkedin": "My background",
+            "github": "My code"
+        },
+        "backCover": {
+            "topline": "Code & curiosity",
+            "title": "To be continued.",
+            "description": "Thanks for reading to the end.",
+            "write": "Let’s write what’s next",
+            "restart": "Back to the first page",
+            "place": "Paris, France",
+            "volume": "Vol. 01"
+        }
     }
 }

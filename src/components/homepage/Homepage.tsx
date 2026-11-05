@@ -1,23 +1,16 @@
-"use client";
-
-import HeroBanner from '../sections/HeroBanner';
-import { Header } from '../sections/Header'
-import Featured from '../sections/Featured';
-import Projects from '../sections/projects/Projects';
-import Contact from '../sections/Contact';
-import About from '../sections/About';
+import Book from '../sections/book/Book'
+import { projects } from '../sections/projects/projects.data'
 
 export default function Homepage() {
-  return (
-  <>
-  <Header />
-  <main>
-    <HeroBanner />
-    <Featured />
-    <Projects />
-    <About />
-    <Contact />
-  </main>
-  </>
-  )
+  // Rendues ici, les icônes de stack arrivent au livre en SVG, sans leur code côté client.
+  const bookProjects = projects.map(({ id, year, image, categories, stack, links }) => ({
+    id,
+    year,
+    image,
+    client: categories.includes('clients'),
+    stack,
+    links: links ?? [],
+  }))
+
+  return <Book projects={bookProjects} />
 }

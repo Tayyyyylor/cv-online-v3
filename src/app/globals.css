@@ -19,6 +19,27 @@
 --color-shelf-wood-dark: #2a1d14;
 --color-grey-text: #a1a1a6;
 
+--color-ink: var(--book-ink);
+--color-ink-soft: var(--book-ink-soft);
+--color-ink-faint: var(--book-ink-faint);
+--color-paper: var(--book-paper);
+--color-paper-warm: var(--book-paper-warm);
+--color-paper-stone: var(--book-paper-stone);
+--color-paper-shade: var(--book-paper-shade);
+--color-paper-sage: var(--book-paper-sage);
+--color-paper-lilac: var(--book-paper-lilac);
+--color-paper-line: var(--book-line);
+--color-room: var(--book-room);
+--color-room-glow: var(--book-room-glow);
+--color-rose: var(--book-rose);
+--color-sepia: var(--book-sepia);
+--color-umber: var(--book-umber);
+--color-sage-ink: var(--book-sage-ink);
+--color-lilac-ink: var(--book-lilac-ink);
+--color-wine: #622e3b;
+--color-gold: #dcba8a;
+--color-cream: #f1e8cf;
+
 
 
 }
@@ -29,6 +50,25 @@
   --foreground: #131316;
   --background-card: oklch(98.7% 0.022 95.277);
   --foreground-card: #131316;
+  --book-ink: #3b3932;
+  --book-ink-soft: #6a6356;
+  --book-ink-faint: #766c5c;
+  --book-paper: #f9f6ed;
+  --book-paper-warm: #f0ebdf;
+  --book-paper-stone: #efebe0;
+  --book-paper-shade: #e8e3d7;
+  --book-paper-sage: #e9e9dc;
+  --book-paper-lilac: #e9e3ee;
+  --book-line: #dcd6c8;
+  --book-room: #eae7df;
+  --book-room-glow: #f5f2e9;
+  --book-rose: #622e3b;
+  --book-sepia: #8c6e59;
+  --book-umber: #674a37;
+  --book-sage-ink: #6d755d;
+  --book-lilac-ink: #7c6a88;
+  --book-edge-dark: #cdbfa8;
+  --book-edge-light: #f4eee0;
 }
 
 [data-theme='dark'] {
@@ -36,6 +76,25 @@
   --foreground: #EDEDED;
   --background-card: #212022;
   --foreground-card: #EDEDED;
+  --book-ink: #ece4d3;
+  --book-ink-soft: #c2b8a5;
+  --book-ink-faint: #a0957f;
+  --book-paper: #26221c;
+  --book-paper-warm: #2a2620;
+  --book-paper-stone: #29251f;
+  --book-paper-shade: #2d2822;
+  --book-paper-sage: #24271e;
+  --book-paper-lilac: #272230;
+  --book-line: #423b31;
+  --book-room: #14110e;
+  --book-room-glow: #2a2219;
+  --book-rose: #e5a7b2;
+  --book-sepia: #c9a886;
+  --book-umber: #d6b48e;
+  --book-sage-ink: #a9b394;
+  --book-lilac-ink: #bba8cc;
+  --book-edge-dark: #4d453a;
+  --book-edge-light: #2f2a23;
 }
 
 body {
@@ -45,4 +104,105 @@ body {
   @media (min-width: 1024px) {
     padding: 0 3rem 0 3rem;
   }
+}
+
+body:has([data-portfolio-book]),
+body:has([data-project-document]) {
+  padding: 0;
+}
+
+@media (scripting: enabled) {
+  body:has([data-portfolio-book]) {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+}
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+@custom-variant short (@media (max-height: 480px));
+@custom-variant no-js (@media (scripting: none));
+
+@layer base {
+  [data-portfolio-book] :is(a, button):focus-visible {
+    outline: 2px solid #8f6542;
+    outline-offset: 5px;
+  }
+
+  [data-portfolio-book] button:not(:disabled) {
+    cursor: pointer;
+  }
+
+  [data-portfolio-book] ::selection {
+    background: #d7bb8b;
+    color: #352a25;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-portfolio-book] * {
+      transition: none !important;
+    }
+  }
+}
+
+/* Le changement de thème est animé depuis ThemeToggle : on retire le fondu par défaut. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* La fiche d'un projet s'ouvre en cercle depuis l'endroit où l'on a cliqué. */
+@keyframes sheet-open {
+  from {
+    clip-path: circle(0 at var(--sheet-x) var(--sheet-y));
+  }
+
+  to {
+    clip-path: circle(150vmax at var(--sheet-x) var(--sheet-y));
+  }
+}
+
+@keyframes sheet-close {
+  from {
+    clip-path: circle(150vmax at var(--sheet-x) var(--sheet-y));
+  }
+
+  to {
+    clip-path: circle(0 at var(--sheet-x) var(--sheet-y));
+  }
+}
+
+@keyframes sheet-float {
+  to {
+    opacity: .35;
+    transform: translateY(-10%) scale(.94);
+  }
+}
+
+.sheet-reveal {
+  animation: sheet-open .85s cubic-bezier(.65, 0, .2, 1);
+}
+
+.sheet-reveal[data-closing='true'] {
+  animation: sheet-close .5s cubic-bezier(.65, 0, .2, 1) forwards;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sheet-float {
+      animation: sheet-float linear both;
+      animation-range: exit 0% exit 100%;
+      animation-timeline: view();
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet-reveal {
+    animation: none;
+  }
+}
+
+@utility paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%2382745d' opacity='.35' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
 }

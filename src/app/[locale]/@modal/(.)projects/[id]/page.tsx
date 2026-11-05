@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Modal from '@/components/molecules/Modal'
 import ProjectDetail from '@/components/sections/projects/ProjectDetail'
-import { getProjectById, projects } from '@/components/sections/projects/projects.data'
+import { getNextProject, getProjectById, projects } from '@/components/sections/projects/projects.data'
 
 type Props = {
   params: Promise<{ id: string; locale: string }>
@@ -13,8 +13,8 @@ export default async function ProjectModalPage({ params }: Props) {
   if (!project) notFound()
 
   return (
-    <Modal>
-      <ProjectDetail project={project} />
+    <Modal key={project.id}>
+      <ProjectDetail project={project} nextId={getNextProject(project.id).id} />
     </Modal>
   )
 }
