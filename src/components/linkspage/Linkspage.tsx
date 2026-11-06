@@ -39,6 +39,11 @@ export default function Linkspage() {
       desc: t("myshelfDesc"),
       stores: { apple: "https://apps.apple.com/us/app/myshelf/id6766835303", google: "https://play.google.com/store/apps/details?id=app.myshelfapp" },
     },
+    {
+      title: t("noomi"),
+      desc: t("noomiDesc"),
+      stores: { apple: "https://apps.apple.com/us/app/noomi-habitudes-humeur/id6819593252", google: "https://play.google.com/store/apps/details?id=com.noomiapp.app" },
+    },
   ];
 
   return (

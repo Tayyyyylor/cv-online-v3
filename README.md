@@ -111,7 +111,7 @@ Un projet vit à deux endroits :
 - `projects.data.tsx` : visuels, stack, liens et `theme`, la palette de sa fiche en plein écran.
 - `Projects.items.<id>` dans les messages : `tagline`, `description`, `longDescription` (l'histoire), `highlights` et `technical` (« Sous le capot »).
 
-Pour les boutons, l'ordre reste `website`, `appStore`, `googlePlay`. Un lien sans `href` s'affiche comme « Bientôt » : c'est le cas de l'App Store de Noomi, il suffira d'ajouter son `href` à la sortie.
+Pour les boutons, l'ordre reste `website`, `appStore`, `googlePlay`. Un lien sans `href` s'affiche comme « Bientôt ».
 
 ## Dessiner une page pour toutes les tailles
 

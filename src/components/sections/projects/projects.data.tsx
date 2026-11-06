@@ -149,7 +149,7 @@ export const projects: Project[] = [
     year: '2026',
     links: [
       { kind: 'website', href: 'https://noomiapp.com' },
-      { kind: 'appStore' },
+      { kind: 'appStore', href: 'https://apps.apple.com/us/app/noomi-habitudes-humeur/id6819593252' },
       { kind: 'googlePlay', href: 'https://play.google.com/store/apps/details?id=com.noomiapp.app' },
     ],
     theme: { background: '#17131f', surface: '#251d36', foreground: '#fff8f0', muted: '#bcb3cf', accent: '#a08bff' },
