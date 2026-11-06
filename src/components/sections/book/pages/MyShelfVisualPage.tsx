@@ -42,7 +42,7 @@ export default function MyShelfVisualPage() {
       screen={
         <>
           <span className="pointer-events-none absolute top-[2cqw] left-1/2 z-3 h-[2.2cqw] w-[10.5cqw] -translate-x-1/2 rounded-full bg-[#242520]" />
-          <Image className={phoneScreen} src="/pres-poster.jpg" width={390} height={844} alt={t('alt')} sizes="280px" />
+          <Image className={phoneScreen} src="/pres-poster.jpg" width={390} height={844} loading="eager" alt={t('alt')} sizes="280px" />
         </>
       }
       action={<ProjectLinks links={links} compact />}

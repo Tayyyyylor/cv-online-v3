@@ -24,7 +24,7 @@ export default function ClientPreviewPage() {
           <small className="flex-1 truncate pr-[4cqw] text-center font-mono text-[clamp(8px,1.6cqw,10px)] text-ink-faint">{name}</small>
         </div>
         <div className="relative aspect-16/11">
-          {image && <Image src={image} alt={t('alt', { name })} fill sizes="(max-width: 760px) 50vw, 640px" className="object-cover" />}
+          {image && <Image src={image} alt={t('alt', { name })} fill loading="eager" sizes="(max-width: 760px) 50vw, 640px" className="object-cover" />}
         </div>
       </div>
       <div className="mt-[6cqw] flex min-h-0 flex-1 flex-col">

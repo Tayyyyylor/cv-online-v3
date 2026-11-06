@@ -70,7 +70,7 @@ export default function Book({ projects }: { projects: BookProject[] }) {
     <BookContext value={context}>
       <div
         data-portfolio-book
-        className="flex h-svh flex-col overflow-hidden overscroll-none bg-room no-js:h-auto no-js:overflow-visible bg-[radial-gradient(ellipse_at_50%_32%,var(--color-room-glow)_0%,transparent_65%)] px-2 font-sans text-ink md:px-[4%]"
+        className="flex h-svh flex-col overflow-hidden overscroll-none bg-room no-js:h-auto no-js:overflow-visible bg-[radial-gradient(ellipse_at_50%_32%,var(--color-room-glow)_0%,transparent_65%)] px-2 font-sans text-ink md:px-8 xl:px-14"
       >
         <a href="#book-content" className="fixed -top-20 left-5 z-100 bg-wine px-5 py-3 text-white focus:top-3">
           {t('skip')}

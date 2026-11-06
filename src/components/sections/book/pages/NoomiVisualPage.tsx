@@ -27,11 +27,12 @@ export default function NoomiVisualPage() {
           width={120}
           height={140}
           alt=""
-          className="absolute bottom-[9.4cqw] -left-[1cqw] z-3 h-auto w-[21cqw] -rotate-12 drop-shadow-[0_9px_7px_#62507e20]"
+          loading="eager"
+          className="absolute bottom-[9.4cqw] -left-[1cqw] z-3 h-auto w-[21cqw] -rotate-12"
         />
       }
       phoneTilt="rotate-5"
-      screen={<Image className={phoneScreen} src="/noomi-home.png" width={390} height={844} alt={t('alt')} sizes="280px" />}
+      screen={<Image className={phoneScreen} src="/noomi-home.png" width={390} height={844} loading="eager" alt={t('alt')} sizes="280px" />}
       action={<ProjectLinks links={links} compact />}
       caption={t('caption')}
     />

@@ -10,6 +10,8 @@ const MAX_STRIPS = 14
 const STRIP_WIDTH = 44
 const STRIP_OVERLAP = 1
 const BOARD_CLEARANCE = 0.2
+const MAX_FRAME_GAP = 100
+const IMAGE_WARM_UP_DELAY = 800
 const DRAG_THRESHOLD = 6
 const TAP_DURATION = 450
 const COMMIT_PROGRESS = 0.3
@@ -177,6 +179,7 @@ export function createBookEngine({
   const turning = new Map<number, Sheet>()
   let position = 0
   let frame = 0
+  let lastFrame = 0
   let pointer: Pointer | null = null
   let refocus = false
 
@@ -200,8 +203,13 @@ export function createBookEngine({
       else if (rightTop === leaves.length) rightTop = leaf
     }
     leaves.forEach((element, leaf) => {
-      const shown = !active.has(leaf) && (leaf === leftTop || leaf === rightTop || isBoard(leaf))
-      element.dataset.shown = String(shown)
+      const moving = active.has(leaf)
+      const top = leaf === leftTop || leaf === rightTop
+      // La feuille suivante reste peinte sous celle du dessus : elle est prête quand on la découvre.
+      const next = !isBoard(leaf) && (leaf === leftTop - 1 || leaf === rightTop + 1)
+      element.dataset.shown = String(!moving && (top || next || isBoard(leaf)))
+      element.dataset.page = String(moving || top || next)
+      element.inert = !top
     })
     const sheetsOn = (side: 'left' | 'right') =>
       leaves.filter((_, leaf) => !isBoard(leaf) && (side === 'left' ? progress[leaf] >= 0.5 : progress[leaf] < 0.5)).length
@@ -277,17 +285,26 @@ export function createBookEngine({
 
   function settle() {
     delete book.dataset.turning
+    lastFrame = 0
     drawCast(0, 0)
     drawCamera()
     if (!refocus) return
     refocus = false
     const pages = [...book.querySelectorAll('section')]
-    pages.find((page) => getComputedStyle(page).visibility === 'visible')?.focus({ preventScroll: true })
+    pages.find((page) => !page.closest('[inert]'))?.focus({ preventScroll: true })
   }
 
   function tick() {
     frame = 0
     const now = performance.now()
+    // Après un blocage du navigateur, l'animation reprend où elle en était au lieu de sauter.
+    if (lastFrame && now - lastFrame > MAX_FRAME_GAP) {
+      const stall = now - lastFrame
+      motions.forEach((motion) => {
+        motion.start += stall
+      })
+    }
+    lastFrame = now
     motions.forEach((motion, leaf) => {
       if (now < motion.start) return
       begin(leaf)
@@ -472,6 +489,9 @@ export function createBookEngine({
   drawCamera()
   book.dataset.position = '0'
   observer.observe(scene)
+  const warmUp = setTimeout(() => {
+    book.querySelectorAll('img').forEach((image) => image.decode().catch(() => {}))
+  }, IMAGE_WARM_UP_DELAY)
   book.addEventListener('pointerdown', onPointerDown)
   book.addEventListener('dragstart', preventDragStart)
   window.addEventListener('pointermove', onPointerMove)
@@ -485,6 +505,7 @@ export function createBookEngine({
     getPosition: () => position,
     destroy() {
       cancelAnimationFrame(frame)
+      clearTimeout(warmUp)
       observer.disconnect()
       book.removeEventListener('pointerdown', onPointerDown)
       book.removeEventListener('dragstart', preventDragStart)

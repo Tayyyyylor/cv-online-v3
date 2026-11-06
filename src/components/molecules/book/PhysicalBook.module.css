@@ -43,22 +43,6 @@
   perspective-origin: 50% 42%;
 }
 
-/* Sur des pixels entiers, le texte ne sursaute pas quand le livre passe en 3D. */
-@supports (width: round(down, 1.5px, 1px)) {
-  .scene {
-    --rim: round(down, var(--rim-fit), 1px);
-    --page-w: round(down, var(--page-w-fit), 1px);
-    --page-h: round(down, var(--page-h-fit), 1px);
-    display: block;
-  }
-
-  .book {
-    position: absolute;
-    top: round(down, (100cqh - var(--page-h) - 2 * var(--rim)) / 2, 1px);
-    left: round(down, 50cqw - var(--page-w) - var(--rim), 1px);
-  }
-}
-
 @container (max-aspect-ratio: 1 / 1) {
   .scene {
     --ratio-max: 1.7;
@@ -104,6 +88,22 @@
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   cursor: grab;
+}
+
+/* Sur des pixels entiers, le texte ne sursaute pas quand le livre passe en 3D. */
+@supports (width: round(down, 1.5px, 1px)) {
+  .scene {
+    --rim: round(down, var(--rim-fit), 1px);
+    --page-w: round(down, var(--page-w-fit), 1px);
+    --page-h: round(down, var(--page-h-fit), 1px);
+    display: block;
+  }
+
+  .book {
+    position: absolute;
+    top: round(down, (100cqh - var(--page-h) - 2 * var(--rim)) / 2, 1px);
+    left: round(down, 50cqw - var(--page-w) - var(--rim), 1px);
+  }
 }
 
 .book[data-turning] {
@@ -164,6 +164,17 @@
 
 .board[data-board='back'] > .front {
   padding: var(--rim) var(--rim) var(--rim) 0;
+}
+
+.board[data-board='front'] > .back,
+.board[data-board='back'] > .front {
+  background: linear-gradient(var(--color-paper), var(--color-paper)) content-box, var(--color-wine);
+}
+
+/* Tant que des feuilles la couvrent, la page collée à la planche ne doit jamais transparaître. */
+.board[data-page='false'] > .front > section,
+.board[data-page='false'] > .back > section {
+  visibility: hidden;
 }
 
 .leaf[data-rest='right'] > .back,
