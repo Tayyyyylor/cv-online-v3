@@ -8,6 +8,8 @@ const MAX_BEND = 110
 const MIN_STRIPS = 6
 const MAX_STRIPS = 14
 const STRIP_WIDTH = 44
+const STRIP_OVERLAP = 1
+const BOARD_CLEARANCE = 0.2
 const DRAG_THRESHOLD = 6
 const TAP_DURATION = 450
 const COMMIT_PROGRESS = 0.3
@@ -68,16 +70,22 @@ export type BookEngine = {
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
 const easeInOut: Easing = (t) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2)
 const easeOut: Easing = (t) => 1 - (1 - t) ** 3
+/** Une couverture ne porte son ombre sur la table qu'en arrivant à plat. */
+const landing = (progress: number) => clamp((progress - 0.75) / 0.25, 0, 1)
 
 function sliceOf(prototype: Node, offset: number, width: number, height: number, className: string) {
   const clip = document.createElement('div')
   clip.className = className
   const page = prototype.cloneNode(true) as HTMLElement
   page.style.cssText = `position:absolute;top:0;left:${-offset}px;width:${width}px;height:${height}px`
+  clip.append(page)
+  return clip
+}
+
+function shadeOf(className: string) {
   const shade = document.createElement('div')
-  shade.className = styles.stripShade
-  clip.append(page, shade)
-  return { clip, shade }
+  shade.className = className
+  return shade
 }
 
 function pagePrototype(leaf: HTMLElement, side: 'front' | 'back') {
@@ -91,10 +99,13 @@ function pagePrototype(leaf: HTMLElement, side: 'front' | 'back') {
 }
 
 function buildSheet(leaf: HTMLElement): Sheet {
-  const pageWidth = leaf.offsetWidth
-  const pageHeight = leaf.offsetHeight
+  // Taille exacte de la page : arrondie, le texte de la copie se recomposerait autrement.
+  const { width, height } = getComputedStyle(leaf)
+  const pageWidth = parseFloat(width)
+  const pageHeight = parseFloat(height)
   const count = clamp(Math.round(pageWidth / STRIP_WIDTH), MIN_STRIPS, MAX_STRIPS)
-  const stripWidth = pageWidth / count
+  // Une largeur entière évite les traits entre deux bandes.
+  const stripWidth = Math.ceil(pageWidth / count)
   const front = pagePrototype(leaf, 'front')
   const back = pagePrototype(leaf, 'back')
   const element = document.createElement('div')
@@ -103,19 +114,26 @@ function buildSheet(leaf: HTMLElement): Sheet {
   const strips = Array.from({ length: count }, (_, index) => {
     const strip = document.createElement('div')
     strip.className = styles.strip
-    // Un pixel de recouvrement évite les jours entre deux bandes.
-    strip.style.width = `${stripWidth + 1}px`
-    const frontSlice = sliceOf(front, index * stripWidth, pageWidth, pageHeight, styles.stripFront)
-    const backSlice = sliceOf(back, pageWidth - (index + 1) * stripWidth - 1, pageWidth, pageHeight, styles.stripBack)
-    strip.append(frontSlice.clip, backSlice.clip)
+    const start = index * stripWidth
+    const visible = Math.min(stripWidth, pageWidth - start)
+    strip.style.width = `${visible + STRIP_OVERLAP}px`
+    // L'ombre reste hors de la découpe : repeinte à chaque image, elle ne touche pas au texte.
+    const frontShade = shadeOf(styles.stripShadeFront)
+    const backShade = shadeOf(styles.stripShadeBack)
+    strip.append(
+      sliceOf(front, start, pageWidth, pageHeight, styles.stripFront),
+      sliceOf(back, pageWidth - start - visible - STRIP_OVERLAP, pageWidth, pageHeight, styles.stripBack),
+      frontShade,
+      backShade,
+    )
     element.append(strip)
-    return { element: strip, frontShade: frontSlice.shade, backShade: backSlice.shade }
+    return { element: strip, frontShade, backShade }
   })
 
   return { element, strips, stripWidth, pageWidth }
 }
 
-const shadeOf = (angle: number, strength: number) => {
+const shadeColor = (angle: number, strength: number) => {
   const slope = 1 - Math.abs(Math.cos((angle * Math.PI) / 180))
   return `rgb(42 28 16 / ${(slope * strength).toFixed(3)})`
 }
@@ -123,19 +141,18 @@ const shadeOf = (angle: number, strength: number) => {
 /** Dessine la feuille comme une bande souple : l'extrémité libre mène, le pli reste près du dos. */
 function drawSheet(sheet: Sheet, progress: number, forward: boolean) {
   const bend = MAX_BEND * Math.sin(Math.PI * progress) * (forward ? 1 : -1)
-  const count = sheet.strips.length
   const angleAt = (along: number) => clamp(180 * progress + (along - 0.5) * bend, 0, 180)
   let x = 0
   let z = 0
 
   sheet.strips.forEach(({ element, frontShade, backShade }, index) => {
-    const start = angleAt(index / count)
-    const end = angleAt((index + 1) / count)
+    const start = angleAt((index * sheet.stripWidth) / sheet.pageWidth)
+    const end = angleAt(Math.min(((index + 1) * sheet.stripWidth) / sheet.pageWidth, 1))
     const angle = (start + end) / 2
     const radians = (angle * Math.PI) / 180
     element.style.transform = `translate3d(${x.toFixed(2)}px,0,${z.toFixed(2)}px) rotateY(${-angle.toFixed(2)}deg)`
-    frontShade.style.background = `linear-gradient(90deg,${shadeOf(start, 0.36)},${shadeOf(end, 0.36)})`
-    backShade.style.background = `linear-gradient(270deg,${shadeOf(start, 0.26)},${shadeOf(end, 0.26)})`
+    frontShade.style.background = `linear-gradient(90deg,${shadeColor(start, 0.36)},${shadeColor(end, 0.36)})`
+    backShade.style.background = `linear-gradient(270deg,${shadeColor(start, 0.26)},${shadeColor(end, 0.26)})`
     x += sheet.stripWidth * Math.cos(radians)
     z += sheet.stripWidth * Math.sin(radians)
   })
@@ -171,6 +188,7 @@ export function createBookEngine({
     element.dataset.rest = left ? 'left' : 'right'
     element.style.zIndex = String(left ? leaf * 2 : (lastLeaf - leaf) * 2)
     element.style.transform = ''
+    element.style.removeProperty('--lift')
   }
 
   function layout() {
@@ -200,6 +218,8 @@ export function createBookEngine({
     book.style.setProperty('--shift', ((1 - front) * -0.5 + back * 0.5).toFixed(4))
     book.style.setProperty('--thick-right', (1 - front).toFixed(4))
     book.style.setProperty('--thick-left', back.toFixed(4))
+    book.style.setProperty('--ground-left', landing(front).toFixed(3))
+    book.style.setProperty('--ground-right', (1 - landing(back)).toFixed(3))
   }
 
   function drawCast(reach: number, strength: number) {
@@ -220,7 +240,9 @@ export function createBookEngine({
       if (sheet) {
         reach = drawSheet(sheet, value, forwardBend[leaf])
       } else {
-        leaves[leaf].style.transform = `translateZ(1px) rotateY(${(-180 * value).toFixed(2)}deg)`
+        // Décollage progressif pour éviter un saut, avec une marge pour rester au-dessus des pages.
+        leaves[leaf].style.setProperty('--lift', lift.toFixed(3))
+        leaves[leaf].style.transform = `translateZ(${(BOARD_CLEARANCE + lift).toFixed(3)}px) rotateY(${(-180 * value).toFixed(2)}deg)`
         reach = Math.cos(Math.PI * value)
       }
       strength = Math.max(strength, lift * 0.42)

@@ -132,6 +132,12 @@ body:has([data-project-document]) {
     cursor: pointer;
   }
 
+  /* Taper vite sur les onglets ne doit pas déclencher le zoom d'iOS. */
+  [data-portfolio-book] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   [data-portfolio-book] ::selection {
     background: #d7bb8b;
     color: #352a25;

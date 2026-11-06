@@ -29,15 +29,34 @@
   --tab-room: 44px;
   --ratio-max: 1.4;
   --closed-zoom: 1;
-  --rim: clamp(4px, 1.1cqmin, 9px);
-  --page-w: min(50cqw - var(--rim) - var(--tab-room), 660px, (100cqh - 2 * var(--rim)) / 1.35);
-  --page-h: clamp(var(--page-w) * 1.35, 100cqh - 2 * var(--rim), var(--page-w) * var(--ratio-max));
+  --rim-fit: clamp(4px, 1.1cqmin, 9px);
+  --rim: var(--rim-fit);
+  --page-w-fit: min(50cqw - var(--rim) - var(--tab-room), 660px, (100cqh - 2 * var(--rim)) / 1.35);
+  --page-w: var(--page-w-fit);
+  --page-h-fit: clamp(var(--page-w) * 1.35, 100cqh - 2 * var(--rim), var(--page-w) * var(--ratio-max));
+  --page-h: var(--page-h-fit);
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
   perspective: calc(var(--page-w) * 6);
   perspective-origin: 50% 42%;
+}
+
+/* Sur des pixels entiers, le texte ne sursaute pas quand le livre passe en 3D. */
+@supports (width: round(down, 1.5px, 1px)) {
+  .scene {
+    --rim: round(down, var(--rim-fit), 1px);
+    --page-w: round(down, var(--page-w-fit), 1px);
+    --page-h: round(down, var(--page-h-fit), 1px);
+    display: block;
+  }
+
+  .book {
+    position: absolute;
+    top: round(down, (100cqh - var(--page-h) - 2 * var(--rim)) / 2, 1px);
+    left: round(down, 50cqw - var(--page-w) - var(--rim), 1px);
+  }
 }
 
 @container (max-aspect-ratio: 1 / 1) {
@@ -66,9 +85,12 @@
   --sheets-right: 0;
   --thick-left: 0;
   --thick-right: 1;
+  --ground-left: 0;
+  --ground-right: 1;
   --zoom: calc(1 + var(--closed) * (var(--closed-zoom) - 1));
   --sheet-edge: calc(var(--rim) / 6.5);
   position: relative;
+  flex: none;
   width: calc(2 * (var(--page-w) + var(--rim)));
   height: calc(var(--page-h) + 2 * var(--rim));
   transform:
@@ -164,11 +186,11 @@
 }
 
 .leaf:not([data-rest]) > .front {
-  transform: translateZ(calc(var(--rim) / 2));
+  transform: translateZ(calc(var(--rim) / 2 * var(--lift, 0)));
 }
 
 .leaf:not([data-rest]) > .back {
-  transform: rotateY(180deg) translateZ(calc(var(--rim) / 2));
+  transform: rotateY(180deg) translateZ(calc(var(--rim) / 2 * var(--lift, 0)));
 }
 
 /* Tranche de la planche, visible uniquement quand elle tourne. */
@@ -187,12 +209,32 @@
   display: block;
 }
 
-.board[data-rest] {
+/* Ombre portée sur la table : elle reste en place et se fond quand une couverture se pose. */
+.groundLeft,
+.groundRight {
+  position: absolute;
+  top: 0;
+  width: calc(var(--page-w) + var(--rim));
+  height: 100%;
+  border-radius: 3px;
   box-shadow: 0 calc(var(--rim) * 2) calc(var(--rim) * 5) calc(var(--rim) * -1) #3c2a2070;
+  pointer-events: none;
+}
+
+.groundLeft {
+  right: 50%;
+  opacity: var(--ground-left);
+}
+
+.groundRight {
+  left: 50%;
+  opacity: var(--ground-right);
 }
 
 .front > section::after,
-.back > section::before {
+.back > section::before,
+.stripFront > section::after,
+.stripBack > section::before {
   position: absolute;
   z-index: 5;
   inset: 0;
@@ -202,12 +244,14 @@
 
 /* Le papier plonge vers le dos du livre. */
 .leaf:not(.board) > .front > section::after,
-.board[data-board='back'] > .front > section::after {
+.board[data-board='back'] > .front > section::after,
+.stripFront > section::after {
   background: linear-gradient(90deg, #5e4a2e45, #a48d6318 3.5%, #ffffff00 13%);
 }
 
 .leaf:not(.board) > .back > section::before,
-.board[data-board='front'] > .back > section::before {
+.board[data-board='front'] > .back > section::before,
+.stripBack > section::before {
   background: linear-gradient(270deg, #5e4a2e55, #a48d6322 3%, #ffffff00 12%);
 }
 
@@ -324,7 +368,7 @@
   width: var(--page-w);
   height: var(--page-h);
   pointer-events: none;
-  transform: translateZ(1px);
+  transform: translateZ(.2px);
   transform-style: preserve-3d;
 }
 
@@ -341,9 +385,9 @@
   height: 100%;
   transform-origin: 0 50%;
   transform-style: preserve-3d;
-  will-change: transform;
 }
 
+/* Le calque est porté par la découpe : ailleurs, la page tournée perd sa netteté. */
 .stripFront,
 .stripBack {
   position: absolute;
@@ -352,17 +396,28 @@
   background: var(--color-paper);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  will-change: transform;
 }
 
 .stripBack {
   transform: rotateY(180deg);
 }
 
-.stripShade {
+.stripShadeFront,
+.stripShadeBack {
   position: absolute;
-  z-index: 6;
   inset: 0;
-  transform: translateZ(0);
+  pointer-events: none;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.stripShadeFront {
+  transform: translateZ(.01px);
+}
+
+.stripShadeBack {
+  transform: rotateY(180deg) translateZ(.01px);
 }
 
 /* Sans JavaScript, les pages s'affichent à plat, les unes à la suite des autres. */
@@ -403,6 +458,8 @@
   }
 
   .edge,
+  .groundLeft,
+  .groundRight,
   .thickLeft,
   .thickRight,
   .fanLeft,

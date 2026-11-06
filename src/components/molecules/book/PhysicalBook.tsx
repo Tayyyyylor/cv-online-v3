@@ -62,6 +62,8 @@ export default function PhysicalBook({ ref, faces, label, children, ...settings 
     <div className={styles.stage} role="group" aria-label={label}>
       <div className={styles.scene}>
         <div ref={book} className={styles.book} data-physical-book>
+          <div className={styles.groundLeft} />
+          <div className={styles.groundRight} />
           <div className={styles.thickLeft} />
           <div className={styles.thickRight} />
           <div className={styles.fanLeft} />
