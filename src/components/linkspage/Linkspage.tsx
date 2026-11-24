@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import LinkedinIcon from "../atoms/LinkedinIcon";
 import { LocaleSwitcher } from "../atoms/LocaleSwitcher";
 import Reveal, { RevealStagger, RevealItem } from "../atoms/Reveal";
+import { GITHUB_URL, LINKEDIN_URL, SITE_URL } from "@/lib/site";
 
 type Social = {
   Icon: React.ComponentType<{ size?: number }>;
@@ -17,8 +18,8 @@ type Social = {
 const socials: Social[] = [
     { Icon: SiInstagram, label: "Instagram", url: "https://www.instagram.com/tayylor_h/" },
     { Icon: SiX, label: "X", url: "https://x.com/_tayylor_g" },
-    { Icon: LinkedinIcon, label: "LinkedIn", url: "https://www.linkedin.com/in/bryan-houblon-172121211/" },
-  { Icon: SiGithub, label: "GitHub", url: "https://github.com/tayyyyylor" },
+    { Icon: LinkedinIcon, label: "LinkedIn", url: LINKEDIN_URL },
+  { Icon: SiGithub, label: "GitHub", url: GITHUB_URL },
   { Icon: SiReddit, label: "Reddit", url: "" },
 ];
 
@@ -33,7 +34,7 @@ export default function Linkspage() {
   };
 
   const cards: Card[] = [
-    { title: t("portfolio"), url: "https://www.bryanhoublon.com" },
+    { title: t("portfolio"), url: SITE_URL },
     {
       title: t("myshelf"),
       desc: t("myshelfDesc"),

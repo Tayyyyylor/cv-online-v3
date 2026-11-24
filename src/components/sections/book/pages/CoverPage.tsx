@@ -34,6 +34,7 @@ function CoverIllustration() {
 export default function CoverPage() {
   const t = useTranslations('Book.cover')
   const nav = useTranslations('Book.nav')
+  const header = useTranslations('Book.header')
   const { goToChapter } = useBook()
 
   return (
@@ -48,6 +49,8 @@ export default function CoverPage() {
         id="cover-title"
         className="relative z-1 mt-[6.8cqw] mb-[3.8cqw] font-serif text-[15.5cqw] leading-[.99] font-normal tracking-[-.035em] [&_em]:font-light [&_em]:text-gold"
       >
+        {/* Le nom et le poste figurent déjà sur la couverture : le titre principal les reprend pour les moteurs et les lecteurs d'écran. */}
+        <span className="sr-only">Bryan Houblon, {header('job')}. </span>
         {t.rich('title', richTitle)}
       </h1>
       <div className="mb-[3.2cqw] h-px w-[8cqw] bg-[#d4b28e8a]" />

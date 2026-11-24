@@ -2,6 +2,7 @@
 
 import { ArrowDownToLine, ArrowUpRight } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
+import { Fragment } from 'react'
 import { ThemeToggle } from '@/components/atoms/ThemeToggle'
 import { Link } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
@@ -23,13 +24,21 @@ export default function BookHeader({ hash }: { hash: string }) {
         </span>
         <span className="flex flex-col gap-0.5">
           <strong className="text-xs font-medium text-ink md:text-[13px]">Bryan Houblon</strong>
-          <span className="text-[10px] text-ink-faint short:hidden max-[359px]:hidden md:text-[11px]">{t('job')}</span>
+          <span className="text-[10px] text-ink-faint short:hidden max-[359px]:hidden md:text-[11px]">
+            {/* Sur téléphone le poste passe sur deux lignes : on coupe entre les mots, jamais dans « front-end ». */}
+            {t('job').split(' ').map((word, index) => (
+              <Fragment key={index}>
+                {index > 0 && ' '}
+                <span className="whitespace-nowrap">{word}</span>
+              </Fragment>
+            ))}
+          </span>
         </span>
       </ChapterLink>
 
       <div className="hidden items-center gap-2 font-mono text-[11px] text-ink-soft lg:flex">
         <span className="h-[5px] w-[5px] rounded-full bg-[#6e7c5b] shadow-[0_0_0_4px_#6e7c5b10]" />
-        Paris, France
+        {t('availability')}
       </div>
 
       <nav aria-label={t('links')} className="flex items-center gap-3.5 text-xs md:gap-[26px]">

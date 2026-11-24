@@ -6,6 +6,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { Providers } from '@/components/Providers';
 import { Fraunces, Inter, Geist_Mono } from 'next/font/google'
 import type { Metadata } from 'next'
+import { ogLocale, SITE_NAME, SITE_URL, SKILLS } from '@/lib/site'
 import "../globals.css"
 
 type Props = {
@@ -31,6 +32,7 @@ const geist = Geist_Mono({
   variable: '--font-geist',
 })
 
+// Le canonique et les hreflang sont posés par chaque page : définis ici, ils seraient hérités tels quels.
 export async function generateMetadata({ params }: Pick<Props, 'params'>): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'Book.meta' })
@@ -38,19 +40,27 @@ export async function generateMetadata({ params }: Pick<Props, 'params'>): Promi
   const description = t('description')
 
   return {
-    metadataBase: new URL('https://www.bryanhoublon.com'),
-    title: { default: title, template: '%s - Bryan Houblon' },
+    metadataBase: new URL(SITE_URL),
+    title: { default: title, template: t('template') },
     description,
-    authors: [{ name: 'Bryan Houblon' }],
-    alternates: { languages: { fr: '/fr', en: '/en' } },
+    applicationName: SITE_NAME,
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
+    creator: SITE_NAME,
+    keywords: SKILLS.slice(0, 12),
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+    },
     openGraph: {
       type: 'website',
-      siteName: 'Bryan Houblon',
+      siteName: SITE_NAME,
       title,
       description,
-      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: ogLocale(locale),
+      alternateLocale: routing.locales.filter((item) => item !== locale).map(ogLocale),
     },
-    twitter: { card: 'summary', title, description },
+    twitter: { card: 'summary_large_image', title, description },
   }
 }
 

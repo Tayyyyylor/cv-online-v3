@@ -6,13 +6,13 @@
         "featured": "My Shelf"
     },
     "Hero": {
-        "job": "Développeur full stack - Paris",
+        "job": "Développeur front-end & full-stack - Paris",
         "activity1": "Code",
         "and": "et",
         "activity2": "pensées.",
         "activity3": "philosophie.",
         "activity4": "littérature.",
-        "desc": "Développeur full stack avec un faible pour le front, la philo et les Raspberry Pi.",
+        "desc": "Développeur full stack avec un faible pour le front (React, Next.js, TypeScript), la philo et les Raspberry Pi.",
         "Books": {
             "title1": "Éthique",
             "title2": "L'Étranger",
@@ -244,11 +244,11 @@
     "Contact": {
         "line1": "Parlons-",
         "line2": "nous.",
-        "desc": "Un projet en tête, une question, ou juste envie d'échanger sur un livre ? Écrivez-moi.",
+        "desc": "Vous recrutez un développeur front-end, vous avez un projet en tête, ou juste envie d’échanger sur un livre ? Écrivez-moi.",
         "ctaDownload": "Télécharger mon CV"
     },
     "Links": {
-        "description": "Développeur full stack et lecteur. Retrouve-moi ici.",
+        "description": "Développeur front-end & full-stack, et lecteur. Retrouve-moi ici.",
         "portfolio": "Portfolio",
         "myshelf": "My Shelf",
         "myshelfDesc": "J'ai créé une application de suivi de lecture ! Va jeter un oeil",
@@ -266,21 +266,37 @@
     },
     "Book": {
         "meta": {
-            "title": "Bryan Houblon - Développeur full stack",
-            "description": "Portfolio de Bryan Houblon, développeur full stack à Paris : MyShelf, Noomi et des sites réalisés pour des clients."
+            "title": "Bryan Houblon – Développeur Front-end & Full-stack · React, Next.js",
+            "template": "%s · Bryan Houblon, Développeur Front-end",
+            "description": "Développeur full-stack orienté front-end à Paris : React, Next.js, TypeScript, React Native. Ouvert aux postes en Europe, en remote ou en relocalisation.",
+            "jobTitle": "Développeur Front-end & Full-stack",
+            "project": "{description} Réalisé par Bryan Houblon avec {stack}.",
+            "links": {
+                "title": "Liens",
+                "description": "Bryan Houblon, développeur front-end & full-stack : portfolio, applications et profils."
+            },
+            "og": {
+                "kicker": "Portfolio",
+                "line1": "Développeur front-end",
+                "line2": "& full-stack.",
+                "stack": "React · Next.js · TypeScript · React Native",
+                "place": "Paris · Ouvert à toute l’Europe",
+                "by": "Un projet de Bryan Houblon"
+            }
         },
         "label": "Le carnet de Bryan Houblon, livre interactif",
         "skip": "Aller au livre",
         "resumeFile": "/French_CV_Bryan_HOUBLON.pdf",
         "header": {
             "identity": "Bryan Houblon, préface",
-            "job": "Développeur full stack",
+            "job": "Développeur front-end & full-stack",
             "links": "Liens utiles",
             "otherLocale": "EN",
             "switchLocale": "Read in English",
             "resume": "Mon CV",
             "contact": "Parlons-nous",
-            "theme": "Changer de thème"
+            "theme": "Changer de thème",
+            "availability": "Paris · Ouvert à toute l’Europe"
         },
         "nav": {
             "chapters": "Chapitres du livre",
@@ -325,7 +341,7 @@
             "kicker": "Le carnet de",
             "title": "Code,<br></br>livres<br></br><em>& idées.</em>",
             "description": "Les applications et les sites que j’ai construits, à feuilleter.",
-            "role": "Développeur & lecteur",
+            "role": "Développeur front-end & lecteur",
             "volume": "Vol. 01",
             "ideas": "les idées",
             "code": "le code",
@@ -338,7 +354,7 @@
             "title": "Code, livres<br></br><em>& idées.</em>",
             "intro": "Ce carnet rassemble les applications que j’ai construites pour moi et les sites que j’ai faits pour d’autres.",
             "hint": "Feuilletez-le, ou passez directement par le sommaire et les onglets.",
-            "foot": "Développeur full stack · Paris"
+            "foot": "Front-end & full-stack · Paris"
         },
         "preface": {
             "head": "Quelques mots avant de commencer",
@@ -414,7 +430,11 @@
             "skills": [
                 {
                     "label": "Front",
-                    "value": "Next.js, React, TypeScript, Tailwind"
+                    "value": "React, Next.js, TypeScript, Tailwind, GSAP, Framer Motion"
+                },
+                {
+                    "label": "Qualité",
+                    "value": "Accessibilité, performance, i18n"
                 },
                 {
                     "label": "Mobile",
@@ -454,7 +474,7 @@
         "backCover": {
             "topline": "Code & curiosité",
             "title": "À suivre.",
-            "description": "Merci d’avoir lu jusqu’au bout.",
+            "description": "Merci d’avoir lu jusqu’au bout. Les pages tournent grâce à un moteur fait main, en TypeScript et CSS 3D, sans librairie.",
             "write": "Écrivons la suite",
             "restart": "Revenir à la première page",
             "place": "Paris, France",

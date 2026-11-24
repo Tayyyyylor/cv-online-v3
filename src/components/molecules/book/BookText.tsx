@@ -5,6 +5,7 @@ import LinkedinIcon from '@/components/atoms/LinkedinIcon'
 import { Link } from '@/i18n/navigation'
 import { rememberSheetOrigin } from '@/components/sections/projects/sheetStyles'
 import type { ProjectStackItem } from '@/components/sections/projects/projects.data'
+import { GITHUB_URL, LINKEDIN_URL } from '@/lib/site'
 
 /** Balises autorisées dans les titres de `messages/*.json`. */
 export const richTitle = {
@@ -82,8 +83,8 @@ export function TechChips({ stack, className = '' }: { stack: ProjectStackItem[]
 }
 
 export const socials = [
-  { id: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/bryan-houblon-172121211/', Icon: LinkedinIcon },
-  { id: 'github', label: 'GitHub', href: 'https://github.com/tayyyyylor', Icon: SiGithub },
+  { id: 'linkedin', label: 'LinkedIn', href: LINKEDIN_URL, Icon: LinkedinIcon },
+  { id: 'github', label: 'GitHub', href: GITHUB_URL, Icon: SiGithub },
 ]
 
 export function BookSocials() {
