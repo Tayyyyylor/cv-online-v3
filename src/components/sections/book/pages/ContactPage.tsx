@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import BookPage from '@/components/molecules/book/BookPage'
 import { Handwritten, Lead, MonoLabel, socials } from '@/components/molecules/book/BookText'
 
-export const EMAIL = 'devbryan@proton.me'
+export const EMAIL = 'bryan.houblon@proton.me'
 
 type CopyStatus = 'idle' | 'copied' | 'failed'
 
